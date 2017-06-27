@@ -47,4 +47,37 @@
 
 .Sidebar .nav {
   width: 220px;
+  height: 50px;
+  
+  padding: 10px 10px 10px 10px;
+  border: 2px;
+  border-color: #dedbbc;
+  border-style: none none solid none;
+}
+
+.ul {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+
+.Sidebar .nav:hover {
+    background-color: #dedbbc;
+}
+
+.icon:hover {
+    background-color: #dedbbc;
+}
+
+.hamburger {
+  position: absolute;
+  right: 0px;
+  padding-right: 15px;
+}
+
+.header{
+  height: 50px;
+}
+
+.icon{
+  padding-top: 3px;
 }
