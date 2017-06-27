@@ -3,7 +3,7 @@ import {Doughnut,defaults} from 'react-chartjs-2'
 import axios from 'axios'
 import _ from 'lodash'
 import './App.css';
-
+defaults.global.legend.display = false
 class App extends Component {
 
   constructor(props) {
@@ -14,12 +14,12 @@ class App extends Component {
     }
   }
   getUsers = () => {
-    axios.get('https://8efa9ba5.ngrok.io/project_overview')
+    axios.get('https://5971d513.ngrok.io/api/sumprojectposition')
       .then(response => {
         this.setState({
-          projects: response.data.project_overview
+          projects: response.data.sumprojects
         })
-        //console.log(this.state.projects);
+        console.log(this.state.projects);
       })
       .catch(err => {
         this.setState({
@@ -32,54 +32,73 @@ class App extends Component {
     this.getUsers()
   }
   render() {
-    var chartData = ()=>{
-      _.map(this.state.projects, (project, index) => {// loop took project
-        var projectId_c = _.find(this.state.data, item => item.projectId === project.pid)
-        if(projectId_c){
-          if(projectId_c.position === project.position){
-            projectId_c.sum += project.dur
-          }
-        }else{
-          this.state.data.push({
-            projectId: project.pid,
-            position: project.position,
-            sum: project.dur
-          })
-        }
-      })
-
+    const chartData = _.map(this.state.projects, (item, index) => {
       var listDataOption = []
       var listLabelOption = []
-      _.map(this.state.data, item => {
-        console.log(item)
-        listDataOption.push(item.sum)
-        listLabelOption.push(item.position)
-        console.log('Position: '+item.position+" dur: "+item.sum)
+      var colorList = []
+      var positionList = ['Project Manager', 'Frontend Developer', 'Backend Developer', 'Tester', 'Business Analyst', 'Designer', 'Mobile App Developer']
+      _.map(item[Object.keys(item)[0]], position => {
+        listDataOption.push(position.total_hour)
+        listLabelOption.push(position.position)
       })
-      console.log(listDataOption)
-      console.log(listLabelOption)
+      _.each(listLabelOption, label => {
+        var color = ""
+          if(label === positionList[0]){
+            color = "#f08080"
+          }else if(label === positionList[1]){
+            color = "#b145df"
+          }else if(label === positionList[2]){
+            color = "#e700e7"
+          }else if(label === positionList[3]){
+            color = "#00d0d0"
+          }else if(label === positionList[4]){
+            color = "#ffff5c"
+          }else if(label === positionList[5]){
+            color = "#bc8f8f"
+          }else if(label === positionList[6]){
+            color = "#a52a2a"
+          }
+          colorList.push(color)
+      })
       var option = {
         datasets: [{
-            data: listDataOption
+          data: listDataOption,
+          backgroundColor: colorList
         }],
-        labels: listLabelOption
+        labels: listLabelOption,
+        text: 'askldjasd'
       }
       return (
-            <Doughnut data={option} />
+        <div className={index===0 ? 'chart item active' : 'chart item'}>
+          <Doughnut key={`chart-${index}`} data={option} />
+          <h3 style={{textAlign:'center'}} key={`h3-${index}`}>{item.projectname}</h3>
+        </div>
       )
-    }
+    })
+
+
     if(this.state.failed) return <h3>Get User Failed.</h3>
 
     return (
-      <div className="App">
-          <h2>Welcome to React</h2>
-          <hr />
+      <div>
           <h4>list User Data</h4>
           <br />
           <div>
-            {!this.state.projects ? 'Loading..' : chartData()}
-          </div>
+            <div id="myCarousel" className="carousel slide" data-ride="carousel" data-interval="false">
+              <div className="carousel-inner">
+                {!this.state.projects ? 'Loading..' : chartData}
+              </div>
+              <a className="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span className="glyphicon glyphicon-chevron-left"></span>
+                <span className="sr-only">Previous</span>
+              </a>
+              <a className="right carousel-control" href="#myCarousel" data-slide="next">
+                <span className="glyphicon glyphicon-chevron-right"></span>
+                <span className="sr-only">Next</span>
+              </a>
+            </div>
 
+          </div>
       </div>
     );
   }
