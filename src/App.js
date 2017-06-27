@@ -14,12 +14,12 @@ class App extends Component {
     }
   }
   getUsers = () => {
-    axios.get('https://8efa9ba5.ngrok.io/project_overview')
+    axios.get('https://647ad528.ngrok.io/api/sumprojectposition')
       .then(response => {
         this.setState({
-          projects: response.data.project_overview
+          sumprojectdata: response.data.sumprojects
         })
-        //console.log(this.state.projects);
+        //console.log(this.state.sumprojectdata);
       })
       .catch(err => {
         this.setState({
@@ -32,42 +32,26 @@ class App extends Component {
     this.getUsers()
   }
   render() {
-    var chartData = ()=>{
-      _.map(this.state.projects, (project, index) => {// loop took project
-        var projectId_c = _.find(this.state.data, item => item.projectId === project.pid)
-        if(projectId_c){
-          if(projectId_c.position === project.position){
-            projectId_c.sum += project.dur
-          }
-        }else{
-          this.state.data.push({
-            projectId: project.pid,
-            position: project.position,
-            sum: project.dur
-          })
+    var chartData = _.map(this.state.sumprojectdata, (item, index) => {
+        var listDataOption = []
+        var listLabelOption = []
+        _.map(item[Object.keys(item)[0]], data => {
+          listDataOption.push(data.total_hour)
+          listLabelOption.push(data.position)
+        })
+        var option = {
+          datasets: [{
+              data: listDataOption
+          }],
+          labels: listLabelOption,
+          text: item.projectname
         }
+        console.log(option)
+        return (
+          <Doughnut key={`chart-${index}`} data={option} />
+        )
       })
-
-      var listDataOption = []
-      var listLabelOption = []
-      _.map(this.state.data, item => {
-        console.log(item)
-        listDataOption.push(item.sum)
-        listLabelOption.push(item.position)
-        console.log('Position: '+item.position+" dur: "+item.sum)
-      })
-      console.log(listDataOption)
-      console.log(listLabelOption)
-      var option = {
-        datasets: [{
-            data: listDataOption
-        }],
-        labels: listLabelOption
-      }
-      return (
-            <Doughnut data={option} />
-      )
-    }
+    
     if(this.state.failed) return <h3>Get User Failed.</h3>
 
     return (
@@ -77,7 +61,7 @@ class App extends Component {
           <h4>list User Data</h4>
           <br />
           <div>
-            {!this.state.projects ? 'Loading..' : chartData()}
+            {!this.state.sumprojectdata ? 'Loading..' : chartData}
           </div>
 
       </div>
