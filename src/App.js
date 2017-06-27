@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-<<<<<<< Updated upstream
-import logo from './logo.svg';
-=======
+
 import axios from 'axios'
 import _ from 'lodash'
->>>>>>> Stashed changes
+
 import './App.css';
 import Modal from './Modal';
 import { Button } from 'react-bootstrap';
@@ -14,7 +12,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userPopUp: '',
+
       projectPopUp: '',
       failedPopUp: false,
 
@@ -26,28 +24,30 @@ class App extends Component {
     event.preventDefault();
 
     this.getUsers()
+    console.log(this.state.userPopUp)
+
 
   }
   getUsers = () => {
 
-    this.setState({
+    /*this.setState({
       userPopUp: dataUsr
 
-    })
+    })*/
     // console.log(this.state.users)
 
 
-    /*axios.get('http://localhost:3000/home/ubuntu-benz/Desktop/projectsIntern2017/src/dataUser.json')
+    axios.get('https://5971d513.ngrok.io/projects/31776670/user/2723382')
       .then(response => {
         this.setState({
-          users: response.data.users
+          userPopUp: response.data
         })
       })
       .catch(err => {
         this.setState({
           failed: true
         })
-      })*/
+      })
   }
 
 
@@ -107,15 +107,7 @@ class App extends Component {
     if (this.state.failed) return <h3>Get User Failed.</h3>
     return (
       <div className="App">
-<<<<<<< Updated upstream
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-=======
+
         <h2>Welcome to React</h2>
         <hr />
         <h4>list User Data</h4>
@@ -123,7 +115,7 @@ class App extends Component {
         <div>
           {!this.state.users ? 'Loading..' : userData}
         </div>
->>>>>>> Stashed changes
+
       </div>
     );
   }

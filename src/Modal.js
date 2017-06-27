@@ -21,7 +21,7 @@ class Modal extends Component {
 
   render() {
 
-    this.setState({ userToTable: this.props.userPopUp })
+    // this.setState({ userToTable: this.props.userPopUp })
     // const formInstance = <div className="row">
     //   <div className="col-lg-10">
     //     <div className="input-group">
@@ -72,7 +72,7 @@ class Modal extends Component {
               </div>
 
 
-              <Search />
+
 
 
 
@@ -80,6 +80,7 @@ class Modal extends Component {
               {/*!this.props.userPopUp ? 'Loading' : user*/}
               {!this.props.userPopUp ? 'Loading..' :
                 <div>
+                  <Search />
                   <Table vauleColumnHead={['Date', 'Task', 'Workour']} userPopUp={this.props.userPopUp} /></div>}
 
 
