@@ -1,0 +1,39 @@
+{
+  "Benz": [
+    {
+      "date": "2017-05-01",
+      "description": "a",
+      "workhour": 8
+    },
+    {
+      "date": "2017-05-02",
+      "description": "b",
+      "workhour": 5
+    },
+    {
+      "date": "2017-05-03",
+      "description": "c",
+      "workhour": 9
+    },
+    {
+      "date": "2017-05-04",
+      "description": "d",
+      "workhour": 8
+    },
+    {
+      "date": "2017-05-05",
+      "description": "e",
+      "workhour": 7
+    },
+    {
+      "date": "2017-05-06",
+      "description": "f",
+      "workhour": 5
+    },
+    {
+      "date": "2017-05-07",
+      "description": "g",
+      "workhour": 5
+    }
+  ]
+}
