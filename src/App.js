@@ -15,10 +15,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar></Navbar>
+        <Navbar />
         <div className="container app-content">
           {/*{}*/}
-          <ProjectChart></ProjectChart>
+          <ProjectChart />
           {/*{}*/}
         </div>
       </div>

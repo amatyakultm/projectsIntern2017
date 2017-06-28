@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Doughnut,defaults } from 'react-chartjs-2'
+import { Doughnut,defaults, Pie } from 'react-chartjs-2'
 import axios from 'axios'
 import _ from 'lodash'
 import ReactLoading from 'react-loading'
@@ -15,7 +15,7 @@ class ProjectChart extends Component {
     }
   }
   getUsers(){
-    axios.get('https://4199e8e5.ngrok.io/api/sumprojectposition')
+    axios.get('https://8dfe126d.ngrok.io/api/sumprojectposition')
       .then(response => {
         this.setState({
           projects: response.data.sumprojects
@@ -81,7 +81,7 @@ class ProjectChart extends Component {
         <div key={`div-${index}`} className='col-lg-3 col-md-4 col-sm-6 col-6'>
           <div className='card-box'>
             <h6 className='text-mute text-center' key={`h6-${index}`}>{item.projectname}</h6>
-            <Doughnut key={`chart-${index}`} data={option} width={420} height={420}/>
+            <Pie key={`chart-${index}`} data={option} width={420} height={420}/>
             <div className='col-md-8 offset-md-2 text-center mt-3'>
               <button key={`btn-details-${index}`} onClick={() => this.handleClickDetail(Object.keys(item)[0])} className='btn btn-danger btn-sm btn-details'>Details</button>
             </div>
@@ -109,7 +109,7 @@ class ProjectChart extends Component {
             <div className='btn-group pull-right'>
               <button className='btn btn-danger'><i className='zmdi zmdi-settings'></i> Setting</button>
             </div>
-            <h4>Projects</h4>
+            <h4><i className="zmdi zmdi-globe"></i> Projects</h4>
           </div>
         </div>
         <div className='row mt-5'>
