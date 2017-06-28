@@ -14,7 +14,7 @@ class App extends Component {
     }
   }
   getUsers = () => {
-    axios.get('https://5971d513.ngrok.io/api/sumprojectposition')
+    axios.get('https://8dfe126d.ngrok.io/api/sumprojectposition')
       .then(response => {
         this.setState({
           projects: response.data.sumprojects
@@ -67,8 +67,7 @@ class App extends Component {
           data: listDataOption,
           backgroundColor: colorList
         }],
-        labels: listLabelOption,
-        maintainAspectRatio : false
+        labels: listLabelOption
       }
       eiei.push(
         <div className="chart">
