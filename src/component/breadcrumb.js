@@ -1,5 +1,5 @@
 import React from 'react'
-import { Breadcrumb, BreadcrumbItem } from 'react-bootstrap';
+import { Breadcrumb } from 'react-bootstrap';
 import './navBar.css'
 
 const Heading = (props) => {

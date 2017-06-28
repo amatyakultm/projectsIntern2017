@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Nav } from 'react-bootstrap'
 import Breadcrumb from './/component/breadcrumb'
 import Sidebar from './component/sideBar'
-import Heading from './component/navBar'
+import Navbar from './component/navBar'
 import './App.css';
 
 class App extends Component {
@@ -18,7 +18,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Heading handleOpenSidebar={()=>this.handleOpenSidebar(true)}/>
+        <Navbar handleOpenSidebar={()=>this.handleOpenSidebar(true)}/>
         
         <Sidebar side='left' isVisible={ this.state.open } onHide={ () => this.handleOpenSidebar(false)}>
         	<ul className = 'ul'>

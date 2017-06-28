@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Navbar, Glyphicon, ButtonToolbar, ButtonGroup } from 'react-bootstrap';
 import './navBar.css'
 
-const Heading = (props) => {
+const navBar = (props) => {
     return(
         <div className = 'Bar'>
             <Navbar>
@@ -18,4 +18,4 @@ const Heading = (props) => {
     )
 }
 
-export default Heading
+export default navBar
