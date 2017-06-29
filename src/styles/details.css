@@ -1,0 +1,19 @@
+
+.container1{
+    background-color: rgba(69, 192, 180, 0.17);;
+}
+.container2{
+    background-color:black;
+}
+.boxleft{
+  height: 600px;
+  margin-top: 15px;
+  border-radius: 10px;
+  background-color: rgba(218, 71, 71, 0.12);
+}
+.boxright{
+  padding-left: 20px;
+  margin-top: 15px;
+  border-radius: 10px;
+  background-color: rgba(34, 164, 203, 0.14);
+}
