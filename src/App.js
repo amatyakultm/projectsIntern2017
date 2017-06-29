@@ -1,13 +1,19 @@
+
 import React, { Component } from 'react';
 import { Nav } from 'react-bootstrap'
+import { Link } from 'react-router'
 import Breadcrumb from './/component/breadcrumb'
 import Sidebar from './component/sideBar'
 import Navbar from './component/navBar'
 import './App.css';
 
 class App extends Component {
-  state = {
-    open: false
+  constructor(props) {
+    super(props)
+    this.state = {
+      open: false
+
+    }
   }
 
   handleOpenSidebar(open) {
@@ -17,11 +23,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className='App'>
         <Navbar handleOpenSidebar={()=>this.handleOpenSidebar(true)}/>
-        
         <Sidebar side='left' isVisible={ this.state.open } onHide={ () => this.handleOpenSidebar(false)}>
-        	<ul className = 'ul'>
+          <ul className = 'ul'>
+            <Nav><Link to={'/present_absent'}> Present_absent </Link> <br/></Nav>
+            <Link to={'/projects'} > Project </Link>
             <Nav>Home</Nav>
             <Nav>Present/Absent</Nav>
             <Nav>project Overview</Nav>
@@ -29,9 +36,11 @@ class App extends Component {
           </ul>
         </Sidebar>
         <Breadcrumb/>
+        <div className="container app-content">
+          { this.props.children }    
+        </div>
       </div>
     );
   }
 }
-
 export default App;

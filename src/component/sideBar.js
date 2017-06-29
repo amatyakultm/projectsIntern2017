@@ -12,6 +12,7 @@ render() {
             onHide={ this.props.onHide } 
             >
             <Modal.Header className='header'>
+                    <img className='logo' src='./Asset/PNG/Logo2.png'/>
                 <Modal.Title className='hamburger'>
                     <div className='icon' onClick={this.props.onHide}><Glyphicon glyph="menu-hamburger" /></div>
                 </Modal.Title>

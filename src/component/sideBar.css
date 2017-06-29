@@ -69,15 +69,23 @@
 }
 
 .hamburger {
-  position: absolute;
-  right: 0px;
-  padding-right: 15px;
 }
 
 .header{
-  height: 50px;
+  height: 80px;
+}
+
+.logo{
+  width: 70px;
+  position: absolute;
+  left: 0px;
+  padding-left: 15px;
 }
 
 .icon{
-  padding-top: 3px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  padding-right: 15px;
+  padding-top: 10px;
 }
