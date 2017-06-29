@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
-import { Button, InputGroup, FormGroup, form, FormControl } from 'react-bootstrap';
+import { ButtonToolbar, InputGroup, FormGroup, form, FormControl } from 'react-bootstrap';
 import _ from 'lodash';
+import '../css/Table.scss';
+
 const Table = (props) => {
+  console.log(props.userPopUp)
 
-
-
-  let content = props.vauleColumnHead.map((vauleColumnHead, index) => <td>{vauleColumnHead}</td>)
-  let value = props.userPopUp.userdata.map((userPopUp, index) => <tr> <td>{userPopUp.date}</td><td>{userPopUp.description}</td><td>{userPopUp.total_hour}</td> </tr>)
+  //let value = props.userPopUp.userdata.map((userPopUp, index) => <tr> <td>{userPopUp.date}</td><td>{userPopUp.description}</td><td>{userPopUp.total_hour}</td> </tr>)
   //var user = _.map(this.props.userPopUp.Benz, (user2, index) => { return <div>{user2.date}</div> })
   //console.log(props.userPopUp)
-  return (<div>{console.log(props.user)}<table className="table table-bordered"><thead><tr>{content}</tr></thead>{value}</table></div>);
+  const scrollBar = {
+
+    height: 500,
+    overflow: 'auto',
+
+
+  };
+
+  return (<div><div style={scrollBar}><table className="table table-bordered" ><thead><tr className="active">{props.vauleColumnHead}</tr></thead><tbody>{props.userPopUp}</tbody></table></div></div>);
 
 
   //for(var i=0;i<3;i++){}
