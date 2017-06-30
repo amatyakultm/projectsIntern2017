@@ -3,24 +3,42 @@ import { Doughnut,defaults, Pie } from 'react-chartjs-2'
 import axios from 'axios'
 import _ from 'lodash'
 import ReactLoading from 'react-loading'
-import Style from '../styles/Style.css'
+import '../styles/Style.css'
+import { Link } from 'react-router'
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+import moment from 'moment';
+import ProjectDetail from './ProjectDetail'
+import 'react-day-picker/lib/style.css';
+
+const DAY_FORMAT = 'YYYY-MM-DD';
 defaults.global.legend.display = false
+
 class ProjectChart extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
       failed: false,
-      data: []
+      data: [],
+      project: [],
+      fromSelectedDay: undefined,
+      toSelectedDay: undefined,
+      projectSelected: undefined,
+      option: undefined,
+      sum_hours: 0
     }
   }
+
   getUsers(){
-    axios.get('https://8dfe126d.ngrok.io/api/sumprojectposition')
+    axios.get('http://localhost:7000/api/sumprojectposition')
       .then(response => {
         this.setState({
-          projects: response.data.sumprojects
+          projects: response.data.sumprojects,
+          project: response.data.sumprojects,
+          from: response.data.start,
+          to: response.data.end
         })
-        //console.log(this.state.projects);
+        console.log(this.state.projects);
       })
       .catch(err => {
         this.setState({
@@ -33,16 +51,69 @@ class ProjectChart extends Component {
     this.getUsers()
   }
 
-  handleClickDetail(projectId){
+  handleFromTo(){
+    console.log(this.refs.from.value)
+    console.log(this.refs.to.value)
+    const from = this.refs.from.value
+    const to = this.refs.to.value
+    this.setState({
+      projects: null,
+      project: null
+    })
+    axios.get(`http://localhost:7000/api/sumprojectposition?start=${from}&end=${to}`)
+      .then(response => {
+        this.setState({
+          projects: response.data.sumprojects,
+          project: response.data.sumprojects,
+          from: response.data.start,
+          to: response.data.end
+        })
+        console.log(this.state.projects);
+      })
+      .catch(err => {
+        this.setState({
+          failed: true
+        })
+        //console.log(err)
+      })
+  }
+
+  handleDayChange = (selectedDay, modifiers) => {
+    this.setState({
+      selectedDay
+    });
+  };
+
+  handleClickProject = (projectId, option, sum_hours) => {
+    this.setState({
+      projectSelected: projectId,
+      option: option,
+      sum_hours: sum_hours
+    })
     console.log(projectId)
+    console.log(option)
+    console.log(sum_hours)
+  }
+
+  handleSearchProject(e){
+    const query = e.target.value.toLowerCase()
+    let result = []
+    _.map(this.state.projects, item => {
+      if (_.includes(item.projectname.toLowerCase(), query.toLowerCase())){
+        result.push(item)
+      }
+    })
+    this.setState({
+      project: result
+    })
   }
 
   render() {
-    const chartData = _.map(this.state.projects, (item, index) => {
+    const chartData = _.map(this.state.project, (item, index) => {
       var listDataOption = []
       var listLabelOption = []
       var colorList = []
-      var positionList = ['Project Manager', 'Frontend Developer', 'Backend Developer', 'Tester', 'Business Analyst', 'Designer', 'Mobile App Developer', 'HR']
+      var positionList = ['Project Management Officer', 'Frontend Developer', 'Backend Developer', 'Quality Assurance Engineer', 'Business Analyst', 'Designer', 'Mobile Developer', 'HR Director']
       _.map(item[Object.keys(item)[0]], position => {
         listDataOption.push(position.total_hour)
         listLabelOption.push(position.position)
@@ -63,7 +134,7 @@ class ProjectChart extends Component {
           color = '#e0e3cd'
         } else if (label === positionList[6]){
           color = '#4d5360'
-        } else if (label === positionList[6]){
+        } else if (label === positionList[7]){
           color = '#7d5360'
         }
         colorList.push(color)
@@ -77,13 +148,18 @@ class ProjectChart extends Component {
         maintainAspectRatio : false,
         responsive: true
       }
+
       return (
         <div key={`div-${index}`} className='col-lg-3 col-md-4 col-sm-6 col-6'>
-          <div className='card-box'>
-            <h6 className='text-mute text-center' key={`h6-${index}`}>{item.projectname}</h6>
+          <div className='card-box' onClick={(e) => this.handleClickProject(Object.keys(item)[0], option, item.sum)}>
+            <h6 className='text-mute text-center' key={`h6-${index}`}>{parseInt(item.sum/1000/60/60)} Hrs</h6>
             <Pie key={`chart-${index}`} data={option} width={420} height={420}/>
-            <div className='col-md-8 offset-md-2 text-center mt-3'>
-              <button key={`btn-details-${index}`} onClick={() => this.handleClickDetail(Object.keys(item)[0])} className='btn btn-danger btn-sm btn-details'>Details</button>
+            <div className='col-md-12 text-center mt-3'>
+              {/*<button key={`btn-details-${index}`} onClick={() => this.handleClickDetail(Object.keys(item)[0])} className='btn btn-danger btn-sm btn-details'>Details</button>*/}
+              {/*<Link to={`/project/${Object.keys(item)[0]}`}>
+                <button key={`btn-details-${index}`} className='btn btn-danger btn-sm btn-details'>Details</button>
+              </Link>*/}
+              {item.projectname}
             </div>
           </div>
         </div>
@@ -93,23 +169,50 @@ class ProjectChart extends Component {
     const loadingData = () => {
       return (
         <div className='col align-self-center loading'>
-          <ReactLoading type='spin' color='#dc3833' className='loading-icon' delay={0} />
-          Loading
+          <img src="./assets/img/loading.svg" alt="" width="50"/>
         </div>
       )
     }
+
     if (this.state.failed) {
       return <h3>Network Error.</h3>
+    }
+
+    if(this.state.projectSelected){
+      return <ProjectDetail project_id={this.state.projectSelected} option={this.state.option} start={this.state.from} end={this.state.to} sum_hours={this.state.sum_hours}/>
     }
 
     return (
       <div>
         <div className='row'>
-          <div className='col-sm-12'>
-            <div className='btn-group pull-right'>
-              <button className='btn btn-danger'><i className='zmdi zmdi-settings'></i> Setting</button>
+          <div className='col-12'>
+            <div className="pull-left">
+              <h4><i className="zmdi zmdi-globe"></i> Projects</h4>
             </div>
-            <h4><i className="zmdi zmdi-globe"></i> Projects</h4>
+            <div className='pull-right fromto-box'>
+              <span className="fromto">From </span>
+              {/*<DayPickerInput
+                value={formattedDay_from}
+                placeholder={!this.state.from ? 'Waiting' : this.state.from}
+                format={DAY_FORMAT}
+                onDayChange={this.handleDayChange}
+                ref='from' />*/}
+                <input className="form-control fromto_input" type="date" ref="from" placeholder={!this.state.from ? 'Waiting' : moment(this.state.from).format(DAY_FORMAT)}/>
+              <span className="fromto">To </span>
+              {/*<DayPickerInput
+                value={formattedDay_to}
+                placeholder={!this.state.to ? 'Waiting' : this.state.to}
+                format={DAY_FORMAT}
+                onDayChange={this.handleDayChange}
+                ref='to' />*/}
+                <input className="form-control fromto_input" type="date" ref="to" placeholder={!this.state.to ? 'Waiting' : moment(this.state.to).format(DAY_FORMAT)}/> 
+              <button className="btn btn-sm btn-danger" onClick={() => this.handleFromTo()}>Submit</button>
+            </div>
+          </div>
+        </div>
+        <div className="row mt-3">
+          <div className="col-md-6 offset-md-3">
+            <input type="text" className="form-control" placeholder="Search Project" onChange={(e) => this.handleSearchProject(e)}/>
           </div>
         </div>
         <div className='row mt-5'>

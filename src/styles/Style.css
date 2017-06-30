@@ -67,6 +67,12 @@ ul.navbar-nav > li {
     margin-bottom: 20px;
     background-color: #ffffff;
     box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
+    cursor: pointer;
+    height: 360px;
+}
+
+.card-box:hover{
+    border: 2px solid #2e4053;
 }
 
 .text-mute{
@@ -75,5 +81,58 @@ ul.navbar-nav > li {
 
 .btn-details{
     margin: 0 auto;
+    cursor: pointer;
+}
+
+.DayPickerInput > input{
+        display: block;
+    width: 100%;
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    line-height: 1.25;
+    color: #464a4c;
+    background-color: #fff;
+    background-image: none;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+}
+.DayPickerInput > input:focus {
+    color: #464a4c;
+    background-color: #fff;
+    border-color: #d0021b;
+    outline: 0;
+}
+
+.form-control:focus {
+    color: #464a4c;
+    background-color: #fff;
+    border-color: #d0021b;
+    outline: 0;
+}
+
+.DayPickerInput-OverlayWrapper{
+    z-index: 99999;
+}
+
+.fromto{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.fromto_input{
+    width: auto;
+    display: inline;
+    padding: .25rem .5rem;
+}
+.fromto-box > button{
+    margin-left: 10px;
+    margin-right: 10px;
     cursor: pointer;
 }

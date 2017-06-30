@@ -3,26 +3,14 @@ import Navbar from './components/Navbar'
 import Style from './styles/Style.css'
 import ProjectChart from './components/ProjectChart'
 import Home from './components/Home'
-class App extends Component {
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      failed: false,
-      data: []
-    }
-  }
-  render() {
-    return (
-      <div className="App">
-        <Navbar />
-        <div className="container app-content">
-          {/*{}*/}
-          <ProjectChart />
-          {/*{}*/}
-        </div>
+const App = (props) => {
+  return (
+    <div className="App">
+      <Navbar />
+      <div className="container app-content">
+        { props.children }
       </div>
-    );
-  }
+    </div>
+  );
 }
 export default App;
