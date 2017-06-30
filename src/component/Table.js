@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ButtonToolbar, InputGroup, FormGroup, form, FormControl } from 'react-bootstrap';
 import _ from 'lodash';
-import '../css/Table.scss';
+
 
 const Table = (props) => {
   console.log(props.userPopUp)
