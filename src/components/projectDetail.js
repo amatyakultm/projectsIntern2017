@@ -6,13 +6,13 @@ import { Link } from 'react-router';
 import Navbar from './Navbar';
 import axios from 'axios';
 import _ from 'lodash';
+import TableData from './TableData';
 
 class projectDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      failed: false,
-      projects: []
+      failed: false
     };
   }
   getProjectData() {
@@ -22,6 +22,7 @@ class projectDetail extends Component {
         this.setState({
           projects: response.data.projectData
         });
+        console.log(this.state.projects);
       })
       .catch(err => {
         this.setState({
@@ -41,7 +42,7 @@ class projectDetail extends Component {
     if (this.state.failed) {
       return <h3>Network Error.</h3>;
     }
-    console.log(this.state.projects);
+    // console.log(this.state.projects);
     return (
       <div className="container">
         <div className="row">
@@ -58,12 +59,15 @@ class projectDetail extends Component {
                       <td>
                         {project.sum_man_day}
                       </td>
+                      <td>Mday</td>
                     </tr>
                   )}
             </div>
           </div>
           <div className="col-8 boxleft">
-            {/*<h1>Kirana amat</h1>*/}
+            {!this.state.projects
+              ? ''
+              : <TableData users={this.state.projects} />}
           </div>
         </div>
       </div>
