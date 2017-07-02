@@ -30,7 +30,7 @@ class ProjectChart extends Component {
   }
 
   getUsers(){
-    axios.get('http://localhost:7000/api/sumprojectposition')
+    axios.get('http://52.77.234.30/api/sumprojectposition?start=2017-06-01&end=2017-06-30')
       .then(response => {
         this.setState({
           projects: response.data.sumprojects,
@@ -60,7 +60,7 @@ class ProjectChart extends Component {
       projects: null,
       project: null
     })
-    axios.get(`http://localhost:7000/api/sumprojectposition?start=${from}&end=${to}`)
+    axios.get(`http://52.77.234.30/api/sumprojectposition?start=${from}&end=${to}`)
       .then(response => {
         this.setState({
           projects: response.data.sumprojects,
@@ -107,6 +107,17 @@ class ProjectChart extends Component {
       project: result
     })
   }
+
+  handleFrom(e){
+    const from = e.target.value
+    console.log('from '+from)
+  }
+
+  handleTo(e){
+    const to = e.target.value
+    console.log('to '+to)
+  }
+  
 
   render() {
     const chartData = _.map(this.state.project, (item, index) => {
@@ -190,29 +201,29 @@ class ProjectChart extends Component {
               <h4><i className="zmdi zmdi-globe"></i> Projects</h4>
             </div>
             <div className='pull-right fromto-box'>
-              <span className="fromto">From </span>
-              {/*<DayPickerInput
-                value={formattedDay_from}
-                placeholder={!this.state.from ? 'Waiting' : this.state.from}
-                format={DAY_FORMAT}
-                onDayChange={this.handleDayChange}
-                ref='from' />*/}
-                <input className="form-control fromto_input" type="date" ref="from" placeholder={!this.state.from ? 'Waiting' : moment(this.state.from).format(DAY_FORMAT)}/>
-              <span className="fromto">To </span>
-              {/*<DayPickerInput
-                value={formattedDay_to}
-                placeholder={!this.state.to ? 'Waiting' : this.state.to}
-                format={DAY_FORMAT}
-                onDayChange={this.handleDayChange}
-                ref='to' />*/}
-                <input className="form-control fromto_input" type="date" ref="to" placeholder={!this.state.to ? 'Waiting' : moment(this.state.to).format(DAY_FORMAT)}/> 
-              <button className="btn btn-sm btn-danger" onClick={() => this.handleFromTo()}>Submit</button>
+              {
+                !this.state.from ? '' : <span className="fromto">From </span>
+              }
+              {
+                !this.state.from ? '' : <input className="form-control fromto_input" type="date" ref="from" value={moment(this.state.from).format(DAY_FORMAT)} onChange={(e) => this.handleFrom(e)}/>
+              }
+              {
+                !this.state.to ? '' : <span className="fromto">To </span>
+              }
+              {
+                !this.state.to ? '' : <input className="form-control fromto_input" type="date" ref="to" value={!this.state.to ? 'Waiting' : moment(this.state.to).format(DAY_FORMAT)} onChange={(e) => this.handleTo(e)}/>
+              }
+              {
+                !this.state.to && !this.state.from ? '' : <button className="btn btn-sm btn-danger" onClick={() => this.handleFromTo()}>Submit</button>
+              }
             </div>
           </div>
         </div>
         <div className="row mt-3">
           <div className="col-md-6 offset-md-3">
-            <input type="text" className="form-control" placeholder="Search Project" onChange={(e) => this.handleSearchProject(e)}/>
+            {
+              !this.state.projects ? '' : <input type="text" className="form-control" placeholder="Search Project" onChange={(e) => this.handleSearchProject(e)}/>
+            }
           </div>
         </div>
         <div className='row mt-5'>

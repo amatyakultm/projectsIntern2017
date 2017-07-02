@@ -5,6 +5,7 @@ import _ from 'lodash'
 import ReactLoading from 'react-loading'
 import Style from '../styles/Style.css'
 import TableData from './TableData'
+
 defaults.global.legend.display = false
 class ProjectDetail extends Component {
 
@@ -12,9 +13,12 @@ class ProjectDetail extends Component {
     super(props)
     this.state = {
       failed: false,
-      sum_hours: 0
+      sum_hours: 0,
+      isOpen: false
     }
   }
+
+  
 
   getProjectData(){
     axios.get(`http://52.77.234.30/projects/${this.props.project_id}/detail?start=${this.props.start}&end=${this.props.end}`)
@@ -60,8 +64,35 @@ class ProjectDetail extends Component {
                 {this.state.projectdetail.project_name}
               </div>
             </div>
+            <div className="row">
+              <div className="col-md-12">
+                <div className='card'>
+                  <div className="card-header">
+                    <div className="card_position_name pull-left">
+                      Position
+                    </div>
+                    <div className="card_manday pull-right">
+                      Mandays
+                    </div>
+                  </div>
+                  <div className="card-block">
+                    {
+                      _.map(this.state.projectdetail.projectData, item => {
+                        let position = ''
+                        return (
+                          <div className="position-mandays">
+                            <p className="pull-left">{item.position}</p>
+                            <span className="pull-right">{item.sum_man_day}</span>
+                          </div>
+                        )
+                      })
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <TableData users={this.state.projectdetail.projectData}></TableData>
+          <TableData project_id={this.props.project_id} users={this.state.projectdetail.projectData}></TableData>
         </div>
       )
     }
@@ -74,7 +105,7 @@ class ProjectDetail extends Component {
         <div className='row'>
           <div className='col-sm-12'>
             <div className='btn-group pull-right'>
-              <button className='btn btn-danger'><i className='zmdi zmdi-settings'></i> Setting</button>
+              {/*<button className='btn btn-danger'><i className='zmdi zmdi-settings'></i> Setting</button>*/}
             </div>
             <h4><i className="zmdi zmdi-globe"></i> Project Details {!this.state.projectdetail ? '' : `From ${this.state.projectdetail.from} To ${this.state.projectdetail.to}`}</h4>
           </div>
@@ -84,4 +115,4 @@ class ProjectDetail extends Component {
     );
   }
 }
-export default ProjectDetail;
+export default ProjectDetail

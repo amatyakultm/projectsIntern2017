@@ -16,7 +16,7 @@ class Navbar extends Component {
               <a className="nav-link" href="#"><i className="zmdi zmdi-view-dashboard"></i> Dashboard</a>
             </li>
             <li className="nav-item active">
-              <a className="nav-link" href="#"><i className="zmdi zmdi-globe"></i> Projects</a>
+              <a className="nav-link" href="/projects"><i className="zmdi zmdi-globe"></i> Projects</a>
             </li>
           </ul>
         </div>
