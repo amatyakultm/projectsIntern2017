@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+body {
+  background-color: #f5f5f5;
+  color: #2e4053;
+  font-family: 'Roboto', sans-serif;
+}
+.nav-app {
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 1030;
+  background-color: #ffffff;
+  border: 0;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+  min-height: 60px;
+  box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
+}
+.navbar-toggler-right {
+  top: 1rem;
+}
+.navbar-toggler {
+  cursor: pointer;
+}
+.nav-menu {
+  margin-left: 100px;
+}
+.navbar-brand {
+  margin-left: 30px;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: #2e4053;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #dc3833;
+}
+
+.navbar-light .navbar-nav > .nav-item.active > a {
+  color: #dc3833;
+}
+
+ul.navbar-nav > li {
+  margin-right: 30px;
+}
+
+.app-content {
+  margin-top: 100px;
+}
+
+.loading {
+  text-align: center;
+}
+
+.loading-icon {
+  margin: 0 auto;
+}
+
+.card-box {
+  padding: 20px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  background-clip: padding-box;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
+  height: 380px;
+  position: relative;
+  cursor: pointer;
+  height: 360px;
+}
+
+.card-box:hover {
+  border: 2px solid #2e4053;
+}
+
+.text-mute {
+  color: #000;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.text-mute2 {
+  color: black;
+  font-weight: bold;
+}
+
+.btn-details {
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.margin-text {
+  margin-top: 20px;
+}
+
+.btn-box-detail {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+}
+
+.btn-secondary {
+  color: rgb(147, 144, 144);
+  font-weight: bold;
+}
+/*
+.DayPickerInput > input {
+  display: block;
+  width: 100%;
+  padding: .25rem .5rem;
+  font-size: .875rem;
+  line-height: 1.25;
+  color: #464a4c;
+  background-color: #fff;
+  background-image: none;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: .25rem;
+  -webkit-transition: border-color ease-in-out .15s,
+    -webkit-box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s,
+    -webkit-box-shadow ease-in-out .15s;
+}
+.DayPickerInput > input:focus {
+  color: #464a4c;
+  background-color: #fff;
+  border-color: #d0021b;
+  outline: 0;
+}
+
+.form-control:focus {
+  color: #464a4c;
+  background-color: #fff;
+  border-color: #d0021b;
+  outline: 0;
+}
+
+.DayPickerInput-OverlayWrapper {
+  z-index: 99999;
+}*/
+
+.fromto {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.fromto_input {
+  width: auto;
+  display: inline;
+  padding: .25rem .5rem;
+}
+.fromto-box > button {
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}

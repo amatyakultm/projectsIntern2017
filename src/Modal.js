@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import Search from './component/Search';
-import Table from './component/Table.js';
+import Search from './component/SearchPopup';
+import Table from './component/TablePopup.js';
+import './css/Modal.css';
 
 
 import { Button, InputGroup, FormGroup, form, FormControl, BootstrapTable, TableHeaderColumn } from 'react-bootstrap';
@@ -10,61 +11,57 @@ const Modal = (props) => {
 
   let content = props.vauleColumnHead.map((vauleColumnHead, index) => <td>{vauleColumnHead}</td>)
   let spaceNum = []
-  for (let i = 0; i < 70; i++) { spaceNum[i] = '1' }
+  for (let i = 0; i < 30; i++) { spaceNum[i] = '1' }
   let spaces = spaceNum.map((spaceNum, index) => <text>&nbsp;</text>)
-
-
+  const bulletHidden = {
+    listStyle: ' none'
+  }
+  const scrollHidden = {
+    overflow: 'hidden',
+    width: 1000,
+    height: 500
+  }
+  const tdWidth = {
+    width: 400,
+  }
   return (
-    <div className="container" >
-      <div className="modal fade" id="myModal" role="dialog" >
-        <div className="modal-dialog modal-lg" >
-
-
-          <div className="modal-content" >
-
-
-
-
-            <div className="modal-header">
-              <button type="button" className="close" data-dismiss="modal">&times;</button>
-            </div>
-
-
-
-
-
-
-
-
-            {!props.userPopUp ? 'Loading..' :
-              <div>
-
-
-
-                <ul className="nav">
-                  <li> <Search onChangeInputSearch={props.onChangeInputSearch} /></li>
-                  <li>&nbsp;</li>
-
-                  <li><text>name : {props.namePopup}</text>
-                    {spaces}
-                    <text>row  : {props.valuePopup.length}</text> </li>
-                  <li>&nbsp;</li>
-
-                  <li><Table vauleColumnHead={content} userPopUp={props.valuePopup} /></li>
-                </ul>
-
-
-              </div>}
-
-
-
-
-
-          </div>
-
+    <div className="modal2" >
+      <label className="modal2__bg" htmlFor="modal-1"></label>
+      <div className="modal2__inner" id="show" style={scrollHidden} >
+        <div className="modal-header">
+          <label className="modal2__close" htmlFor="modal-1"></label>
         </div>
-      </div>
 
+
+
+
+
+
+        {!props.userPopUp ? 'Loading..' :
+          <div>
+
+            <table>
+              <tr>
+
+                <td height='100'>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td>
+                <td width='300' >name : {props.namePopup} </td><td width='100' >task  : {props.valuePopup.length}</td><td width='600'><Search onChangeInputSearch={props.onChangeInputSearch} /></td>
+
+              </tr>
+
+
+            </table>
+            <Table vauleColumnHead={content} userPopUp={props.valuePopup} />
+
+
+
+
+          </div>}
+
+
+
+
+
+      </div>
     </div>
 
   );

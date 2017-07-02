@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 import axios from 'axios'
 import _ from 'lodash'
 
@@ -8,7 +9,14 @@ import Modal from './Modal';
 import { Button } from 'react-bootstrap';
 import dataUsr from './dataUser.json';
 
-class App extends Component {
+import Navbar from './components/Navbar';
+import Style from './styles/Style.css';
+import ProjectChart from './components/ProjectChart';
+import Home from './components/Home';
+
+
+const App = props => {
+  /*
   constructor(props) {
     super(props);
     this.state = {
@@ -38,12 +46,7 @@ class App extends Component {
           failedPopUp: true
         })
       })
-    /* if (this.state.userPopUp != null && this.state.checkPopup == 1) {
- 
-       this.setState({
-         valuePopup: this.state.userPopUp.userdata.map((userPopUp, index) => <tr> <td></td><td></td><td></td> </tr>)
-       })
-     }*/
+  
 
 
 
@@ -110,23 +113,36 @@ class App extends Component {
     if (this.state.userPopUp != null && this.state.checkPopup == 1) {
       this.state.valuePopup = this.state.userPopUp.userdata.map((userPopUp, index) => <tr> <td>{userPopUp.date}</td><td>{userPopUp.description}</td><td>{userPopUp.total_hour}</td> </tr>)
 
-    }
+    }/*
 
     /* if (this.state.failedPopUp) return <h3>Get User Failed.</h3>*/
 
 
-    return (
-      <div className="App">
-        <input onClick={this.clickShowPopup} type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" value="ada" />
-        <Modal checkPopup={this.state.checkPopup} valuePopup={this.state.valuePopup} onChangeInputSearch={this.onChangeInputSearch} namePopup={this.state.namePopup} vauleColumnHead={['Date', 'Task', 'Workour']} userPopUp={this.state.userPopUp} />
-
-
-
-
+  return (
+    <div className="App">
+      <Navbar />
+      <div className="container app-content">
+        {props.children}
       </div>
 
-    );
-  }
+
+
+
+
+
+    </div>
+
+  );
 }
 
+
 export default App;
+  /* if (this.state.userPopUp != null && this.state.checkPopup == 1) {
+ 
+       this.setState({
+         valuePopup: this.state.userPopUp.userdata.map((userPopUp, index) => <tr> <td></td><td></td><td></td> </tr>)
+       })
+<Modal checkPopup={this.state.checkPopup} valuePopup={this.state.valuePopup} onChangeInputSearch={this.onChangeInputSearch} namePopup={this.state.namePopup} vauleColumnHead={['Date', 'Task', 'Workour']} userPopUp={this.state.userPopUp} />
+<input onClick={this.clickShowPopup} type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" value="ada" />
+
+     }*/

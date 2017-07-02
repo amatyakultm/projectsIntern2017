@@ -1,0 +1,9 @@
+.label_detail {
+  cursor: pointer;
+  background: #FA2E03;
+  display: inline-block;
+  padding: .1em 1em;
+  width: 100px;
+  color: #fff;
+  border-radius: 3px;
+}

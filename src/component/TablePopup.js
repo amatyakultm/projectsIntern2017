@@ -17,7 +17,7 @@ const Table = (props) => {
 
   };
 
-  return (<div><div style={scrollBar}><table className="table table-bordered" ><thead><tr className="active">{props.vauleColumnHead}</tr></thead><tbody>{props.userPopUp}</tbody></table></div></div>);
+  return (<div><div style={scrollBar} ><table className="table table-bordered"><thead><tr className="active">{props.vauleColumnHead}</tr></thead><tbody>{props.userPopUp}</tbody></table></div></div>);
 
 
   //for(var i=0;i<3;i++){}
