@@ -52,16 +52,16 @@ class projectDetail extends Component {
               {!this.state.projects
                 ? loadingData()
                 : _.map(this.state.projects, project =>
-                    <tr>
-                      <td>
-                        {project.position}
-                      </td>
-                      <td>
-                        {project.sum_man_day}
-                      </td>
-                      <td>Mday</td>
-                    </tr>
-                  )}
+                  <tr>
+                    <td>
+                      {project.position}
+                    </td>
+                    <td>
+                      {project.sum_man_day}
+                    </td>
+                    <td>Mday</td>
+                  </tr>
+                )}
             </div>
           </div>
           <div className="col-8 boxleft">

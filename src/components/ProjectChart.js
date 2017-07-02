@@ -4,7 +4,7 @@ import axios from 'axios';
 import _ from 'lodash';
 import ReactLoading from 'react-loading';
 import Style from '../styles/Style.css';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 
 defaults.global.legend.display = false;
 class ProjectChart extends Component {
@@ -35,8 +35,8 @@ class ProjectChart extends Component {
     this.getUsers();
   }
 
-  handleClickDetail(projectId) {
-    console.log(projectId);
+  handleClickDetail(URL, projectId) {
+    browserHistory.push(URL)
   }
 
   render() {
@@ -120,7 +120,6 @@ class ProjectChart extends Component {
               <Link to={`/projectdetail/${Object.keys(item)[0]}`}>
                 <button
                   key={`btn-details-${index}`}
-                  onClick={() => this.handleClickDetail(Object.keys(item)[0])}
                   className="btn btn-secondary btn-sm btn-details"
                 >
                   Details
