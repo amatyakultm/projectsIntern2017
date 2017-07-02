@@ -46,10 +46,6 @@ ul.navbar-nav > li {
     margin-right: 30px;
 }
 
-.app-content{
-    margin-top: 100px;
-}
-
 .loading{
     text-align: center;
 }
@@ -67,11 +63,21 @@ ul.navbar-nav > li {
     margin-bottom: 20px;
     background-color: #ffffff;
     box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
+    height: 380px;
+    position: relative;
 }
 
 .text-mute{
-    color: #818a91;
+    color: #000;
+    margin: 0 auto;
+    text-align: center;
 }
+
+.text-mute2{
+    color:black;
+    font-weight: bold;
+}
+
 
 .btn-details{
     margin: 0 auto;
@@ -80,4 +86,45 @@ ul.navbar-nav > li {
 
 #root{
     line-height: normal;
+}
+
+.margin-text{
+    margin-top: 20px;
+}
+
+.btn-box-detail{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+}
+
+.btn-secondary {
+    color: rgb(147, 144, 144);
+    font-weight: bold;
+}
+
+.app-content {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.App{
+    text-align: left;
+}
+
+.btn{
+    border: 1px solid #ccc;
+}
+
+body{
+    background-color: white;
+}
+
+.breadcrumb {
+    background-color: #CC2704;
+    border-radius: 0px;
+    color: whitesmoke;
+    height: 45px;
+    text-align: left;
 }
