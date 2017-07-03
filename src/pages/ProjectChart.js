@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import _ from 'lodash';
-import Breadcrumb from '../component/breadcrumb';
-import Loading from '../component/Loading';
-import ProjectChart from '../component/ProjectChart';
+import Breadcrumb from '../components/breadcrumb';
+import Loading from '../components/Loading';
+import ProjectChart from '../components/ProjectChart';
 import '../styles/Style.css';
 
 const BASE_URL = 'http://52.77.234.30/api';

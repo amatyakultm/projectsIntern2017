@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-
 import Nav from 'react-bootstrap/lib/Nav';
 import { Link, browserHistory } from 'react-router';
 import Breadcrumb from './components/breadcrumb';
 import Sidebar from './components/sideBar';
 import Navbar from './components/navBar';
-//import ProjectChart from './components/ProjectChart'
 import './styles/Style.css';
 import './App.css';
 
@@ -42,7 +40,6 @@ class App extends Component {
     });
   }
 
-  // /present_absent
   render() {
     const pathname = _.get(this.props, 'location.pathname');
     return (
