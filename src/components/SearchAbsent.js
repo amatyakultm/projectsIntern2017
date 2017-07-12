@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Style from '../styles/Absent.css'
-import DataUser from '../data.json'
+
 import _ from 'lodash'
 
  class SearchAbsent extends Component {
@@ -8,16 +8,18 @@ import _ from 'lodash'
     constructor(props) {
       super(props)
       this.state = {
-        userdatas: DataUser,
-        table3:''
+     
+        
       }
     }
     onchangeByname=(event) => {
       let query=event.target.value.toLowerCase()
       let table2=[]
       let table4=[]
+     // let result={}
+      let resultArr=[]
       let num=0
-      const data = this.state.userdatas.present_absent[0]
+      const data = this.props.userdatas.present_absent[0]
       
       _.chain(data).map().value()
       _.chain(data).map().flatten().value()
@@ -27,7 +29,26 @@ import _ from 'lodash'
       num++ 
         }).flatten().value()
       num=0
+      console.log(table2)
       _.map(table2,(item,key) => {
+              _.map(item,(data,key2)=>{
+                
+       if(data.name.toLowerCase().startsWith(query)){
+           let result={}
+           result[key]=data
+        //result[key2]=data
+         resultArr.push(result)
+       
+       }
+
+        })  
+       
+
+    })
+   
+
+
+     /* _.map(table2,(item,key) => {
              table4[num]= _.map(item,data =>{if(data.name.toLowerCase().startsWith(query)) return( <tr>
                                            <td className="table-form">{data.date}</td>
                                            <td className="table-form">{data.id}</td>
@@ -42,8 +63,9 @@ import _ from 'lodash'
 
 
                                     })
-
-     this.props.tableDataUser(table4)
+      */
+      console.log(resultArr)
+     this.props.tableDataUser(resultArr)
 
     }
    render() {
