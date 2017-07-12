@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import Nav from 'react-bootstrap/lib/Nav';
-import { Link, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import Breadcrumb from './components/breadcrumb';
 import Sidebar from './components/sideBar';
 import Navbar from './components/navBar';
@@ -44,8 +44,11 @@ class App extends Component {
     const pathname = _.get(this.props, 'location.pathname');
     return (
       <div className="App">
-        <Navbar handleOpenSidebar={() => this.handleOpenSidebar(true)} />
-        <Breadcrumb location={pathname} />
+        <Navbar
+          handleOpenSidebar={() => this.handleOpenSidebar(true)}
+          location={pathname}
+        />
+        {/*<Breadcrumb location={pathname} />*/}
         <Sidebar
           side="left"
           isVisible={this.state.open}

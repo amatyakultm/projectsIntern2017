@@ -1,0 +1,29 @@
+.bt1 {
+  border-bottom-left-radius: 150px;
+  border-top-left-radius: 150px;
+  padding: 6px 23px;
+}
+.bt2 {
+  border-bottom-right-radius: 150px;
+  border-top-right-radius: 150px;
+}
+
+.bt1:hover {
+  background-color: #cc2704;
+  color: #ffffff;
+}
+
+.bt2:hover {
+  background-color: #cc2704;
+  color: #ffffff;
+}
+
+.bt1:active {
+  background-color: #cc2704;
+  color: #ffffff;
+}
+
+.bt2:active {
+  background-color: #cc2704;
+  color: #ffffff;
+}

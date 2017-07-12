@@ -16,3 +16,14 @@
 Button:focus {
   outline: 0;
 }
+
+.title {
+  margin: 5px 0px;
+  padding: 0px 30px;
+  color: #1c2833;
+  float: left;
+}
+
+.btn {
+  float: left;
+}

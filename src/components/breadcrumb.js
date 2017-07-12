@@ -15,6 +15,7 @@ const mappingPath = {
 };
 
 const breadcrumb = props => {
+  console.log('breadprop = ', props);
   const location = _.get(props, 'location').replace('/', '');
   const icon = _.get(mappingPath, [location, 'icon']);
   const title = _.get(mappingPath, [location, 'title']);
@@ -28,14 +29,5 @@ const breadcrumb = props => {
     </div>
   );
 };
-// <Breadcrumb.Item href='/'>
-//   Home
-// </Breadcrumb.Item>
-// <Breadcrumb.Item href='/projects'>
-//   Project Overview
-// </Breadcrumb.Item>
-// <Breadcrumb.Item active>
-//   Data
-// </Breadcrumb.Item>
 
 export default breadcrumb;

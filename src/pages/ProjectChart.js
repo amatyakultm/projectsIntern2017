@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import _ from 'lodash';
-import Breadcrumb from '../components/breadcrumb';
 import Loading from '../components/Loading';
 import ProjectChart from '../components/ProjectChart';
+import DatePicker from '../components/datePicker';
 import '../styles/Style.css';
 
 const BASE_URL = 'http://52.77.234.30/api';
@@ -13,7 +13,9 @@ class ProjectOverview extends Component {
     super(props);
     this.state = {
       failed: false,
-      data: []
+      data: [],
+      from: undefined,
+      to: undefined
     };
   }
 
@@ -36,6 +38,20 @@ class ProjectOverview extends Component {
     console.log(projectId);
   }
 
+  async handleOnChange(data) {
+    console.log('Data: ', data);
+    await this.setState({
+      projects: data.projects,
+      from: data.from,
+      to: data.to
+    });
+    console.log(this.state.projects);
+  }
+  handleIsLoad(data) {
+    this.setState({
+      projects: undefined
+    });
+  }
   generateChartData(projects) {
     return _.map(this.state.projects, (item, index) => {
       const positionList = {
@@ -43,12 +59,13 @@ class ProjectOverview extends Component {
         'Frontend Developer': '#b482b4',
         'Backend Developer': '#d9d974',
         'Quality Assurance Engineer': '#ff6684',
-        'Business Analyst': '#4A90E2',
         Designer: '#ff6a0d',
+        'Business Analyst': '#4A90E2',
         'Mobile Developer': '#66cdaa',
         'HR Director': '#AD1457',
         Technology: '#bd5b85',
-        'Application Support': '#FFC300'
+        'Application Support': '#FFC300',
+        'Co-Founder': 'red'
       };
       const _position = item[Object.keys(item)[0]];
       const listLabelOption = _.map(_position, ({ position }) => position);
@@ -77,7 +94,11 @@ class ProjectOverview extends Component {
   async componentDidMount() {
     try {
       const { data } = await axios.get(`${BASE_URL}/sumprojectposition`);
-      this.setState({ projects: data.sumprojects });
+      this.setState({
+        projects: data.sumprojects,
+        from: data.start,
+        to: data.end
+      });
     } catch (err) {
       this.setState({ failed: true });
     }
@@ -95,9 +116,14 @@ class ProjectOverview extends Component {
         <div className="row">
           <div className="col-sm-12">
             <div className="btn-group pull-right">
-              <button className="btn btn-danger">
-                <i className="zmdi zmdi-settings" />Month
-              </button>
+              {!this.state.from
+                ? ''
+                : <DatePicker
+                    from={this.state.from}
+                    to={this.state.to}
+                    onChange={data => this.handleOnChange(data)}
+                    isLoad={() => this.handleIsLoad()}
+                  />}
             </div>
           </div>
         </div>
