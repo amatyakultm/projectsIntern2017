@@ -64,8 +64,12 @@ class TableData extends Component {
     const query = e.target.value.toLowerCase()
     let result = []
     _.map(this.state.userdatas, item => {
-      if (_.includes(item.description.toLowerCase(), query.toLowerCase()) || _.includes(item.date.toLowerCase(), query.toLowerCase())){
+     /* if (_.includes(item.description.toLowerCase(), query.toLowerCase()) || _.includes(item.date.toLowerCase(), query.toLowerCase())){
         result.push(item)
+      }*/
+      if(item.description.toLowerCase().startsWith(query.toLowerCase())||item.date.toLowerCase().startsWith(query.toLowerCase()) ){
+          result.push(item)
+
       }
     })
     this.setState({
