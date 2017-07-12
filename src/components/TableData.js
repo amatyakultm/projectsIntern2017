@@ -148,9 +148,9 @@ class TableData extends Component {
             </thead>
             <tbody>
               {
-                _.map(this.state.userdata, item => {
+                _.map(this.state.userdata, (item, index) => {
                   return (
-                    <tr>
+                    <tr key={index}>
                       <td>{item.date}</td>
                       <td>{item.description}</td>
                       <td>{item.total_hour}</td>

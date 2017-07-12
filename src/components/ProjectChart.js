@@ -30,7 +30,7 @@ class ProjectChart extends Component {
   }
 
   getUsers(){
-    axios.get('http://52.77.234.30/api/sumprojectposition?start=2017-06-01&end=2017-06-30')
+    axios.get(`http://52.77.234.30/api/sumprojectposition`)
       .then(response => {
         this.setState({
           projects: response.data.sumprojects,
@@ -110,12 +110,16 @@ class ProjectChart extends Component {
 
   handleFrom(e){
     const from = e.target.value
-    console.log('from '+from)
+    this.setState({
+      from: from
+    })
   }
 
   handleTo(e){
     const to = e.target.value
-    console.log('to '+to)
+    this.setState({
+      to: to
+    })
   }
   
 
@@ -124,6 +128,7 @@ class ProjectChart extends Component {
       var listDataOption = []
       var listLabelOption = []
       var colorList = []
+      
       var positionList = ['Project Management Officer', 'Frontend Developer', 'Backend Developer', 'Quality Assurance Engineer', 'Business Analyst', 'Designer', 'Mobile Developer', 'HR Director']
       _.map(item[Object.keys(item)[0]], position => {
         listDataOption.push(position.total_hour)
