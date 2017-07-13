@@ -1,17 +1,16 @@
 import React, { Component } from 'react'
 import Style from '../styles/Absent.css'
-
+import {Glyphicon,InputGroup,Button} from 'react-bootstrap';
 import _ from 'lodash'
 
- class SearchAbsent extends Component {
+ class SortInAbsent extends Component {
  
     constructor(props) {
       super(props)
       this.state = {
-     
-        
-      }
+     }
     }
+    
     matchResult=(data,query)=>{
        let resultArr=[]
        _.map(data,(item,key) => {
@@ -42,7 +41,7 @@ import _ from 'lodash'
 
     }
 
-    onchangeByname=(event) => {
+    ClickSortIn=(event) => {
       let query=event.target.value.toLowerCase()
       let data=[]
       let resultArr=[]
@@ -50,15 +49,30 @@ import _ from 'lodash'
       data=this.matchDate()
       resultArr=this.matchResult(data,query)
       this.props.tableDataUsers(resultArr)
+     
+     
+     if(this.props.buttonSortIn){
+        resultArr= _.sortBy(resultArr, ['in'])
+        this.props.setStateFormClassChild()  
+      }
+     else{
+        resultArr= _.sortBy(resultArr, ['in']).reverse()
+        this.setState({buttonSortIn:true}); 
+       this.props.setStateFormClassChild() 
+
+     } 
+
+     this.props.tableDataUsers(resultArr)
+
 
     }
-   
    render() {
+     console.log(this.props.checkSort)
         return (
               <div className="App">
-                <input type="text" className="input-seach-by-name" placeholder="Search by name..." onChange={this.onchangeByname}   />
-             </div>
+                <Button onClick={this.ClickSortIn}><Glyphicon glyph="chevron-right" /></Button>
+              </div>
   );
   }
 }
-export default SearchAbsent;
+export default SortInAbsent;

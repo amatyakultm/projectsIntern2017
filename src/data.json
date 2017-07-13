@@ -14,7 +14,7 @@
                     "id": 4546,
                     "name": "AppMan2",
                     "status":"Undrwork",
-                    "in": "9:30",
+                    "in": "09:30",
                     "out": "12:30",
                     "total": "3"
                 },
@@ -22,6 +22,7 @@
                     "id": 4547,
                     "name": "AppMan3",
                     "status":"Absent"
+                    
                    
                 }
             ],
