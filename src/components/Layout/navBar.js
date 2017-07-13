@@ -11,6 +11,14 @@ const mappingPath = {
   present_absent: {
     icon: 'zmdi zmdi-globe',
     title: 'PRESENT/ ABSENT'
+  },
+  'present_absent/table': {
+    icon: 'zmdi zmdi-globe',
+    title: 'PRESENT/ ABSENT'
+  },
+  'present_absent/calendar': {
+    icon: 'zmdi zmdi-globe',
+    title: 'PRESENT/ ABSENT'
   }
 };
 
@@ -26,7 +34,7 @@ const navBar = props => {
       <Navbar>
         <Navbar.Header width="100%">
           <div>
-            <Button className="btn" onClick={handleOpenSidebar}>
+            <Button className="ham" onClick={handleOpenSidebar}>
               <Glyphicon glyph="menu-hamburger" />
             </Button>
             <h3 className="title">

@@ -3,7 +3,7 @@ import { Doughnut, defaults, Pie } from 'react-chartjs-2';
 import axios from 'axios';
 import _ from 'lodash';
 import ReactLoading from 'react-loading';
-import Style from '../styles/Style.css';
+import '../../styles/Style.css';
 import {
   Modal,
   ModalHeader,

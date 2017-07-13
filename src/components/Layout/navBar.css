@@ -13,10 +13,6 @@
   align-items: center;
 }
 
-Button:focus {
-  outline: 0;
-}
-
 .title {
   margin: 5px 0px;
   padding: 0px 30px;
@@ -24,6 +20,14 @@ Button:focus {
   float: left;
 }
 
-.btn {
+.ham {
   float: left;
+}
+
+.ham:focus {
+  outline: 0;
+}
+
+.ham:active {
+  outline: none;
 }

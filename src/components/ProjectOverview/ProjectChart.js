@@ -6,9 +6,9 @@ import ReactLoading from 'react-loading';
 import { Link } from 'react-router';
 import { defaults, Pie } from 'react-chartjs-2';
 import moment from 'moment';
-import ProjectDetail from '../pages/projectDetail';
+import ProjectDetail from '../../pages/projectDetail';
 
-import '../styles/Style.css';
+import '../../styles/Style.css';
 
 defaults.global.legend.display = false;
 

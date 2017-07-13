@@ -10,7 +10,7 @@ const Sidebar = props => {
       onHide={props.onHide}
     >
       <Modal.Header className="header">
-        <img className="logo" src="./Asset/PNG/Logo1.png" />
+        <img className="logo" src="/Asset/PNG/Logo1.png" />
         <Modal.Title className="hamburger">
           <div className="icon" onClick={props.onHide}>
             <Glyphicon glyph="menu-hamburger" />

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import _ from 'lodash';
 import Loading from '../components/Loading';
-import ProjectChart from '../components/ProjectChart';
+import ProjectChart from '../components/ProjectOverview/ProjectChart';
 import DatePicker from '../components/datePicker';
 import '../styles/Style.css';
 

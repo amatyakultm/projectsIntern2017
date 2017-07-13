@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
-import { Button, ButtonGroup } from 'react-bootstrap';
+import Table from '../components/PresentAbsent/Table';
 import './PresentAbsent.css';
 
-class Present extends Component {
+class PresentAbsent extends Component {
   render() {
     return (
       <div>
-        <ButtonGroup>
-          <Button className="bt1">Table</Button>
-          <Button className="bt2">Calendar</Button>
-        </ButtonGroup>
+        <Table />
       </div>
     );
   }
 }
-export default Present;
+export default PresentAbsent;

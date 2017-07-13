@@ -4,7 +4,7 @@ import axios from 'axios';
 import _ from 'lodash';
 import ReactLoading from 'react-loading';
 import Style from '../styles/Style.css';
-import TableData from '../components/TableData';
+import TableData from '../components/ProjectOverview/TableData';
 
 defaults.global.legend.display = false;
 class ProjectDetail extends Component {

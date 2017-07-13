@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import Nav from 'react-bootstrap/lib/Nav';
 import { browserHistory } from 'react-router';
-import Breadcrumb from './components/breadcrumb';
-import Sidebar from './components/sideBar';
-import Navbar from './components/navBar';
+import Sidebar from './components/Layout/sideBar';
+import Navbar from './components/Layout/navBar';
 import './styles/Style.css';
 import './App.css';
 
@@ -29,6 +28,8 @@ class App extends Component {
     const navMapping = [
       { name: 'home', path: '/' },
       { name: 'Present/Absent', path: '/present_absent' },
+      { name: 'Present/Absent', path: '/present_absent/table' },
+      { name: 'Present/Absent', path: '/present_absent/calendar' },
       { name: 'Project Overview', path: 'projects' }
     ];
     return navMapping.map(({ name, path }) => {
@@ -48,7 +49,6 @@ class App extends Component {
           handleOpenSidebar={() => this.handleOpenSidebar(true)}
           location={pathname}
         />
-        {/*<Breadcrumb location={pathname} />*/}
         <Sidebar
           side="left"
           isVisible={this.state.open}

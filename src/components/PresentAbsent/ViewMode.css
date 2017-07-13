@@ -29,13 +29,18 @@
 }
 
 .bt1:focus {
-  outline: 0;
-}
-
-.bt2:focus {
-  outline: 0;
+  outline: 0 !important;
 }
 
 .btn-group:focus {
   outline: 0;
+}
+
+.active {
+  background-color: #cc2704 !important;
+  color: #ffffff !important;
+}
+
+.active:focus {
+  outline: 0 !important;
 }
