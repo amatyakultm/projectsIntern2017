@@ -28,9 +28,7 @@ class App extends Component {
     const navMapping = [
       { name: 'home', path: '/' },
       { name: 'Present/Absent', path: '/present_absent' },
-      { name: 'Present/Absent', path: '/present_absent/table' },
-      { name: 'Present/Absent', path: '/present_absent/calendar' },
-      { name: 'Project Overview', path: 'projects' }
+      { name: 'Project Overview', path: '/projects' }
     ];
     return navMapping.map(({ name, path }) => {
       return (

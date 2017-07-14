@@ -10,18 +10,25 @@ class ViewMode extends Component {
   }
 
   render() {
-    console.log('Looo = ', this.props);
+    const pathname = _.get(this.props, ['location', 'pathname']).replace(
+      'present_absent/',
+      ''
+    );
+
+    const tableButtonStyle =
+      pathname === '/' || pathname === '/table' ? 'active' : undefined;
+    const calendarButtonStyle = pathname === '/calendar' ? 'active' : undefined;
     return (
       <div>
         <ButtonGroup>
           <Button
-            className="bt1 active"
+            className={`bt1 ${tableButtonStyle}`}
             onClick={() => this.changeURL('/present_absent/table')}
           >
             Table
           </Button>
           <Button
-            className="bt2"
+            className={`bt2 ${calendarButtonStyle}`}
             onClick={() => this.changeURL('/present_absent/calendar')}
           >
             Calendar

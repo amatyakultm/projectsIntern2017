@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Table from '../components/PresentAbsent/Table';
+import ViewMode from '../components/PresentAbsent/ViewMode';
 import './PresentAbsent.css';
 
 class PresentAbsent extends Component {

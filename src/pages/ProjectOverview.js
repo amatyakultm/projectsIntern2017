@@ -4,9 +4,24 @@ import _ from 'lodash';
 import Loading from '../components/Loading';
 import ProjectChart from '../components/ProjectOverview/ProjectChart';
 import DatePicker from '../components/datePicker';
+import MappingColor from '../components/ProjectOverview/MappingColor';
 import '../styles/Style.css';
 
 const BASE_URL = 'http://52.77.234.30/api';
+
+const positionList = {
+  'Project Management Officer': { id: 'PMO', color: '#EE1F79' },
+  'Frontend Developer': { id: 'F.DEV', color: '#9E65AB' },
+  'Backend Developer': { id: 'B.DEV', color: '#7360AC' },
+  'Quality Assurance Engineer': { id: 'QA', color: '#0052A6' },
+  'Business Analyst': { id: 'BA', color: '#00A7BC' },
+  Designer: { id: 'DSN', color: '#04A54A' },
+  'Mobile Developer': { id: 'M.DEV', color: '#8FC630' },
+  'HR Director': { id: 'HR', color: '#FFF200' },
+  Technology: { id: 'TECH', color: '#FFB700' },
+  'Application Support': { id: 'SUP', color: '#F98B20' },
+  'Co-Founder': { id: 'CO', color: '#F46A1C' }
+};
 
 class ProjectOverview extends Component {
   constructor(props) {
@@ -54,28 +69,16 @@ class ProjectOverview extends Component {
   }
   generateChartData(projects) {
     return _.map(this.state.projects, (item, index) => {
-      const positionList = {
-        'Project Management Officer': '#EF5350',
-        'Frontend Developer': '#b482b4',
-        'Backend Developer': '#d9d974',
-        'Quality Assurance Engineer': '#ff6684',
-        Designer: '#ff6a0d',
-        'Business Analyst': '#4A90E2',
-        'Mobile Developer': '#66cdaa',
-        'HR Director': '#AD1457',
-        Technology: '#bd5b85',
-        'Application Support': '#FFC300',
-        'Co-Founder': 'red'
-      };
       const _position = item[Object.keys(item)[0]];
       const listLabelOption = _.map(_position, ({ position }) => position);
+      console.log('po', listLabelOption);
 
       const option = {
         datasets: [
           {
             data: _.map(_position, ({ total_hour }) => total_hour),
             backgroundColor: _.map(listLabelOption, label =>
-              _.get(positionList, label)
+              _.get(positionList, [label, 'color'])
             )
           }
         ],
@@ -85,6 +88,7 @@ class ProjectOverview extends Component {
       };
       return {
         option,
+        projectid: item.project_id,
         projectname: item.projectname,
         sum: item.sum
       };
@@ -106,7 +110,7 @@ class ProjectOverview extends Component {
 
   render() {
     const projectDatas = this.generateChartData(this.state.projects);
-
+    const data = _.map(positionList, item => item);
     if (this.state.failed) {
       return <h3>Network Error.</h3>;
     }
@@ -125,6 +129,9 @@ class ProjectOverview extends Component {
                     isLoad={() => this.handleIsLoad()}
                   />}
             </div>
+            <div className="pull-left">
+              <MappingColor data={data} />
+            </div>
           </div>
         </div>
         <div className="row mt-5">
@@ -139,3 +146,15 @@ class ProjectOverview extends Component {
   }
 }
 export default ProjectOverview;
+
+// 'Project Management Officer': { id: 'PMO', color: '#EE1F79' },
+//         'Frontend Developer': { id: 'F.DEV', color: '#9E65AB' },
+//         'Backend Developer': { id: 'B.DEV', color: '#7360AC' },
+//         'Quality Assurance Engineer': { id: 'QA', color: '#0052A6' },
+//         'Business Analyst': { id: 'BA', color: '#00A7BC' },
+//         Designer: { id: 'DSN', color: '#04A54A' },
+//         'Mobile Developer': { id: 'M.DEV', color: '#8FC630' },
+//         'HR Director': { id: 'HR', color: '#FFF200' },
+//         Technology: { id: 'TECH', color: '#FFB700' },
+//         'Application Support': { id: 'SUP', color: '#F98B20' },
+//         'Co-Founder': { id: 'CO', color: '#F46A1C' }

@@ -15,6 +15,7 @@ class ProjectDetail extends Component {
       sum_hours: 0,
       isOpen: false
     };
+    console.log(props.params.projectid);
   }
 
   getProjectData() {

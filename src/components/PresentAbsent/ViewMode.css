@@ -8,16 +8,6 @@
   border-top-right-radius: 150px;
 }
 
-.bt1:hover {
-  background-color: #cc2704;
-  color: #ffffff;
-}
-
-.bt2:hover {
-  background-color: #cc2704;
-  color: #ffffff;
-}
-
 .bt1:active {
   background-color: #cc2704;
   color: #ffffff;
@@ -32,15 +22,11 @@
   outline: 0 !important;
 }
 
-.btn-group:focus {
-  outline: 0;
+.bt2:focus {
+  outline: 0 !important;
 }
 
 .active {
   background-color: #cc2704 !important;
   color: #ffffff !important;
-}
-
-.active:focus {
-  outline: 0 !important;
 }
