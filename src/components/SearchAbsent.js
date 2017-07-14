@@ -30,12 +30,20 @@ import _ from 'lodash'
     matchDate=()=>{//ฟังชัน map collumn date ให้อยู่ก้อนเดียวกับ column อื่น 
        let table2=[]
        let num=0
-       const data = this.props.userdatas.present_absent[0]
-        _.chain(data).map((value, key) => {
- 	     const date = key
- 	     table2[num]= _.map(value, (_value) => { return Object.assign(_value, {date}) })   
-       num++ 
-       }).flatten().value()
+       const data = this.props.userdatas
+         _.chain(data).map((value, key) => {
+ 	         const date = value.date
+            //console.log(value.date)
+           
+              console.log(value);
+ 	          _.map(value, (_value) => { 
+             table2[num]= _.map(_value, (_value2) => { 
+               return Object.assign(_value2, {date}) 
+             })
+           })   
+           num++ 
+          console.log(value)
+          }).flatten().value()
       
 
       return table2
