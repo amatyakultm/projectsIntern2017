@@ -2,6 +2,7 @@ import React from 'react';
 import App from '../App';
 import Home from '../pages/Home';
 import ViewMode from '../components/PresentAbsent/ViewMode';
+import PresentAbsent from '../pages/PresentAbsent';
 import Table from '../components/PresentAbsent/Table';
 import Calendar from '../components/PresentAbsent/Calendar';
 import ProjectChart from '../pages/ProjectOverview';

@@ -6,7 +6,7 @@ class PresentAbsent extends Component {
   render() {
     return (
       <div>
-        <Table />
+        <ViewMode />
       </div>
     );
   }

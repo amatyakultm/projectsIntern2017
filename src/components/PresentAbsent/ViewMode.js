@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { Button, ButtonGroup } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
+import Filter from './Filter';
 import './ViewMode.css';
 
 class ViewMode extends Component {
@@ -34,6 +35,7 @@ class ViewMode extends Component {
             Calendar
           </Button>
         </ButtonGroup>
+        <Filter />
         <div className="container-table">
           {this.props.children}
         </div>
