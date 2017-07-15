@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import './stylefilter.css';
+import './Filter.css';
 
 class Filter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      absent: '',
-      normal: '',
-      overwork: '',
-      underwork: ''
+      absent: true,
+      normal: true,
+      overwork: true,
+      underwork: true
     };
     this.onChangeAbsent = this.onChangeAbsent.bind(this);
     this.onChangeNormal = this.onChangeNormal.bind(this);
@@ -16,40 +16,32 @@ class Filter extends Component {
     this.onChangeUnderwork = this.onChangeUnderwork.bind(this);
   }
 
-  onChangeAbsent(e) {
-    this.setState({
+  async onChangeAbsent(e) {
+    await this.setState({
       absent: !this.state.absent
     });
-    this.state.absent == false
-      ? this.setState({ absent: e.target.value })
-      : this.setState({ absent: '' });
+    await this.props.onFilter(this.state)
   }
 
-  onChangeNormal(e) {
-    this.setState({
+  async onChangeNormal(e) {
+    await this.setState({
       normal: !this.state.normal
     });
-    this.state.normal == false
-      ? this.setState({ normal: e.target.value })
-      : this.setState({ normal: '' });
+    await this.props.onFilter(this.state)
   }
 
-  onChangeOverwork(e) {
-    this.setState({
+  async onChangeOverwork(e) {
+    await this.setState({
       overwork: !this.state.overwork
     });
-    this.state.overwork == false
-      ? this.setState({ overwork: e.target.value })
-      : this.setState({ overwork: '' });
+    await this.props.onFilter(this.state)
   }
 
-  onChangeUnderwork(e) {
-    this.setState({
+  async onChangeUnderwork(e) {
+    await this.setState({
       underwork: !this.state.underwork
     });
-    this.state.underwork == false
-      ? this.setState({ underwork: e.target.value })
-      : this.setState({ underwork: '' });
+    await this.props.onFilter(this.state)
   }
 
   render() {
@@ -79,8 +71,8 @@ class Filter extends Component {
                 backgroundColor: 'white'
               }}
               type="checkbox"
-              value="level=Normal"
-              checked={!this.state.absent}
+              value="Absent"
+              checked={!this.state.absent ? false : true}
               onChange={this.onChangeAbsent}
             />
             <label for="checkbox-1" className="checkbox-custom-label">
@@ -99,8 +91,8 @@ class Filter extends Component {
                 backgroundColor: 'white'
               }}
               type="checkbox"
-              value="level=Normal"
-              checked={!this.state.normal}
+              value="Normal"
+              checked={!this.state.normal ? false : true}
               onChange={this.onChangeNormal}
             />
             <label for="checkbox-1" className="checkbox-custom-label">
@@ -114,8 +106,8 @@ class Filter extends Component {
               type="checkbox"
               style={{ marginLeft: '20px', width: '19px', height: '19px' }}
               type="checkbox"
-              value="level=Overwork"
-              checked={!this.state.overwork}
+              value="Overwork"
+              checked={!this.state.overwork ? false : true}
               onChange={this.onChangeOverwork}
             />
             <label for="checkbox-1" className="checkbox-custom-label">
@@ -129,8 +121,8 @@ class Filter extends Component {
               type="checkbox"
               style={{ marginLeft: '20px', width: '19px', height: '19px' }}
               type="checkbox"
-              value="level=Underwork"
-              checked={!this.state.underwork}
+              value="Underwork"
+              checked={!this.state.underwork ? false : true}
               onChange={this.onChangeUnderwork}
             />
             <label for="checkbox-1" className="checkbox-custom-label">

@@ -3,6 +3,7 @@ import axios from 'axios';
 import _ from 'lodash';
 import moment from 'moment';
 import Search from '../Search/index'
+import Filter from './Filter'
 const BASE_URL = 'http://52.77.234.30';
 
 class Table extends Component {
@@ -24,9 +25,48 @@ class Table extends Component {
       }
     })
     await this.setState({
-      user: result
+      user: result,
+      tmpUser: result
     })
   }
+
+  async handleFilter(type){
+    let data
+    if(!this.state.tmpUser){
+      data = this.state.users
+    }else{
+      data = this.state.tmpUser
+    }
+    console.log(data)
+    if(type.absent && type.normal && type.overwork && type.underwork){
+      await this.setState({
+        user: _.filter(data, i => i.status !== '')
+      })
+    }else if(!type.absent && !type.normal && !type.overwork && !type.underwork){
+      await this.setState({
+        user: _.filter(data, i => i.status !== 'Absent' && i.status !== 'Normal' && i.status !== 'Overwork' && i.status !== 'Underwork')
+      })
+    }else if(!type.absent && type.normal && type.overwork && type.underwork){
+      await this.setState({
+        user: _.filter(data, i => i.status !== 'Absent')
+      })
+    }else if(!type.absent && !type.normal && type.overwork && type.underwork){
+      await this.setState({
+        user: _.filter(data, i => i.status !== 'Absent' && i.status !== 'Normal')
+      })
+    }else if(!type.absent && !type.normal && !type.overwork && type.underwork){
+      await this.setState({
+        user: _.filter(data, i => i.status !== 'Absent' && i.status !== 'Normal' && i.status !== 'Overwork')
+      })
+    }
+    else if(!type.absent && !type.normal && !type.overwork && type.underwork){
+      await this.setState({
+        user: _.filter(data, i => i.status !== 'Absent' && i.status !== 'Normal' && i.status !== 'Overwork')
+      })
+    }
+    
+  }
+
   async componentDidMount() {
     try {
       const result = []
@@ -77,6 +117,7 @@ class Table extends Component {
     return (
       <div>
       <Search onChange={(query) => this.handleSearch(query)}></Search>
+      <Filter onFilter={(type) => this.handleFilter(type)}></Filter>
         <table className="table table-hover">
           <thead>
             <tr>

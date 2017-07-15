@@ -5,9 +5,9 @@ class Search extends Component {
   constructor(props){
     super(props)
   }
-  
+
   handleOnChange(e){
-    const query = e.target.value
+    const query = e.target.value.toLowerCase()
     this.props.onChange(query)
   }
 
