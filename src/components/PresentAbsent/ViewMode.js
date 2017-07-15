@@ -4,6 +4,7 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
 import Search from '../Search/index.js'
 import './ViewMode.css';
+import filter from './Filter.js'
 
 class ViewMode extends Component {
 
@@ -23,6 +24,7 @@ class ViewMode extends Component {
     return (
       <div>
         <ButtonGroup>
+
           <Button
             className={`bt1 ${tableButtonStyle}`}
             onClick={() => this.changeURL('/present_absent/table')}
@@ -36,6 +38,7 @@ class ViewMode extends Component {
             Calendar
           </Button>
         </ButtonGroup>
+        <filter />
         <div className="container-table">
           {this.props.children}
         </div>
