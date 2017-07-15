@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { Button, ButtonGroup } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
+import Search from '../Search/index.js'
 import './ViewMode.css';
 
 class ViewMode extends Component {
+
   changeURL(url) {
     browserHistory.push(url);
   }
