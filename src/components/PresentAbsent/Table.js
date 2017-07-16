@@ -3,8 +3,9 @@ import axios from 'axios';
 import _ from 'lodash';
 import moment from 'moment';
 import Search from '../Search/index'
-import Filter from './Filter'
+import Sort from './Sort';
 const BASE_URL = 'http://52.77.234.30';
+
 
 class Table extends Component {
   constructor(props) {
@@ -13,7 +14,8 @@ class Table extends Component {
       users: undefined,
       user: undefined,
       failed: false,
-      query: undefined
+      query: undefined,
+      buttonSortIn:false
     };
   }
   async handleSearch(query){
@@ -25,46 +27,20 @@ class Table extends Component {
       }
     })
     await this.setState({
-      user: result,
-      tmpUser: result
+      user: result
     })
   }
 
-  async handleFilter(type){
-    let data
-    if(!this.state.tmpUser){
-      data = this.state.users
-    }else{
-      data = this.state.tmpUser
-    }
-    console.log(data)
-    if(type.absent && type.normal && type.overwork && type.underwork){
-      await this.setState({
-        user: _.filter(data, i => i.status !== '')
-      })
-    }else if(!type.absent && !type.normal && !type.overwork && !type.underwork){
-      await this.setState({
-        user: _.filter(data, i => i.status !== 'Absent' && i.status !== 'Normal' && i.status !== 'Overwork' && i.status !== 'Underwork')
-      })
-    }else if(!type.absent && type.normal && type.overwork && type.underwork){
-      await this.setState({
-        user: _.filter(data, i => i.status !== 'Absent')
-      })
-    }else if(!type.absent && !type.normal && type.overwork && type.underwork){
-      await this.setState({
-        user: _.filter(data, i => i.status !== 'Absent' && i.status !== 'Normal')
-      })
-    }else if(!type.absent && !type.normal && !type.overwork && type.underwork){
-      await this.setState({
-        user: _.filter(data, i => i.status !== 'Absent' && i.status !== 'Normal' && i.status !== 'Overwork')
-      })
-    }
-    else if(!type.absent && !type.normal && !type.overwork && type.underwork){
-      await this.setState({
-        user: _.filter(data, i => i.status !== 'Absent' && i.status !== 'Normal' && i.status !== 'Overwork')
-      })
-    }
-    
+  handleSorted= (data)=>{
+this.setState({ user: data });
+this.setStateFormClassChild();
+
+  }
+  setStateFormClassChild=()=>{
+          if(this.state.buttonSortIn) this.setState({buttonSortIn:false});   
+          else {this.setState({buttonSortIn:true});   }
+          if(this.state.buttonPicture) this.setState({buttonPicture:false});
+          else  {this.setState({buttonPicture:true});   }
   }
 
   async componentDidMount() {
@@ -86,6 +62,7 @@ class Table extends Component {
   }
 
   render() {
+   
     const createData = (data) => {
       return (
         _.map(data, (user, index) => {
@@ -117,16 +94,15 @@ class Table extends Component {
     return (
       <div>
       <Search onChange={(query) => this.handleSearch(query)}></Search>
-      <Filter onFilter={(type) => this.handleFilter(type)}></Filter>
         <table className="table table-hover">
           <thead>
             <tr>
-              <th>Date</th>
-              <th>Name</th>
-              <th>Status</th>
-              <th>In</th>
-              <th>Out</th>
-              <th>Total Hours</th>
+              <th>Date<Sort buttonSortIn={this.state.buttonSortIn} user={this.state.user} checkSort={"date"}  onSorted={result => this.handleSorted(result)}/></th>
+              <th>Name <Sort  buttonSortIn={this.state.buttonSortIn} user={this.state.user} checkSort={"name"} onSorted={result => this.handleSorted(result)}/> </th>
+              <th>Status<Sort  buttonSortIn={this.state.buttonSortIn} user={this.state.user} checkSort={"status"} onSorted={result => this.handleSorted(result)}/></th>
+              <th>In<Sort  buttonSortIn={this.state.buttonSortIn} user={this.state.user} checkSort={"in"} onSorted={result => this.handleSorted(result)}/></th>
+              <th>Out<Sort  buttonSortIn={this.state.buttonSortIn} user={this.state.user} checkSort={"out"} onSorted={result => this.handleSorted(result)}/></th>
+              <th>Total Hours <Sort  buttonSortIn={this.state.buttonSortIn} user={this.state.user} checkSort={"total"} onSorted={result => this.handleSorted(result)}/></th>
             </tr>
           </thead>
           <tbody>
