@@ -92,7 +92,7 @@ class ProjectDetail extends Component {
               </div>
             </div>
           </div>
-          <TableData project_id={this.props.project_id} users={this.state.projectdetail.projectData}></TableData>
+          <TableData project_id={this.props.project_id} users={this.state.projectdetail.projectData} start={this.props.start} end={this.props.end}></TableData>
         </div>
       )
     }

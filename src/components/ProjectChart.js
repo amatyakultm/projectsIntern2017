@@ -159,6 +159,10 @@ class ProjectChart extends Component {
       {
         id: 'TECH',
         color: '#F46A1C'
+      },
+      {
+        id: 'C.Found',
+        color: '#C9302C'
       }
     ]
     const chartData = _.map(this.state.project, (item, index) => {
@@ -166,7 +170,7 @@ class ProjectChart extends Component {
       var listLabelOption = []
       var colorList = []
       
-      var positionList = ['Project Management Officer', 'Frontend Developer', 'Backend Developer', 'Quality Assurance Engineer', 'Business Analyst', 'Designer', 'Mobile Developer', 'HR Director']
+      var positionList = ['Project Management Officer', 'Frontend Developer', 'Backend Developer', 'Quality Assurance Engineer', 'Business Analyst', 'Designer', 'Mobile Developer', 'HR Director', 'Co-Founder']
       _.map(item[Object.keys(item)[0]], position => {
         listDataOption.push(position.total_hour)
         listLabelOption.push(position.position)
@@ -191,6 +195,8 @@ class ProjectChart extends Component {
           color = '#8FC630'
         } else if (label === positionList[8]) {
           color = '#F46A1C'
+        } else if (label === positionList[9]) {
+          color = '#C9302C'
         }
         colorList.push(color)
       })
@@ -203,21 +209,21 @@ class ProjectChart extends Component {
         maintainAspectRatio: false,
         responsive: true
       }
-      // return (
-      //   <div key={`div-${index}`} className='col-lg-3 col-md-4 col-sm-6 col-6'>
-      //     <div className='card-box' onClick={(e) => this.handleClickProject(Object.keys(item)[0], option, item.sum)}>
-      //       <h6 className='text-mute text-center' key={`h6-${index}`}>{parseInt(item.sum / 1000 / 60 / 60)} Hrs</h6>
-      //       <Pie key={`chart-${index}`} data={option} width={420} height={420} />
-      //       <div className='col-md-12 text-center mt-3'>
-      //         {item.projectname}
-      //       </div>
-      //       {/*<button key={`btn-details-${index}`} onClick={() => this.handleClickDetail(Object.keys(item)[0])} className='btn btn-danger btn-sm btn-details'>Details</button>*/}
-      //       <Link to={`/project/${Object.keys(item)[0]}`}>
-      //         <button key={`btn-details-${index}`} className='btn btn-danger btn-sm btn-details'>Details</button>
-      //       </Link>
-      //     </div>
-      //   </div>
-      // )
+      return (
+        <div key={`div-${index}`} className='col-lg-3 col-md-4 col-sm-6 col-6'>
+          <div className='card-box' onClick={(e) => this.handleClickProject(Object.keys(item)[0], option, item.sum)}>
+            <h6 className='text-mute text-center' key={`h6-${index}`}>{parseInt(item.sum / 1000 / 60 / 60)} Hrs</h6>
+            <Pie key={`chart-${index}`} data={option} width={420} height={420} />
+            <div className='col-md-12 text-center mt-3'>
+              {item.projectname}
+            </div>
+            {/*<button key={`btn-details-${index}`} onClick={() => this.handleClickDetail(Object.keys(item)[0])} className='btn btn-danger btn-sm btn-details'>Details</button>*/}
+            <Link to={`/project/${Object.keys(item)[0]}`}>
+              <button key={`btn-details-${index}`} className='btn btn-danger btn-sm btn-details'>Details</button>
+            </Link>
+          </div>
+        </div>
+      )
     })
 
     const loadingData = () => {
@@ -240,7 +246,7 @@ class ProjectChart extends Component {
       <div>
         <div className='row'>
           <div className='col-12'>
-            {/*<div className='pull-right fromto-box'>
+            {<div className='pull-right fromto-box'>
               {
                 !this.state.from ? '' : <span className="fromto">From </span>
               }
@@ -256,22 +262,19 @@ class ProjectChart extends Component {
               {
                 !this.state.to && !this.state.from ? '' : <button className="btn btn-sm btn-danger" onClick={() => this.handleFromTo()}>Submit</button>
               }
-            </div>*/}
+            </div>}
             <div className="pull-left">
               <Mapping data={data} />
             </div>
           </div>
         </div>
-        <div>
-          <Filter />
-        </div>
 
         <div className="row mt-3">
-          {/*<div className="col-md-6 offset-md-3">
+          {<div className="col-md-6 offset-md-3">
             {
               !this.state.projects ? '' : <input type="text" className="form-control" placeholder="Search Project" onChange={(e) => this.handleSearchProject(e)} />
             }
-          </div>*/}
+          </div>}
         </div>
         <div className='row mt-5'>
           {!this.state.projects ? loadingData() : chartData}

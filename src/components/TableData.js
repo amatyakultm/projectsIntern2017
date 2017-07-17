@@ -3,6 +3,7 @@ import { Doughnut,defaults, Pie } from 'react-chartjs-2'
 import axios from 'axios'
 import _ from 'lodash'
 import ReactLoading from 'react-loading'
+import moment from 'moment'
 import Style from '../styles/Style.css'
 import { Modal, ModalHeader, ModalTitle, ModalClose, ModalBody, ModalFooter } from 'react-modal-bootstrap';
 
@@ -11,6 +12,7 @@ class TableData extends Component {
 
   constructor(props) {
     super(props)
+    console.log(this.props)
     this.state = {
       cur_user: undefined,
       isOpen: false,
@@ -34,7 +36,7 @@ class TableData extends Component {
   };
   
   getUserData(userid){
-    axios.get(`http://52.77.234.30/projects/${this.props.project_id}/user/${userid}?start=2017-06-01&end=2017-06-30`)
+    axios.get(`http://52.77.234.30/projects/${this.props.project_id}/user/${userid}?start=${this.props.start}&end=${this.props.end}`)
       .then(response => {
         this.setState({
           userdatas: response.data.userdata,
@@ -151,7 +153,7 @@ class TableData extends Component {
                 _.map(this.state.userdata, (item, index) => {
                   return (
                     <tr key={index}>
-                      <td>{item.date}</td>
+                      <td>{moment(item.date).format('DD MMM YYYY')}</td>
                       <td>{item.description}</td>
                       <td>{item.total_hour}</td>
                     </tr>

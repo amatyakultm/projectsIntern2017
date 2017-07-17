@@ -1,174 +1,219 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-body{
-    background-color: #f5f5f5;
-    color: #2e4053;
-    font-family: 'Roboto', sans-serif;
+body {
+  background-color: #f5f5f5;
+  color: #2e4053;
+  font-family: 'Roboto', sans-serif;
 }
-.nav-app{
-    position: fixed;
-    right: 0;
-    left: 0;
-    top: 0;
-    z-index: 1030;
-    background-color: #ffffff;
-    border: 0;
-    -webkit-transition: all .5s ease;
-    transition: all .5s ease;
-    min-height: 60px;
-    box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
+.nav-app {
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 1030;
+  background-color: #ffffff;
+  border: 0;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+  min-height: 60px;
+  box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
 }
 .navbar-toggler-right {
-    top: 1rem;
+  top: 1rem;
 }
-.navbar-toggler{
-    cursor: pointer;
+.navbar-toggler {
+  cursor: pointer;
 }
-.nav-menu{
-    margin-left: 100px;
+.nav-menu {
+  margin-left: 100px;
 }
-.navbar-brand{
-    margin-left: 30px;
+.navbar-brand {
+  margin-left: 30px;
 }
-.navbar-light .navbar-nav .nav-link{
-    color: #2e4053;
-    -webkit-transition: all .3s ease;
-    transition: all .3s ease;
+.navbar-light .navbar-nav .nav-link {
+  color: #2e4053;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
 }
-.navbar-light .navbar-nav .nav-link:hover{
-    color: #dc3833;
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #dc3833;
 }
 
-.navbar-light .navbar-nav > .nav-item.active > a{ 
-    color: #dc3833;
+.navbar-light .navbar-nav > .nav-item.active > a {
+  color: #dc3833;
 }
 
 ul.navbar-nav > li {
-    margin-right: 30px;
+  margin-right: 30px;
 }
 
-.app-content{
-    margin-top: 100px;
+.app-content {
+  margin-top: 100px;
 }
 
-.loading{
-    text-align: center;
+.loading {
+  text-align: center;
 }
 
 .loading-icon {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .card-box {
-    padding: 20px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    background-clip: padding-box;
-    margin-bottom: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
-    cursor: pointer;
-    height: 360px;
+  padding: 20px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  background-clip: padding-box;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
+  cursor: pointer;
+  height: 360px;
 }
 
 .card-box2 {
-    padding: 20px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    background-clip: padding-box;
-    margin-bottom: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
-    position: absolute;
+  padding: 20px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  background-clip: padding-box;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
+  position: absolute;
 }
 
-.card-box:hover{
-    border: 2px solid #2e4053;
+.card-box:hover {
+  border: 2px solid #2e4053;
 }
 
-.text-mute{
-    color: #818a91;
+.text-mute {
+  color: #818a91;
 }
 
-.btn-details{
-    margin: 0 auto;
-    cursor: pointer;
+.btn-details {
+  margin: 0 auto;
+  cursor: pointer;
 }
 
-.DayPickerInput > input{
-        display: block;
-    width: 100%;
-    padding: .25rem .5rem;
-    font-size: .875rem;
-    line-height: 1.25;
-    color: #464a4c;
-    background-color: #fff;
-    background-image: none;
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
-    border: 1px solid rgba(0,0,0,.15);
-    border-radius: .25rem;
-    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+.DayPickerInput > input {
+  display: block;
+  width: 100%;
+  padding: .25rem .5rem;
+  font-size: .875rem;
+  line-height: 1.25;
+  color: #464a4c;
+  background-color: #fff;
+  background-image: none;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: .25rem;
+  -webkit-transition: border-color ease-in-out .15s,
+    -webkit-box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s,
+    -webkit-box-shadow ease-in-out .15s;
 }
 .DayPickerInput > input:focus {
-    color: #464a4c;
-    background-color: #fff;
-    border-color: #d0021b;
-    outline: 0;
+  color: #464a4c;
+  background-color: #fff;
+  border-color: #d0021b;
+  outline: 0;
 }
 
 .form-control:focus {
-    color: #464a4c;
-    background-color: #fff;
-    border-color: #d0021b;
-    outline: 0;
+  color: #464a4c;
+  background-color: #fff;
+  border-color: #d0021b;
+  outline: 0;
 }
 
-.DayPickerInput-OverlayWrapper{
-    z-index: 99999;
+.DayPickerInput-OverlayWrapper {
+  z-index: 99999;
 }
 
-.fromto{
-    margin-left: 10px;
-    margin-right: 10px;
+.fromto {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
-.fromto_input{
-    width: auto;
-    display: inline;
-    padding: .25rem .5rem;
+.fromto_input {
+  width: auto;
+  display: inline;
+  padding: .25rem .5rem;
 }
-.fromto-box > button{
-    margin-left: 10px;
-    margin-right: 10px;
-    cursor: pointer;
-}
-
-.tr_userdata{
-    cursor: pointer;
+.fromto-box > button {
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
 }
 
-@media (min-width: 576px){
-    .modal-dialog {
-        max-width: 850px;
-        margin: 30px auto;
-    }
+.tr_userdata {
+  cursor: pointer;
 }
 
-.position-mandays > p{
-    
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 850px;
+    margin: 30px auto;
+  }
+  .modal_employee .modal-dialog {
+    max-width: 1200px;
+    margin: 30px auto;
+  }
 }
 
-.card_position_name{
-    font-weight: bold;
-
+.position-mandays > p {
 }
 
-.card_manday{
-    font-weight: bold;
+.card_position_name {
+  font-weight: bold;
+}
+
+.card_manday {
+  font-weight: bold;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #c9302c #c9302c #c9302c;
+}
+
+a:not([href]):not([tabindex]):focus,
+a:not([href]):not([tabindex]):hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:not([href]):not([tabindex]):focus,
+a:not([href]):not([tabindex]) {
+  color: #000;
+  text-decoration: none;
+}
+
+.thead-inverse th {
+  color: #fff;
+  background-color: #d9534f;
+}
+
+.Underwork {
+  background-color: #ec971f !important;
+  border: 1px solid #eb9316 !important;
+}
+.Overwork {
+  background-color: #31b0d5 !important;
+  border: 1px solid #2aabd2 !important;
+}
+.Normal {
+  background-color: #449d44 !important;
+  border: 1px solid #419641 !important;
+}
+.Absent {
+  background-color: #c9302c !important;
+  border: 1px solid #c12e2a !important;
 }

@@ -1,16 +1,16 @@
-import React, { Component } from 'react'
-import Navbar from './components/Navbar'
-import Style from './styles/Style.css'
-import ProjectChart from './components/ProjectChart'
-import Home from './components/Home'
-const App = (props) => {
+import React, { Component } from "react";
+import Navbar from "./components/Navbar";
+import Style from "./styles/Style.css";
+import ProjectChart from "./components/ProjectChart";
+import Home from "./components/Home";
+const App = props => {
   return (
     <div className="App">
-      <Navbar />
+      <Navbar path={props.location.pathname} />
       <div className="container app-content">
-        { props.children }
+        {props.children}
       </div>
     </div>
   );
-}
+};
 export default App;
