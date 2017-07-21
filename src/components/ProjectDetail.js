@@ -5,6 +5,7 @@ import _ from 'lodash'
 import ReactLoading from 'react-loading'
 import Style from '../styles/Style.css'
 import TableData from './TableData'
+import Color from './Mapping/color'
 
 defaults.global.legend.display = false
 class ProjectDetail extends Component {
@@ -75,13 +76,36 @@ class ProjectDetail extends Component {
                       Mandays
                     </div>
                   </div>
-                  <div className="card-block">
+                  <div className="card-block" style={{fontSize:'.85em'}}>
                     {
                       _.map(this.state.projectdetail.projectData, item => {
+                        var positionList = ['Project Management Officer', 'Frontend Developer', 'Backend Developer', 'Quality Assurance Engineer', 'Business Analyst', 'Designer', 'Mobile Developer', 'HR Director', 'Co-Founder']
+                        var color = ''
+                        if (item.position === positionList[0]) {
+                          color = '#EE1F79'
+                        } else if (item.position === positionList[1]) {
+                          color = '#9E65AB'
+                        } else if (item.position === positionList[2]) {
+                          color = '#7360AC'
+                        } else if (item.position === positionList[3]) {
+                          color = '#00A7BC'
+                        } else if (item.position === positionList[4]) {
+                          color = '#04A54A'
+                        } else if (item.position === positionList[5]) {
+                          color = '#FFF200'
+                        } else if (item.position === positionList[6]) {
+                          color = '#FFB700'
+                        } else if (item.position === positionList[7]) {
+                          color = '#F98B20'
+                        } else if (item.position === positionList[8]) {
+                          color = '#F46A1C'
+                        } else if (item.position === positionList[9]) {
+                          color = '#C9302C'
+                        }
                         let position = ''
                         return (
                           <div className="position-mandays">
-                            <p className="pull-left">{item.position}</p>
+                            <p className="pull-left"><Color color={color} />{item.position}</p>
                             <span className="pull-right">{item.sum_man_day}</span>
                           </div>
                         )

@@ -154,7 +154,7 @@ class ProjectChart extends Component {
       },
       {
         id: 'HR',
-        color: '#8FC630'
+        color: '#F98B20'
       },
       {
         id: 'TECH',
@@ -192,7 +192,7 @@ class ProjectChart extends Component {
         } else if (label === positionList[6]) {
           color = '#FFB700'
         } else if (label === positionList[7]) {
-          color = '#8FC630'
+          color = '#F98B20'
         } else if (label === positionList[8]) {
           color = '#F46A1C'
         } else if (label === positionList[9]) {
@@ -219,7 +219,7 @@ class ProjectChart extends Component {
             </div>
             {/*<button key={`btn-details-${index}`} onClick={() => this.handleClickDetail(Object.keys(item)[0])} className='btn btn-danger btn-sm btn-details'>Details</button>*/}
             <Link to={`/project/${Object.keys(item)[0]}`}>
-              <button key={`btn-details-${index}`} className='btn btn-danger btn-sm btn-details'>Details</button>
+              <button key={`btn-details-${index}`} style={{marginLeft: '150px', marginTop: '10px'}} className='btn btn-danger btn-sm btn-details'>Details</button>
             </Link>
           </div>
         </div>

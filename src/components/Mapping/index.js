@@ -10,7 +10,7 @@ class Mapping extends Component {
         const { data } = this.props
         const mapData = []
         return (
-            <div className="box">
+            <div className="box" style={{marginTop: '15px'}}>
                 {
                     _.map(data, items => {
                         return (

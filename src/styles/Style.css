@@ -68,7 +68,7 @@ ul.navbar-nav > li {
   background-color: #ffffff;
   box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
   cursor: pointer;
-  height: 360px;
+  height: 380px;
 }
 
 .card-box2 {
@@ -164,6 +164,10 @@ ul.navbar-nav > li {
     max-width: 1200px;
     margin: 30px auto;
   }
+}
+
+.position-mandays{
+  display: table-row;
 }
 
 .position-mandays > p {

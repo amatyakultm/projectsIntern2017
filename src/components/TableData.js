@@ -4,6 +4,7 @@ import axios from 'axios'
 import _ from 'lodash'
 import ReactLoading from 'react-loading'
 import moment from 'moment'
+import Color from './Mapping/color'
 import Style from '../styles/Style.css'
 import { Modal, ModalHeader, ModalTitle, ModalClose, ModalBody, ModalFooter } from 'react-modal-bootstrap';
 
@@ -181,6 +182,29 @@ class TableData extends Component {
             {_.map(this.props.users, (user, index)=>{
               let currentPosition = undefined
               return _.map(user.user, item => {
+                var positionList = ['Project Management Officer', 'Frontend Developer', 'Backend Developer', 'Quality Assurance Engineer', 'Business Analyst', 'Designer', 'Mobile Developer', 'HR Director', 'Co-Founder']
+                var color = ''
+                if (user.position === positionList[0]) {
+                  color = '#EE1F79'
+                } else if (user.position === positionList[1]) {
+                  color = '#9E65AB'
+                } else if (user.position === positionList[2]) {
+                  color = '#7360AC'
+                } else if (user.position === positionList[3]) {
+                  color = '#00A7BC'
+                } else if (user.position === positionList[4]) {
+                  color = '#04A54A'
+                } else if (user.position === positionList[5]) {
+                  color = '#FFF200'
+                } else if (user.position === positionList[6]) {
+                  color = '#FFB700'
+                } else if (user.position === positionList[7]) {
+                  color = '#F98B20'
+                } else if (user.position === positionList[8]) {
+                  color = '#F46A1C'
+                } else if (user.position === positionList[9]) {
+                  color = '#C9302C'
+                }
                 let position
                 if (currentPosition !== user.position) {
                   currentPosition = user.position
@@ -190,7 +214,7 @@ class TableData extends Component {
                 }
                 return (
                   <tr className="tr_userdata" onClick={() => this.handleClickTr(item.id, item.name, user.position)}>
-                    <td>{position}</td>
+                    <td>{!position ? '' : <span><Color color={color}/>{position}</span>}</td>
                     <td>{item.name}</td>
                     <td>{parseInt(item.total_hour/1000/60/60)}</td>
                     <td>{item.manday}</td>
