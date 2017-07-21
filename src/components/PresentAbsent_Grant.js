@@ -482,7 +482,7 @@ class PresentAbsentGrant extends Component {
               items={items}
               defaultTimeStart={moment("2017-07-01")}
               defaultTimeEnd={moment("2017-07-02")}
-              minZoom={2592000000}
+              //minZoom={2592000000}
               maxZoom={2592000000}
               sidebarContent="Name"
               rightSidebarWidth={150}
