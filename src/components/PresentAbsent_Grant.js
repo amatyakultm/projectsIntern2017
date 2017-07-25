@@ -7,6 +7,7 @@ import Filter from "./Filter";
 import Mapping from "./Mapping";
 import Timeline from "react-calendar-timeline/lib";
 import { Link } from "react-router";
+import scrollBar from "../styles/scrollbar.css";
 import {
   TabContent,
   TabPane,
@@ -358,6 +359,7 @@ class PresentAbsentGrant extends Component {
     // ];
     let groups = [];
     const items = [];
+  
     _.map(this.state.user, (item, index) => {
       const userCheck = _.find(groups, i => i.id === item.id);
       if (userCheck) {
@@ -389,12 +391,23 @@ class PresentAbsentGrant extends Component {
         title: " ",
         className: `${item.status}`,
         start_time: moment(item.date),
-        end_time: moment(item.date).add(1, "days")
+        end_time: moment(item.date).add(1, "days"),
+        fixedHeader: 'sticky' 
       });
     });
-    const newGroups = _.map(groups, item => {
-      item.rightTitle = `${item.present_count} (${item.absent_count})`;
+    /*const newGroups = _.map(groups, item => {
+      item.rightTitle =`${item.present_count} (${item.absent_count})`;
+    });*/
+     _.map(groups, item => {
+          item.rightTitle =<div style={{display: 'flex', flexDirection: 'row'}}>
+                            <div  
+                            style={{width:'50%', border: '1px solid #ddd',textAlign:'center'}}>
+                            {item.present_count}</div>
+                           <div style={{width:'50%',border: '1px solid #ddd',textAlign:'center'}}>{item.absent_count}</div>
+                           </div>
     });
+    
+    
 
     const data = [
       {
@@ -403,7 +416,7 @@ class PresentAbsentGrant extends Component {
       },
       {
         id: "Overwork",
-        color: "#31b0d5"
+        color: "#c9302c"
       },
       {
         id: "Normal",
@@ -411,11 +424,12 @@ class PresentAbsentGrant extends Component {
       },
       {
         id: "Absent",
-        color: "#c9302c"
+        color: "#787878"
       }
     ];
     return (
       <div>
+       
         <div className="row">
           <div className="col-md-12">
             <div className="pull-left">
@@ -476,25 +490,35 @@ class PresentAbsentGrant extends Component {
           </div>
         </div>
         <div className="row mt-3">
-          <div className="col-12">
+          <div className="col-12" >
+            <div className="tableCalanDar" style={{ overflowX: 'hidden', overflowY:'scroll', height: 440} }>
+
             <Timeline
+            fixedHeader="fixed"
               groups={groups}
               items={items}
               defaultTimeStart={moment("2017-07-01")}
-              defaultTimeEnd={moment("2017-07-02")}
+                defaultTimeEnd={moment("2017-07-31")}
+             //visibleTimeStart={moment("2017-07-01")}
+             //visibleTimeEnd={moment("2017-07-31")}
               //minZoom={2592000000}
               maxZoom={2592000000}
               sidebarContent="Name"
+              
               rightSidebarWidth={150}
               rightSidebarContent={
-                <div>
-                  <span>Present</span>
-                  <span>(Absent)</span>
-                </div>
+                <table>
+                  <tr>
+                  <td  style={{height:'60px',width:'100', border: '1px solid #ddd',textAlign:'center'}}>Present</td>
+                  <td style={{height:'60px',width:'100', border: '1px solid #ddd',textAlign:'center'}}>Absent</td>
+                  </tr>
+                </table>
               }
             />
+            </div>
           </div>
         </div>
+        
       </div>
     );
   }
