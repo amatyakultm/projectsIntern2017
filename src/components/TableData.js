@@ -27,7 +27,7 @@ class TableData extends Component {
       isOpen: true
     });
   };
-  
+
   hideModal = () => {
     this.setState({
       isOpen: false,
@@ -35,7 +35,7 @@ class TableData extends Component {
       userdata: undefined,
     });
   };
-  
+
   getUserData(userid){
     axios.get(`http://52.77.234.30/projects/${this.props.project_id}/user/${userid}?start=${this.props.start}&end=${this.props.end}`)
       .then(response => {
@@ -51,7 +51,7 @@ class TableData extends Component {
         })
       })
   }
-  
+
   handleClickTr = (userid, name, position) => {
     console.log('userid: ',userid)
     this.setState({
@@ -176,6 +176,8 @@ class TableData extends Component {
               <th>Name</th>
               <th>Work Hrs</th>
               <th>Man Days</th>
+              <th>Billable</th>
+              <th>Non-Billable</th>
             </tr>
           </thead>
           <tbody>
@@ -218,6 +220,8 @@ class TableData extends Component {
                     <td>{item.name}</td>
                     <td>{parseInt(item.total_hour/1000/60/60)}</td>
                     <td>{item.manday}</td>
+                    <td>{parseInt(item.sum_billable/1000/60/60)}</td>
+                    <td>{parseInt(item.sum_nonbillable/1000/60/60)}</td>
                   </tr>
 
                 )

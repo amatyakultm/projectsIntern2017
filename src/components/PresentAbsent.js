@@ -432,7 +432,7 @@ class PresentAbsent extends Component {
         return (
           <tr>
             <td>
-              {moment(user.date).format("DD MMM YYYY")}
+              ({moment(user.date).isoWeekday()}){moment(user.date).format("DD MMM YYYY")}
             </td>
             <td>
               {user.name}

@@ -477,12 +477,15 @@ class PresentAbsentGrant extends Component {
         </div>
         <div className="row mt-3">
           <div className="col-12">
+          <div className="tableCalanDar" style={{ overflowX: 'hidden', overflowY:'scroll', height: 400} }>
             <Timeline
               groups={groups}
               items={items}
               defaultTimeStart={moment("2017-07-01")}
               defaultTimeEnd={moment("2017-07-02")}
-              //minZoom={2592000000}
+              visibleTimeStart={moment("2017-07")}
+              minZoom={2592000000}
+              fixedHeader="fixed"
               maxZoom={2592000000}
               sidebarContent="Name"
               rightSidebarWidth={150}
@@ -493,8 +496,10 @@ class PresentAbsentGrant extends Component {
                 </div>
               }
             />
+            </div>
           </div>
         </div>
+
       </div>
     );
   }

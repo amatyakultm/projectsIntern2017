@@ -19,7 +19,7 @@ class ProjectDetail extends Component {
     }
   }
 
-  
+
 
   getProjectData(){
     axios.get(`http://52.77.234.30/projects/${this.props.project_id}/detail?start=${this.props.start}&end=${this.props.end}`)
@@ -112,6 +112,19 @@ class ProjectDetail extends Component {
                       })
                     }
                   </div>
+                  <div className="card-footer text-muted">
+                    <p className="pull-left">Total</p>
+                    <p className="pull-right">
+                    {
+                        _.reduce(this.state.projectdetail.projectData, (sum, n) => {
+                          return (
+                            sum += n.sum_man_day
+                          )
+                        }, 0)
+                      }
+                    </p>
+
+                    </div>
                 </div>
               </div>
             </div>

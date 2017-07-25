@@ -11,7 +11,7 @@ import { Router, Route, IndexRoute } from "react-router";
 const Routes = props =>
   <Router {...props}>
     <Route path="/" component={App}>
-      <IndexRoute component={Home} />
+      <IndexRoute component={ProjectChart} />
       <Route path="projects" component={ProjectChart} />
       <Route path="project/:projectid" component={ProjectDetail} />
       <Route path="presentabsent" component={PresentAbsent} />
