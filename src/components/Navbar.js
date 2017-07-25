@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import Style from "../styles/Style.css";
-import { Link } from "react-router";
+import React, { Component } from 'react';
+import Style from '../styles/Style.css';
+import { Link } from 'react-router';
 class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -9,15 +9,15 @@ class Navbar extends Component {
 
   className() {
     const pathname = this.props.path;
-    let classname = "";
-    if (pathname === "/projects") {
-      classname = "nav-item active";
-    } else if (pathname === "/presentabsent") {
-      classname = "nav-item active";
-    } else if (pathname === "/employee") {
-      classname = "nav-item active";
+    let classname = '';
+    if (pathname === '/projects') {
+      classname = 'nav-item active';
+    } else if (pathname === '/presentabsent') {
+      classname = 'nav-item active';
+    } else if (pathname === '/employee') {
+      classname = 'nav-item active';
     } else {
-      classname = "nav-item";
+      classname = 'nav-item';
     }
 
     return classname;
@@ -47,28 +47,28 @@ class Navbar extends Component {
           <ul className="navbar-nav mr-auto mt-2 mt-md-0">
             <li
               className={
-                this.props.path === "/projects" ? "nav-item active" : "nav-item"
+                this.props.path === '/projects' ? 'nav-item active' : 'nav-item'
               }
             >
               <a className="nav-link" href="/projects">
-                <i className="zmdi zmdi-globe" /> Projects
+                <i className="fa fa-pie-chart" /> Projects
               </a>
             </li>
             <li
               className={
-                this.props.path === "/presentabsent" ||
-                this.props.path === "/presentabsent/grant"
-                  ? "nav-item active"
-                  : "nav-item"
+                this.props.path === '/presentabsent' ||
+                this.props.path === '/presentabsent/grant'
+                  ? 'nav-item active'
+                  : 'nav-item'
               }
             >
               <a className="nav-link" href="/presentabsent">
-                <i className="zmdi zmdi-male-female" /> Present/Absent
+                <i className="fa fa-briefcase" /> Present/Absent
               </a>
             </li>
             <li
               className={
-                this.props.path === "/employee" ? "nav-item active" : "nav-item"
+                this.props.path === '/employee' ? 'nav-item active' : 'nav-item'
               }
             >
               <a className="nav-link" href="/employee">

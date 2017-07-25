@@ -166,7 +166,7 @@ ul.navbar-nav > li {
   }
 }
 
-.position-mandays{
+.position-mandays {
   display: table-row;
 }
 
@@ -220,4 +220,9 @@ a:not([href]):not([tabindex]) {
 .Absent {
   background-color: #c9302c !important;
   border: 1px solid #c12e2a !important;
+}
+
+input[type="date"]::-webkit-clear-button {
+  -webkit-appearance: none;
+  display: none;
 }

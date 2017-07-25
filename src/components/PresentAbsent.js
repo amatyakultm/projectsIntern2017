@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import axios from "axios";
-import _ from "lodash";
-import moment from "moment";
-import Search from "./Search";
-import Filter from "./Filter";
-import Timeline from "react-calendar-timeline/lib";
-import { Link } from "react-router";
+import React, { Component } from 'react';
+import axios from 'axios';
+import _ from 'lodash';
+import moment from 'moment';
+import Search from './Search';
+import Filter from './Filter';
+import Timeline from 'react-calendar-timeline/lib';
+import { Link } from 'react-router';
 import {
   TabContent,
   TabPane,
@@ -18,11 +18,11 @@ import {
   CardText,
   Row,
   Col
-} from "reactstrap";
-import classnames from "classnames";
-import "../styles/Style.css";
-const BASE_URL = "http://52.77.234.30";
-const DAY_FORMAT = "YYYY-MM-DD";
+} from 'reactstrap';
+import classnames from 'classnames';
+import '../styles/Style.css';
+const BASE_URL = 'http://52.77.234.30';
+const DAY_FORMAT = 'YYYY-MM-DD';
 class PresentAbsent extends Component {
   constructor(props) {
     super(props);
@@ -38,7 +38,7 @@ class PresentAbsent extends Component {
       inAsc: true,
       outAsc: true,
       totalAsc: true,
-      activeTab: "1"
+      activeTab: '1'
     };
   }
 
@@ -74,7 +74,7 @@ class PresentAbsent extends Component {
     console.log(data);
     if (type.absent && type.normal && type.overwork && type.underwork) {
       await this.setState({
-        user: _.filter(data, i => i.status !== "")
+        user: _.filter(data, i => i.status !== '')
       });
     } else if (
       !type.absent &&
@@ -86,10 +86,10 @@ class PresentAbsent extends Component {
         user: _.filter(
           data,
           i =>
-            i.status !== "Absent" &&
-            i.status !== "Normal" &&
-            i.status !== "Overwork" &&
-            i.status !== "Underwork"
+            i.status !== 'Absent' &&
+            i.status !== 'Normal' &&
+            i.status !== 'Overwork' &&
+            i.status !== 'Underwork'
         )
       });
     } else if (
@@ -102,15 +102,15 @@ class PresentAbsent extends Component {
         user: _.filter(
           data,
           i =>
-            i.status === "Absent" &&
-            i.status !== "Normal" &&
-            i.status !== "Overwork" &&
-            i.status !== "Underwork"
+            i.status === 'Absent' &&
+            i.status !== 'Normal' &&
+            i.status !== 'Overwork' &&
+            i.status !== 'Underwork'
         )
       });
     } else if (!type.absent && type.normal && type.overwork && type.underwork) {
       await this.setState({
-        user: _.filter(data, i => i.status !== "Absent")
+        user: _.filter(data, i => i.status !== 'Absent')
       });
     } else if (
       !type.absent &&
@@ -122,14 +122,14 @@ class PresentAbsent extends Component {
         user: _.filter(
           data,
           i =>
-            i.status !== "Absent" &&
-            i.status !== "Overwork" &&
-            i.status !== "Underwork"
+            i.status !== 'Absent' &&
+            i.status !== 'Overwork' &&
+            i.status !== 'Underwork'
         )
       });
     } else if (type.absent && !type.normal && type.overwork && type.underwork) {
       await this.setState({
-        user: _.filter(data, i => i.status !== "Normal")
+        user: _.filter(data, i => i.status !== 'Normal')
       });
     } else if (
       !type.absent &&
@@ -141,14 +141,14 @@ class PresentAbsent extends Component {
         user: _.filter(
           data,
           i =>
-            i.status !== "Absent" &&
-            i.status !== "Normal" &&
-            i.status !== "Underwork"
+            i.status !== 'Absent' &&
+            i.status !== 'Normal' &&
+            i.status !== 'Underwork'
         )
       });
     } else if (type.absent && type.normal && !type.overwork && type.underwork) {
       await this.setState({
-        user: _.filter(data, i => i.status !== "Overwork")
+        user: _.filter(data, i => i.status !== 'Overwork')
       });
     } else if (
       !type.absent &&
@@ -160,14 +160,14 @@ class PresentAbsent extends Component {
         user: _.filter(
           data,
           i =>
-            i.status !== "Absent" &&
-            i.status !== "Normal" &&
-            i.status !== "Overwork"
+            i.status !== 'Absent' &&
+            i.status !== 'Normal' &&
+            i.status !== 'Overwork'
         )
       });
     } else if (type.absent && type.normal && type.overwork && !type.underwork) {
       await this.setState({
-        user: _.filter(data, i => i.status !== "Underwork")
+        user: _.filter(data, i => i.status !== 'Underwork')
       });
     } else if (
       type.absent &&
@@ -178,7 +178,7 @@ class PresentAbsent extends Component {
       await this.setState({
         user: _.filter(
           data,
-          i => i.status !== "Overwork" && i.status !== "Underwork"
+          i => i.status !== 'Overwork' && i.status !== 'Underwork'
         )
       });
     } else if (
@@ -190,7 +190,7 @@ class PresentAbsent extends Component {
       await this.setState({
         user: _.filter(
           data,
-          i => i.status !== "Absent" && i.status !== "Normal"
+          i => i.status !== 'Absent' && i.status !== 'Normal'
         )
       });
     } else if (
@@ -202,7 +202,7 @@ class PresentAbsent extends Component {
       await this.setState({
         user: _.filter(
           data,
-          i => i.status !== "Normal" && i.status !== "Underwork"
+          i => i.status !== 'Normal' && i.status !== 'Underwork'
         )
       });
     } else if (
@@ -214,7 +214,7 @@ class PresentAbsent extends Component {
       await this.setState({
         user: _.filter(
           data,
-          i => i.status !== "Absent" && i.status !== "Overwork"
+          i => i.status !== 'Absent' && i.status !== 'Overwork'
         )
       });
     } else if (
@@ -226,7 +226,7 @@ class PresentAbsent extends Component {
       await this.setState({
         user: _.filter(
           data,
-          i => i.status !== "Normal" && i.status !== "Overwork"
+          i => i.status !== 'Normal' && i.status !== 'Overwork'
         )
       });
     } else if (
@@ -238,7 +238,7 @@ class PresentAbsent extends Component {
       await this.setState({
         user: _.filter(
           data,
-          i => i.status !== "Absent" && i.status !== "Underwork"
+          i => i.status !== 'Absent' && i.status !== 'Underwork'
         )
       });
     }
@@ -294,31 +294,42 @@ class PresentAbsent extends Component {
     }
   }
 
-  handleFrom(e) {
-    const from = e.target.value;
-    this.setState({
-      from: from
-    });
+  handleUpdateDate(event) {
+    const { id, value } = event.target;
+    if (!_.isEmpty(value)) {
+      this.setState({ [id]: value });
+    }
   }
 
-  handleTo(e) {
-    const to = e.target.value;
-    this.setState({
-      to: to
-    });
-  }
+  // handleFrom(e) {
+  //   const from = e.target.value;
+  //   if (!_.isEmpty(from)) {
+  //     this.setState({
+  //       from: from
+  //     });
+  //   }
+  // }
+
+  // handleTo(e) {
+  //   const to = e.target.value;
+  //   if (!_.isEmpty(to)) {
+  //     this.setState({
+  //       to: to
+  //     });
+  //   }
+  // }
 
   async handleSort(type) {
     let userData = this.state.user;
     switch (type) {
-      case "date": {
+      case 'date': {
         if (this.state.dateAsc) {
-          userData = await _.orderBy(userData, "date", "desc");
+          userData = await _.orderBy(userData, 'date', 'desc');
           this.setState({
             dateAsc: false
           });
         } else {
-          userData = await _.orderBy(userData, "date", "asc");
+          userData = await _.orderBy(userData, 'date', 'asc');
           this.setState({
             dateAsc: true
           });
@@ -328,14 +339,14 @@ class PresentAbsent extends Component {
         });
         break;
       }
-      case "name": {
+      case 'name': {
         if (this.state.nameAsc) {
-          userData = await _.orderBy(userData, "name", "desc");
+          userData = await _.orderBy(userData, 'name', 'desc');
           this.setState({
             nameAsc: false
           });
         } else {
-          userData = await _.orderBy(userData, "name", "asc");
+          userData = await _.orderBy(userData, 'name', 'asc');
           this.setState({
             nameAsc: true
           });
@@ -345,14 +356,14 @@ class PresentAbsent extends Component {
         });
         break;
       }
-      case "status": {
+      case 'status': {
         if (this.state.statusAsc) {
-          userData = await _.orderBy(userData, "status", "desc");
+          userData = await _.orderBy(userData, 'status', 'desc');
           this.setState({
             statusAsc: false
           });
         } else {
-          userData = await _.orderBy(userData, "status", "asc");
+          userData = await _.orderBy(userData, 'status', 'asc');
           this.setState({
             statusAsc: true
           });
@@ -362,14 +373,14 @@ class PresentAbsent extends Component {
         });
         break;
       }
-      case "in": {
+      case 'in': {
         if (this.state.inAsc) {
-          userData = await _.orderBy(userData, "in", "desc");
+          userData = await _.orderBy(userData, 'in', 'desc');
           this.setState({
             inAsc: false
           });
         } else {
-          userData = await _.orderBy(userData, "in", "asc");
+          userData = await _.orderBy(userData, 'in', 'asc');
           this.setState({
             inAsc: true
           });
@@ -379,14 +390,14 @@ class PresentAbsent extends Component {
         });
         break;
       }
-      case "out": {
+      case 'out': {
         if (this.state.outAsc) {
-          userData = await _.orderBy(userData, "out", "desc");
+          userData = await _.orderBy(userData, 'out', 'desc');
           this.setState({
             outAsc: false
           });
         } else {
-          userData = await _.orderBy(userData, "out", "asc");
+          userData = await _.orderBy(userData, 'out', 'asc');
           this.setState({
             outAsc: true
           });
@@ -396,14 +407,14 @@ class PresentAbsent extends Component {
         });
         break;
       }
-      case "total": {
+      case 'total': {
         if (this.state.totalAsc) {
-          userData = await _.orderBy(userData, "total", "desc");
+          userData = await _.orderBy(userData, 'total', 'desc');
           this.setState({
             totalAsc: false
           });
         } else {
-          userData = await _.orderBy(userData, "total", "asc");
+          userData = await _.orderBy(userData, 'total', 'asc');
           this.setState({
             totalAsc: true
           });
@@ -419,20 +430,20 @@ class PresentAbsent extends Component {
   render() {
     const createData = data => {
       return _.map(data, (user, index) => {
-        let style = "";
-        if (user.status === "Absent") {
-          style = "badge badge-pill badge-danger";
-        } else if (user.status === "Overwork") {
-          style = "badge badge-pill badge-info";
-        } else if (user.status === "Normal") {
-          style = "badge badge-pill badge-success";
-        } else if (user.status === "Underwork") {
-          style = "badge badge-pill badge-warning";
+        let style = '';
+        if (user.status === 'Absent') {
+          style = 'badge badge-pill badge-danger';
+        } else if (user.status === 'Overwork') {
+          style = 'badge badge-pill badge-info';
+        } else if (user.status === 'Normal') {
+          style = 'badge badge-pill badge-success';
+        } else if (user.status === 'Underwork') {
+          style = 'badge badge-pill badge-warning';
         }
         return (
           <tr>
             <td>
-              ({moment(user.date).isoWeekday()}){moment(user.date).format("DD MMM YYYY")}
+              ({moment(user.date).isoWeekday()}){moment(user.date).format('DD MMM YYYY')}
             </td>
             <td>
               {user.name}
@@ -466,37 +477,37 @@ class PresentAbsent extends Component {
     const groups = [
       {
         id: 1,
-        title: "group 1",
-        rightTitle: "23(7)"
+        title: 'group 1',
+        rightTitle: '23(7)'
       },
-      { id: 2, title: "group 2" }
+      { id: 2, title: 'group 2' }
     ];
 
     const items = [
       {
         id: 1,
         group: 1,
-        title: "item 1",
+        title: 'item 1',
         canMove: false,
         canResize: false,
         canChangeGroup: false,
-        className: "eiei",
-        start_time: moment("2017-07-01"),
-        end_time: moment("2017-07-02")
+        className: 'eiei',
+        start_time: moment('2017-07-01'),
+        end_time: moment('2017-07-02')
       },
       {
         id: 2,
         group: 2,
-        title: "item 2",
-        start_time: moment().add(-0.5, "hour"),
-        end_time: moment().add(0.5, "hour")
+        title: 'item 2',
+        start_time: moment().add(-0.5, 'hour'),
+        end_time: moment().add(0.5, 'hour')
       },
       {
         id: 3,
         group: 1,
-        title: "item 3",
-        start_time: moment().add(2, "hour"),
-        end_time: moment().add(3, "hour")
+        title: 'item 3',
+        start_time: moment().add(2, 'hour'),
+        end_time: moment().add(3, 'hour')
       }
     ];
     return (
@@ -529,32 +540,34 @@ class PresentAbsent extends Component {
             </div>
             {
               <div className="pull-right fromto-box">
-                {!this.state.from ? "" : <span className="fromto">From </span>}
+                {!this.state.from ? '' : <span className="fromto">From </span>}
                 {!this.state.from
-                  ? ""
+                  ? ''
                   : <input
                       className="form-control fromto_input"
                       type="date"
                       ref="from"
+                      id="from"
                       value={moment(this.state.from).format(DAY_FORMAT)}
-                      onChange={e => this.handleFrom(e)}
+                      onChange={e => this.handleUpdateDate(e)}
                     />}
-                {!this.state.to ? "" : <span className="fromto">To </span>}
+                {!this.state.to ? '' : <span className="fromto">To </span>}
                 {!this.state.to
-                  ? ""
+                  ? ''
                   : <input
                       className="form-control fromto_input"
                       type="date"
                       ref="to"
+                      id="to"
                       value={
                         !this.state.to
-                          ? "Waiting"
+                          ? 'Waiting'
                           : moment(this.state.to).format(DAY_FORMAT)
                       }
-                      onChange={e => this.handleTo(e)}
+                      onChange={e => this.handleUpdateDate(e)}
                     />}
                 {!this.state.to && !this.state.from
-                  ? ""
+                  ? ''
                   : <button
                       className="btn btn-sm btn-danger"
                       onClick={() => this.handleFromTo()}
@@ -572,8 +585,8 @@ class PresentAbsent extends Component {
               : <table className="table">
                   <thead className="thead-inverse">
                     <tr>
-                      <th onClick={() => this.handleSort("date")}>
-                        Date{" "}
+                      <th onClick={() => this.handleSort('date')}>
+                        Date{' '}
                         {this.state.dateAsc
                           ? <i
                               className="fa fa-sort-desc pull-right"
@@ -584,8 +597,8 @@ class PresentAbsent extends Component {
                               aria-hidden="true"
                             />}
                       </th>
-                      <th onClick={() => this.handleSort("name")}>
-                        Name{" "}
+                      <th onClick={() => this.handleSort('name')}>
+                        Name{' '}
                         {this.state.nameAsc
                           ? <i
                               className="fa fa-sort-desc pull-right"
@@ -596,8 +609,8 @@ class PresentAbsent extends Component {
                               aria-hidden="true"
                             />}
                       </th>
-                      <th onClick={() => this.handleSort("status")}>
-                        Status{" "}
+                      <th onClick={() => this.handleSort('status')}>
+                        Status{' '}
                         {this.state.statusAsc
                           ? <i
                               className="fa fa-sort-desc pull-right"
@@ -608,8 +621,8 @@ class PresentAbsent extends Component {
                               aria-hidden="true"
                             />}
                       </th>
-                      <th onClick={() => this.handleSort("in")}>
-                        In{" "}
+                      <th onClick={() => this.handleSort('in')}>
+                        In{' '}
                         {this.state.inAsc
                           ? <i
                               className="fa fa-sort-desc pull-right"
@@ -620,8 +633,8 @@ class PresentAbsent extends Component {
                               aria-hidden="true"
                             />}
                       </th>
-                      <th onClick={() => this.handleSort("out")}>
-                        Out{" "}
+                      <th onClick={() => this.handleSort('out')}>
+                        Out{' '}
                         {this.state.outAsc
                           ? <i
                               className="fa fa-sort-desc pull-right"
@@ -632,8 +645,8 @@ class PresentAbsent extends Component {
                               aria-hidden="true"
                             />}
                       </th>
-                      <th onClick={() => this.handleSort("total")}>
-                        Total Hours{" "}
+                      <th onClick={() => this.handleSort('total')}>
+                        Total Hours{' '}
                         {this.state.totalAsc
                           ? <i
                               className="fa fa-sort-desc pull-right"
