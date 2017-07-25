@@ -296,6 +296,7 @@ class PresentAbsent extends Component {
 
   handleUpdateDate(event) {
     const { id, value } = event.target;
+    console.log(id, value);
     if (!_.isEmpty(value)) {
       this.setState({ [id]: value });
     }
@@ -443,7 +444,7 @@ class PresentAbsent extends Component {
         return (
           <tr>
             <td>
-              ({moment(user.date).isoWeekday()}){moment(user.date).format('DD MMM YYYY')}
+              {moment(user.date).format('DD MMM YYYY')}
             </td>
             <td>
               {user.name}
@@ -593,7 +594,7 @@ class PresentAbsent extends Component {
                               aria-hidden="true"
                             />
                           : <i
-                              className="fa fa-sort-asc pull-right"
+                              className="fa fa-sort-asc pull-right sortt"
                               aria-hidden="true"
                             />}
                       </th>
@@ -605,7 +606,7 @@ class PresentAbsent extends Component {
                               aria-hidden="true"
                             />
                           : <i
-                              className="fa fa-sort-asc pull-right"
+                              className="fa fa-sort-asc pull-right sortt"
                               aria-hidden="true"
                             />}
                       </th>
@@ -617,7 +618,7 @@ class PresentAbsent extends Component {
                               aria-hidden="true"
                             />
                           : <i
-                              className="fa fa-sort-asc pull-right"
+                              className="fa fa-sort-asc pull-right sortt"
                               aria-hidden="true"
                             />}
                       </th>
@@ -629,7 +630,7 @@ class PresentAbsent extends Component {
                               aria-hidden="true"
                             />
                           : <i
-                              className="fa fa-sort-asc pull-right"
+                              className="fa fa-sort-asc pull-right sortt"
                               aria-hidden="true"
                             />}
                       </th>
@@ -641,7 +642,7 @@ class PresentAbsent extends Component {
                               aria-hidden="true"
                             />
                           : <i
-                              className="fa fa-sort-asc pull-right"
+                              className="fa fa-sort-asc pull-right sortt"
                               aria-hidden="true"
                             />}
                       </th>
@@ -653,7 +654,7 @@ class PresentAbsent extends Component {
                               aria-hidden="true"
                             />
                           : <i
-                              className="fa fa-sort-asc pull-right"
+                              className="fa fa-sort-asc pull-right sortt"
                               aria-hidden="true"
                             />}
                       </th>

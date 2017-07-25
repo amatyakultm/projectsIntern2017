@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Doughnut, defaults, Pie } from 'react-chartjs-2';
+import { defaults, Pie } from 'react-chartjs-2';
 import axios from 'axios';
 import _ from 'lodash';
 import ReactLoading from 'react-loading';
@@ -234,15 +234,6 @@ class ProjectChart extends Component {
               {item.projectname}
             </div>
             {/*<button key={`btn-details-${index}`} onClick={() => this.handleClickDetail(Object.keys(item)[0])} className='btn btn-danger btn-sm btn-details'>Details</button>*/}
-            <Link to={`/project/${Object.keys(item)[0]}`}>
-              <button
-                key={`btn-details-${index}`}
-                style={{ marginLeft: '150px', marginTop: '10px' }}
-                className="btn btn-danger btn-sm btn-details"
-              >
-                Details
-              </button>
-            </Link>
           </div>
         </div>
       );
