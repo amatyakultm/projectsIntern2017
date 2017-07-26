@@ -155,14 +155,14 @@ class Filterposition extends Component {
               checked={this.state.selectedValue === 'Frontend'}
               onChange={e => this.changeValue(e)}
             />{' '}
-            <label for="Frontend">Frontend</label> <br />
+            Frontend<br />
             <input
               type="radio"
               style={{ marginLeft: '10px' }}
               name="myGroupName1"
-              value="Qa"
+              value="QA"
               refs="v2"
-              checked={this.state.selectedValue === 'Qa'}
+              checked={this.state.selectedValue === 'QA'}
               onChange={e => this.changeValue(e)}
             />{' '}
             QA <br />
@@ -190,12 +190,12 @@ class Filterposition extends Component {
               type="radio"
               style={{ marginLeft: '10px' }}
               name="myGroupName1"
-              value="Ba"
+              value="BA"
               refs="v5"
-              checked={this.state.selectedValue === 'Ba'}
+              checked={this.state.selectedValue === 'BA'}
               onChange={e => this.changeValue(e)}
             />{' '}
-            <label>BA</label>
+            BA
             <br />
             <input
               type="radio"

@@ -84,8 +84,11 @@ class Table extends Component {
   async handleFromTo() {
     console.log(this.refs.from.value);
     console.log(this.refs.to.value);
-    const from = this.refs.from.value;
-    const to = this.refs.to.value;
+    let from = this.refs.from.value;
+    let to = this.refs.to.value;
+    if (to < from) {
+      from = to;
+    }
     this.setState({
       users: null,
       user: null
@@ -105,18 +108,11 @@ class Table extends Component {
     }
   }
 
-  handleFrom(e) {
-    const from = e.target.value;
-    this.setState({
-      from: from
-    });
-  }
-
-  handleTo(e) {
-    const to = e.target.value;
-    this.setState({
-      to: to
-    });
+  handleUpdateDate(event) {
+    const { id, value } = event.target;
+    if (!_.isEmpty(value)) {
+      this.setState({ [id]: value });
+    }
   }
 
   handleClickTr(userData) {
@@ -259,6 +255,36 @@ class Table extends Component {
     if (data === 'Frontend') {
       data = 'Frontend Developer';
     }
+    if (data === 'QA') {
+      data = 'Quality Assurance Engineer';
+    }
+    if (data === 'Backend') {
+      data = 'Backend Developer';
+    }
+    if (data === 'Project') {
+      data = 'Project Management Officer';
+    }
+    if (data === 'BA') {
+      data = 'Business Analyst';
+    }
+    if (data === 'Design') {
+      data = 'Designer';
+    }
+    if (data === 'Mobile') {
+      data = 'Mobile Developer';
+    }
+    if (data === 'HR') {
+      data = 'HR Director';
+    }
+    if (data === 'Tech') {
+      data = 'Technology';
+    }
+    if (data === 'Cofound') {
+      data = 'Co-Founder';
+    }
+    if (data === 'Support') {
+      data = 'Application Support';
+    }
     this.setState({
       user: _.filter(userData, i => i.position === data)
     });
@@ -379,8 +405,9 @@ class Table extends Component {
                       className="form-control fromto_input"
                       type="date"
                       ref="from"
+                      id="from"
                       value={moment(this.state.from).format(DAY_FORMAT)}
-                      onChange={e => this.handleFrom(e)}
+                      onChange={e => this.handleUpdateDate(e)}
                     />}
                 {!this.state.to ? '' : <span className="fromto">To </span>}
                 {!this.state.to
@@ -389,12 +416,13 @@ class Table extends Component {
                       className="form-control fromto_input"
                       type="date"
                       ref="to"
+                      id="to"
                       value={
                         !this.state.to
                           ? 'Waiting'
                           : moment(this.state.to).format(DAY_FORMAT)
                       }
-                      onChange={e => this.handleTo(e)}
+                      onChange={e => this.handleUpdateDate(e)}
                     />}
                 {!this.state.to && !this.state.from
                   ? ''
@@ -423,7 +451,7 @@ class Table extends Component {
                               aria-hidden="true"
                             />
                           : <i
-                              className="fa fa-sort-asc pull-right"
+                              className="fa fa-sort-asc pull-right sortt"
                               aria-hidden="true"
                             />}
                       </th>
@@ -435,7 +463,7 @@ class Table extends Component {
                               aria-hidden="true"
                             />
                           : <i
-                              className="fa fa-sort-asc pull-right"
+                              className="fa fa-sort-asc pull-right sortt"
                               aria-hidden="true"
                             />}
                       </th>
@@ -447,7 +475,7 @@ class Table extends Component {
                               aria-hidden="true"
                             />
                           : <i
-                              className="fa fa-sort-asc pull-right"
+                              className="fa fa-sort-asc pull-right sortt"
                               aria-hidden="true"
                             />}
                       </th>
@@ -459,7 +487,7 @@ class Table extends Component {
                               aria-hidden="true"
                             />
                           : <i
-                              className="fa fa-sort-asc pull-right"
+                              className="fa fa-sort-asc pull-right sortt"
                               aria-hidden="true"
                             />}
                       </th>
@@ -471,7 +499,7 @@ class Table extends Component {
                               aria-hidden="true"
                             />
                           : <i
-                              className="fa fa-sort-asc pull-right"
+                              className="fa fa-sort-asc pull-right sortt"
                               aria-hidden="true"
                             />}
                       </th>
@@ -483,7 +511,7 @@ class Table extends Component {
                               aria-hidden="true"
                             />
                           : <i
-                              className="fa fa-sort-asc pull-right"
+                              className="fa fa-sort-asc pull-right sortt"
                               aria-hidden="true"
                             />}
                       </th>

@@ -267,8 +267,11 @@ class PresentAbsent extends Component {
   async handleFromTo() {
     console.log(this.refs.from.value);
     console.log(this.refs.to.value);
-    const from = this.refs.from.value;
-    const to = this.refs.to.value;
+    let from = this.refs.from.value;
+    let to = this.refs.to.value;
+    if (to < from) {
+      from = to;
+    }
     this.setState({
       users: null,
       user: null
@@ -548,6 +551,7 @@ class PresentAbsent extends Component {
                       type="date"
                       ref="from"
                       id="from"
+                      max={moment().format(DAY_FORMAT)}
                       value={moment(this.state.from).format(DAY_FORMAT)}
                       onChange={e => this.handleUpdateDate(e)}
                     />}
@@ -559,6 +563,7 @@ class PresentAbsent extends Component {
                       type="date"
                       ref="to"
                       id="to"
+                      max={moment().format(DAY_FORMAT)}
                       value={
                         !this.state.to
                           ? 'Waiting'

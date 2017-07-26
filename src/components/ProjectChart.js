@@ -56,8 +56,11 @@ class ProjectChart extends Component {
   handleFromTo() {
     console.log(this.refs.from.value);
     console.log(this.refs.to.value);
-    const from = this.refs.from.value;
-    const to = this.refs.to.value;
+    let from = this.refs.from.value;
+    let to = this.refs.to.value;
+    if (to < from) {
+      from = to;
+    }
     this.setState({
       projects: null,
       project: null
@@ -234,15 +237,6 @@ class ProjectChart extends Component {
               {item.projectname}
             </div>
             {/*<button key={`btn-details-${index}`} onClick={() => this.handleClickDetail(Object.keys(item)[0])} className='btn btn-danger btn-sm btn-details'>Details</button>*/}
-            <Link to={`/project/${Object.keys(item)[0]}`}>
-              <button
-                key={`btn-details-${index}`}
-                style={{ marginLeft: '150px', marginTop: '10px' }}
-                className="btn btn-danger btn-sm btn-details"
-              >
-                Details
-              </button>
-            </Link>
           </div>
         </div>
       );
