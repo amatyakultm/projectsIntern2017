@@ -6,6 +6,8 @@ import ProjectDetail from "../components/ProjectDetail";
 import PresentAbsent from "../components/PresentAbsent";
 import PresentAbsentGrant from "../components/PresentAbsent_Grant";
 import Employee from "../components/Employee";
+import SettingPosition from "../components/Setting/SettingPosition";
+import SettingData from "../components/Setting/SettingData";
 import { Router, Route, IndexRoute } from "react-router";
 
 const Routes = props =>
@@ -17,6 +19,8 @@ const Routes = props =>
       <Route path="presentabsent" component={PresentAbsent} />
       <Route path="presentabsent/grant" component={PresentAbsentGrant} />
       <Route path="employee" component={Employee} />
+      <Route path="setting/position" component={SettingPosition} />
+      <Route path="setting/data" component={SettingData} />
     </Route>
   </Router>;
 

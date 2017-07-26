@@ -257,7 +257,7 @@ class Table extends Component {
         return (
           <tr className="tr_userdata" onClick={() => this.handleClickTr(user)}>
             <td>
-              {user.position}
+              <div style={{width:'25px',height:'25px', float:'left'}}>{user.is_lead ? <i className="fa fa-diamond" aria-hidden="true"></i> : ''}</div>{user.position}
             </td>
             <td>
               {user.id}
@@ -265,13 +265,13 @@ class Table extends Component {
             <td>
               {user.name}
             </td>
-            <td>
+            <td className="text-right">
               {time(user.total)}
             </td>
-            <td>
+            <td className="text-right">
               {time(user.nonebillable)}
             </td>
-            <td>
+            <td className="text-center">
               {user.manday}
             </td>
           </tr>
