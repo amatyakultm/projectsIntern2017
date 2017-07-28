@@ -145,108 +145,249 @@ class Filterposition extends Component {
             Filter
           </button>
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <input
-              type="radio"
-              style={{ marginLeft: '10px' }}
-              name="myGroupName1"
-              id="Frontend"
-              value="Frontend"
-              refs="v1"
-              checked={this.state.selectedValue === 'Frontend'}
-              onChange={e => this.changeValue(e)}
-            />{' '}
-            Frontend<br />
-            <input
-              type="radio"
-              style={{ marginLeft: '10px' }}
-              name="myGroupName1"
-              value="QA"
-              refs="v2"
-              checked={this.state.selectedValue === 'QA'}
-              onChange={e => this.changeValue(e)}
-            />{' '}
-            QA <br />
-            <input
-              type="radio"
-              style={{ marginLeft: '10px' }}
-              name="myGroupName1"
-              value="Backend"
-              refs="v3"
-              checked={this.state.selectedValue === 'Backend'}
-              onChange={e => this.changeValue(e)}
-            />{' '}
-            Backend <br />
-            <input
-              type="radio"
-              style={{ marginLeft: '10px' }}
-              name="myGroupName1"
-              value="Project"
-              refs="v4"
-              checked={this.state.selectedValue === 'Project'}
-              onChange={e => this.changeValue(e)}
-            />{' '}
-            PMO <br />
-            <input
-              type="radio"
-              style={{ marginLeft: '10px' }}
-              name="myGroupName1"
-              value="BA"
-              refs="v5"
-              checked={this.state.selectedValue === 'BA'}
-              onChange={e => this.changeValue(e)}
-            />{' '}
-            BA
-            <br />
-            <input
-              type="radio"
-              style={{ marginLeft: '10px' }}
-              name="myGroupName1"
-              value="Design"
-              refs="v6"
-              checked={this.state.selectedValue === 'Design'}
-              onChange={e => this.changeValue(e)}
-            />{' '}
-            Design <br />
-            <input
-              type="radio"
-              style={{ marginLeft: '10px' }}
-              name="myGroupName1"
-              value="Mobile"
-              refs="v7"
-              checked={this.state.selectedValue === 'Mobile'}
-              onChange={e => this.changeValue(e)}
-            />{' '}
-            Mobile <br />
-            <input
-              type="radio"
-              style={{ marginLeft: '10px' }}
-              name="myGroupName1"
-              value="HR"
-              refs="v8"
-              checked={this.state.selectedValue === 'HR'}
-              onChange={e => this.changeValue(e)}
-            />{' '}
-            HR <br />
-            <input
-              type="radio"
-              style={{ marginLeft: '10px' }}
-              name="myGroupName1"
-              value="Tech"
-              refs="v9"
-              checked={this.state.selectedValue === 'Tech'}
-              onChange={e => this.changeValue(e)}
-            />{' '}
-            Tech <br />
-            <input
-              type="radio"
-              style={{ marginLeft: '10px' }}
-              name="myGroupName1"
-              value="Cofound"
-              refs="v10"
-              checked={this.state.selectedValue === 'Cofound'}
-              onChange={e => this.changeValue(e)}
-            />{' '}
-            Co-Found <br />
+            <div>
+              <input
+                className="checkbox-custom input"
+                name="myGroupName1"
+                style={{
+                  marginLeft: '20px',
+                  width: '19px',
+                  height: '19px',
+                  backgroundColor: 'white'
+                }}
+                type="checkbox"
+                id="All"
+                value="All"
+                checked={
+                  this.state.selectedValue === '' ||
+                  this.state.selectedValue === 'All'
+                }
+                onChange={e => this.changeValue(e)}
+              />
+              <label for="checkbox-1" className="checkbox-custom-label">
+                All
+              </label>
+            </div>
+            <div>
+              <input
+                className="checkbox-custom input"
+                style={{
+                  marginLeft: '20px',
+                  width: '19px',
+                  height: '19px',
+                  backgroundColor: 'white'
+                }}
+                type="checkbox"
+                id="Frontend"
+                value="Frontend"
+                checked={this.state.selectedValue === 'Frontend'}
+                onChange={e => this.changeValue(e)}
+              />
+              <label for="checkbox-1" className="checkbox-custom-label">
+                Frontend
+              </label>
+            </div>
+            <div>
+              <input
+                className="checkbox-custom input"
+                style={{
+                  marginLeft: '20px',
+                  width: '19px',
+                  height: '19px',
+                  backgroundColor: 'white'
+                }}
+                type="checkbox"
+                name="myGroupName1"
+                value="QA"
+                refs="v2"
+                checked={this.state.selectedValue === 'QA'}
+                onChange={e => this.changeValue(e)}
+              />
+              <label for="checkbox-1" className="checkbox-custom-label">
+                QA
+              </label>
+            </div>
+            <div>
+              <input
+                className="checkbox-custom input"
+                style={{
+                  marginLeft: '20px',
+                  width: '19px',
+                  height: '19px',
+                  backgroundColor: 'white'
+                }}
+                type="checkbox"
+                name="myGroupName1"
+                value="Backend"
+                refs="v3"
+                checked={this.state.selectedValue === 'Backend'}
+                onChange={e => this.changeValue(e)}
+              />
+              <label for="checkbox-1" className="checkbox-custom-label">
+                Backend
+              </label>
+            </div>
+            <div>
+              <input
+                className="checkbox-custom input"
+                style={{
+                  marginLeft: '20px',
+                  width: '19px',
+                  height: '19px',
+                  backgroundColor: 'white'
+                }}
+                name="myGroupName1"
+                value="Project"
+                refs="v4"
+                type="checkbox"
+                checked={this.state.selectedValue === 'Project'}
+                onChange={e => this.changeValue(e)}
+              />
+              <label for="checkbox-1" className="checkbox-custom-label">
+                PMO
+              </label>
+            </div>
+            <div>
+              <input
+                className="checkbox-custom input"
+                style={{
+                  marginLeft: '20px',
+                  width: '19px',
+                  height: '19px',
+                  backgroundColor: 'white'
+                }}
+                name="myGroupName1"
+                type="checkbox"
+                value="BA"
+                refs="v5"
+                checked={this.state.selectedValue === 'BA'}
+                onChange={e => this.changeValue(e)}
+              />
+              <label for="checkbox-1" className="checkbox-custom-label">
+                BA
+              </label>
+            </div>
+            <div>
+              <input
+                className="checkbox-custom input"
+                style={{
+                  marginLeft: '20px',
+                  width: '19px',
+                  height: '19px',
+                  backgroundColor: 'white'
+                }}
+                name="myGroupName1"
+                value="Design"
+                refs="v6"
+                type="checkbox"
+                checked={this.state.selectedValue === 'Design'}
+                onChange={e => this.changeValue(e)}
+              />
+              <label for="checkbox-1" className="checkbox-custom-label">
+                Design
+              </label>
+            </div>
+            <div>
+              <input
+                className="checkbox-custom input"
+                style={{
+                  marginLeft: '20px',
+                  width: '19px',
+                  height: '19px',
+                  backgroundColor: 'white'
+                }}
+                name="myGroupName1"
+                value="Mobile"
+                refs="v7"
+                type="checkbox"
+                checked={this.state.selectedValue === 'Mobile'}
+                onChange={e => this.changeValue(e)}
+              />
+              <label for="checkbox-1" className="checkbox-custom-label">
+                Mobile
+              </label>
+            </div>
+            <div>
+              <input
+                className="checkbox-custom input"
+                style={{
+                  marginLeft: '20px',
+                  width: '19px',
+                  height: '19px',
+                  backgroundColor: 'white'
+                }}
+                name="myGroupName1"
+                value="HR"
+                type="checkbox"
+                refs="v8"
+                checked={this.state.selectedValue === 'HR'}
+                onChange={e => this.changeValue(e)}
+              />
+              <label for="checkbox-1" className="checkbox-custom-label">
+                HR
+              </label>
+            </div>
+            <div>
+              <input
+                className="checkbox-custom input"
+                style={{
+                  marginLeft: '20px',
+                  width: '19px',
+                  height: '19px',
+                  backgroundColor: 'white'
+                }}
+                name="myGroupName1"
+                value="Tech"
+                refs="v9"
+                type="checkbox"
+                checked={this.state.selectedValue === 'Tech'}
+                onChange={e => this.changeValue(e)}
+              />
+              <label for="checkbox-1" className="checkbox-custom-label">
+                Tech
+              </label>
+            </div>
+            <div>
+              <input
+                className="checkbox-custom input"
+                style={{
+                  marginLeft: '20px',
+                  width: '19px',
+                  height: '19px',
+                  backgroundColor: 'white'
+                }}
+                name="myGroupName1"
+                value="Cofound"
+                refs="v10"
+                type="checkbox"
+                checked={this.state.selectedValue === 'Cofound'}
+                onChange={e => this.changeValue(e)}
+              />
+              <label for="checkbox-1" className="checkbox-custom-label">
+                Co-Found
+              </label>
+            </div>
+            <div>
+              <input
+                className="checkbox-custom input"
+                style={{
+                  marginLeft: '20px',
+                  width: '19px',
+                  height: '19px',
+                  backgroundColor: 'white'
+                }}
+                name="myGroupName1"
+                id="Support"
+                value="Support"
+                refs="v10"
+                type="checkbox"
+                checked={this.state.selectedValue === 'Support'}
+                onChange={e => this.changeValue(e)}
+              />
+              <label for="checkbox-1" className="checkbox-custom-label">
+                App-Support
+              </label>
+            </div>
           </div>
         </div>
       </div>

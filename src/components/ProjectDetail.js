@@ -52,6 +52,14 @@ class ProjectDetail extends Component {
     };
 
     const createData = () => {
+      const total = _.reduce(
+        this.state.projectdetail.projectData,
+        (sum, n) => {
+          return (sum += n.sum_man_day * 1);
+        },
+        0
+      );
+      console.log('total =========+>', total);
       return (
         <div className="row mt-5">
           <div className="col-lg-3 col-md-4 col-sm-6 col-12">
@@ -86,7 +94,9 @@ class ProjectDetail extends Component {
                         'Designer',
                         'Mobile Developer',
                         'HR Director',
-                        'Co-Founder'
+                        'Co-Founder',
+                        'Technical Lead',
+                        'Application Support'
                       ];
                       var color = '';
                       if (item.position === positionList[0]) {
@@ -96,30 +106,71 @@ class ProjectDetail extends Component {
                       } else if (item.position === positionList[2]) {
                         color = '#7360AC';
                       } else if (item.position === positionList[3]) {
-                        color = '#00A7BC';
+                        color = '#0052A6';
                       } else if (item.position === positionList[4]) {
-                        color = '#04A54A';
+                        color = '#00A7BC';
                       } else if (item.position === positionList[5]) {
-                        color = '#FFF200';
+                        color = '#04A54A';
                       } else if (item.position === positionList[6]) {
-                        color = '#FFB700';
+                        color = '#8FC630';
                       } else if (item.position === positionList[7]) {
-                        color = '#F98B20';
+                        color = '#FFF200';
                       } else if (item.position === positionList[8]) {
-                        color = '#F46A1C';
+                        color = '#FFB700';
                       } else if (item.position === positionList[9]) {
                         color = '#C9302C';
+                      } else if (item.position === positionList[10]) {
+                        color = '#F46A1C';
+                      } else if (item.position === positionList[11]) {
+                        color = 'gray';
                       }
                       let position = '';
+                      if (item.position === 'Frontend Developer') {
+                        position = 'Front';
+                      }
+                      if (item.position === 'Quality Assurance Engineer') {
+                        position = 'QA';
+                      }
+                      if (item.position === 'Backend Developer') {
+                        position = 'Back';
+                      }
+                      if (item.position === 'Project Management Officer') {
+                        position = 'PMO';
+                      }
+                      if (item.position === 'Business Analyst') {
+                        position = 'BA';
+                      }
+                      if (item.position === 'Designer') {
+                        position = 'Design';
+                      }
+                      if (item.position === 'Mobile Developer') {
+                        position = 'Mobile';
+                      }
+                      if (item.position === 'HR Director') {
+                        position = 'HR';
+                      }
+                      if (item.position === 'Technology') {
+                        position = 'Tech';
+                      }
+                      if (item.position === 'Co-Founder') {
+                        position = 'Co-Founder';
+                      }
+                      if (item.position === 'Application Support') {
+                        position = 'App-Support';
+                      }
                       return (
                         <div className="position-mandays">
-                          <p className="pull-left">
-                            <Color color={color} />
-                            {item.position}
-                          </p>
-                          <span className="pull-right">
-                            {item.sum_man_day}
-                          </span>
+                          <div>
+                            <p className="pull-left">
+                              <Color color={color} />
+                              {position}
+                            </p>
+                          </div>
+                          <div>
+                            <span className="pull-right">
+                              {item.sum_man_day}
+                            </span>
+                          </div>
                         </div>
                       );
                     })}
@@ -127,13 +178,7 @@ class ProjectDetail extends Component {
                   <div className="card-footer text-muted">
                     <p className="pull-left">Total</p>
                     <p className="pull-right">
-                      {_.reduce(
-                        this.state.projectdetail.projectData,
-                        (sum, n) => {
-                          return (sum += n.sum_man_day * 1);
-                        },
-                        0
-                      )}
+                      {total.toFixed(2)}
                     </p>
                   </div>
                 </div>

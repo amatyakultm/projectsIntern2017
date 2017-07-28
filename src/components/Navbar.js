@@ -44,7 +44,7 @@ class Navbar extends Component {
           className="collapse navbar-collapse nav-menu"
           id="navbarTogglerDemo02"
         >
-          <ul className="navbar-nav mr-auto mt-2 mt-md-0">
+          <ul className="navbar-nav mr-auto mt-2 mt-md-0 pull-left">
             <li
               className={
                 this.props.path === '/projects' ? 'nav-item active' : 'nav-item'
@@ -76,7 +76,55 @@ class Navbar extends Component {
               </a>
             </li>
           </ul>
+          <ul className="navbar-nav pull-right">
+            <li
+              className={
+                this.props.path === '/projects' ? 'nav-item active' : 'nav-item'
+              }
+            >
+              <div className="dropdown">
+                <a
+                  className="nav-link"
+                  id="dropdownMenuButton"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <i className="fa fa-cog" aria-hidden="true" /> Setting
+                </a>
+                <div
+                  className="dropdown-menu"
+                  aria-labelledby="dropdownMenuButton"
+                >
+                  <label for="checkbox-1" className="checkbox-custom-label">
+                    <a href="/setting/position">Update Position</a>
+                  </label>
+                  <label for="checkbox-1" className="checkbox-custom-label">
+                    <a href="/setting/data">Update Data</a>
+                  </label>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
+        <style jsx>
+          {`
+            .dropdown-menu {
+              right: 0;
+              left: inherit;
+            }
+            .dropdown-menu a {
+              text-decoration: none;
+              color: #2e4053;
+            }
+            .dropdown-menu a:hover {
+              color: #dc3833;
+            }
+            a.nav-link {
+              cursor: pointer;
+            }
+          `}
+        </style>
       </nav>
     );
   }

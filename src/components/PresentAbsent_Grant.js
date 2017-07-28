@@ -1,12 +1,13 @@
-import React, { Component } from "react";
-import axios from "axios";
-import _ from "lodash";
-import moment from "moment";
-import Search from "./Search";
-import Filter from "./Filter";
-import Mapping from "./Mapping";
-import Timeline from "react-calendar-timeline/lib";
-import { Link } from "react-router";
+import React, { Component } from 'react';
+import axios from 'axios';
+import _ from 'lodash';
+import moment from 'moment';
+import Search from './Search';
+import Filter from './Filter';
+import Mapping from './Mapping';
+import Timeline from 'react-calendar-timeline/lib';
+import scrollBar from '../styles/ScrollBar.css';
+import { Link } from 'react-router';
 import {
   TabContent,
   TabPane,
@@ -19,11 +20,11 @@ import {
   CardText,
   Row,
   Col
-} from "reactstrap";
-import classnames from "classnames";
-import "../styles/Style.css";
-const BASE_URL = "http://52.77.234.30";
-const DAY_FORMAT = "YYYY-MM-DD";
+} from 'reactstrap';
+import classnames from 'classnames';
+import '../styles/Style.css';
+const BASE_URL = 'http://52.77.234.30';
+const DAY_FORMAT = 'YYYY-MM-DD';
 class PresentAbsentGrant extends Component {
   constructor(props) {
     super(props);
@@ -39,7 +40,7 @@ class PresentAbsentGrant extends Component {
       inAsc: true,
       outAsc: true,
       totalAsc: true,
-      activeTab: "1"
+      activeTab: '1'
     };
   }
 
@@ -75,7 +76,7 @@ class PresentAbsentGrant extends Component {
     console.log(data);
     if (type.absent && type.normal && type.overwork && type.underwork) {
       await this.setState({
-        user: _.filter(data, i => i.status !== "")
+        user: _.filter(data, i => i.status !== '')
       });
     } else if (
       !type.absent &&
@@ -87,10 +88,10 @@ class PresentAbsentGrant extends Component {
         user: _.filter(
           data,
           i =>
-            i.status !== "Absent" &&
-            i.status !== "Normal" &&
-            i.status !== "Overwork" &&
-            i.status !== "Underwork"
+            i.status !== 'Absent' &&
+            i.status !== 'Normal' &&
+            i.status !== 'Overwork' &&
+            i.status !== 'Underwork'
         )
       });
     } else if (
@@ -103,15 +104,15 @@ class PresentAbsentGrant extends Component {
         user: _.filter(
           data,
           i =>
-            i.status === "Absent" &&
-            i.status !== "Normal" &&
-            i.status !== "Overwork" &&
-            i.status !== "Underwork"
+            i.status === 'Absent' &&
+            i.status !== 'Normal' &&
+            i.status !== 'Overwork' &&
+            i.status !== 'Underwork'
         )
       });
     } else if (!type.absent && type.normal && type.overwork && type.underwork) {
       await this.setState({
-        user: _.filter(data, i => i.status !== "Absent")
+        user: _.filter(data, i => i.status !== 'Absent')
       });
     } else if (
       !type.absent &&
@@ -123,14 +124,14 @@ class PresentAbsentGrant extends Component {
         user: _.filter(
           data,
           i =>
-            i.status !== "Absent" &&
-            i.status !== "Overwork" &&
-            i.status !== "Underwork"
+            i.status !== 'Absent' &&
+            i.status !== 'Overwork' &&
+            i.status !== 'Underwork'
         )
       });
     } else if (type.absent && !type.normal && type.overwork && type.underwork) {
       await this.setState({
-        user: _.filter(data, i => i.status !== "Normal")
+        user: _.filter(data, i => i.status !== 'Normal')
       });
     } else if (
       !type.absent &&
@@ -142,14 +143,14 @@ class PresentAbsentGrant extends Component {
         user: _.filter(
           data,
           i =>
-            i.status !== "Absent" &&
-            i.status !== "Normal" &&
-            i.status !== "Underwork"
+            i.status !== 'Absent' &&
+            i.status !== 'Normal' &&
+            i.status !== 'Underwork'
         )
       });
     } else if (type.absent && type.normal && !type.overwork && type.underwork) {
       await this.setState({
-        user: _.filter(data, i => i.status !== "Overwork")
+        user: _.filter(data, i => i.status !== 'Overwork')
       });
     } else if (
       !type.absent &&
@@ -161,14 +162,14 @@ class PresentAbsentGrant extends Component {
         user: _.filter(
           data,
           i =>
-            i.status !== "Absent" &&
-            i.status !== "Normal" &&
-            i.status !== "Overwork"
+            i.status !== 'Absent' &&
+            i.status !== 'Normal' &&
+            i.status !== 'Overwork'
         )
       });
     } else if (type.absent && type.normal && type.overwork && !type.underwork) {
       await this.setState({
-        user: _.filter(data, i => i.status !== "Underwork")
+        user: _.filter(data, i => i.status !== 'Underwork')
       });
     } else if (
       type.absent &&
@@ -179,7 +180,7 @@ class PresentAbsentGrant extends Component {
       await this.setState({
         user: _.filter(
           data,
-          i => i.status !== "Overwork" && i.status !== "Underwork"
+          i => i.status !== 'Overwork' && i.status !== 'Underwork'
         )
       });
     } else if (
@@ -191,7 +192,7 @@ class PresentAbsentGrant extends Component {
       await this.setState({
         user: _.filter(
           data,
-          i => i.status !== "Absent" && i.status !== "Normal"
+          i => i.status !== 'Absent' && i.status !== 'Normal'
         )
       });
     } else if (
@@ -203,7 +204,7 @@ class PresentAbsentGrant extends Component {
       await this.setState({
         user: _.filter(
           data,
-          i => i.status !== "Normal" && i.status !== "Underwork"
+          i => i.status !== 'Normal' && i.status !== 'Underwork'
         )
       });
     } else if (
@@ -215,7 +216,7 @@ class PresentAbsentGrant extends Component {
       await this.setState({
         user: _.filter(
           data,
-          i => i.status !== "Absent" && i.status !== "Overwork"
+          i => i.status !== 'Absent' && i.status !== 'Overwork'
         )
       });
     } else if (
@@ -227,7 +228,7 @@ class PresentAbsentGrant extends Component {
       await this.setState({
         user: _.filter(
           data,
-          i => i.status !== "Normal" && i.status !== "Overwork"
+          i => i.status !== 'Normal' && i.status !== 'Overwork'
         )
       });
     } else if (
@@ -239,7 +240,7 @@ class PresentAbsentGrant extends Component {
       await this.setState({
         user: _.filter(
           data,
-          i => i.status !== "Absent" && i.status !== "Underwork"
+          i => i.status !== 'Absent' && i.status !== 'Underwork'
         )
       });
     }
@@ -269,8 +270,11 @@ class PresentAbsentGrant extends Component {
   async handleFromTo() {
     console.log(this.refs.from.value);
     console.log(this.refs.to.value);
-    const from = this.refs.from.value;
-    const to = this.refs.to.value;
+    let from = this.refs.from.value;
+    let to = this.refs.to.value;
+    if (to < from) {
+      from = to;
+    }
     this.setState({
       users: null,
       user: null
@@ -296,18 +300,11 @@ class PresentAbsentGrant extends Component {
     }
   }
 
-  handleFrom(e) {
-    const from = e.target.value;
-    this.setState({
-      from: from
-    });
-  }
-
-  handleTo(e) {
-    const to = e.target.value;
-    this.setState({
-      to: to
-    });
+  handleUpdateDate(event) {
+    const { id, value } = event.target;
+    if (!_.isEmpty(value)) {
+      this.setState({ [id]: value });
+    }
   }
 
   generateOption() {}
@@ -361,13 +358,13 @@ class PresentAbsentGrant extends Component {
     _.map(this.state.user, (item, index) => {
       const userCheck = _.find(groups, i => i.id === item.id);
       if (userCheck) {
-        if (item.status === "Absent") {
+        if (item.status === 'Absent') {
           userCheck.absent_count += 1;
         } else {
           userCheck.present_count += 1;
         }
       } else {
-        if (item.status === "Absent") {
+        if (item.status === 'Absent') {
           groups.push({
             id: item.id,
             title: item.name,
@@ -386,32 +383,56 @@ class PresentAbsentGrant extends Component {
       items.push({
         id: index,
         group: item.id,
-        title: " ",
+        title: ' ',
         className: `${item.status}`,
         start_time: moment(item.date),
-        end_time: moment(item.date).add(1, "days")
+        end_time: moment(item.date).add(1, 'days'),
+        fixedHeader: 'sticky'
       });
     });
-    const newGroups = _.map(groups, item => {
-      item.rightTitle = `${item.present_count} (${item.absent_count})`;
+    // const newGroups = _.map(groups, item => {
+    //   item.rightTitle = `${item.present_count} (${item.absent_count})`;
+    // });
+    _.map(groups, item => {
+      item.rightTitle = (
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
+          <div
+            style={{
+              width: '50%',
+              border: '1px solid #ddd',
+              textAlign: 'center'
+            }}
+          >
+            {item.present_count}
+          </div>
+          <div
+            style={{
+              width: '50%',
+              border: '1px solid #ddd',
+              textAlign: 'center'
+            }}
+          >
+            {item.absent_count}
+          </div>
+        </div>
+      );
     });
-
     const data = [
       {
-        id: "Underwork",
-        color: "#ec971f"
+        id: 'Underwork',
+        color: '#ec971f'
       },
       {
-        id: "Overwork",
-        color: "#31b0d5"
+        id: 'Overwork',
+        color: '#c9302c'
       },
       {
-        id: "Normal",
-        color: "#449d44"
+        id: 'Normal',
+        color: '#449d44'
       },
       {
-        id: "Absent",
-        color: "#c9302c"
+        id: 'Absent',
+        color: '#787878'
       }
     ];
     return (
@@ -434,32 +455,32 @@ class PresentAbsentGrant extends Component {
             </div>
             {
               <div className="pull-right fromto-box">
-                {!this.state.from ? "" : <span className="fromto">From </span>}
+                {!this.state.from ? '' : <span className="fromto">From </span>}
                 {!this.state.from
-                  ? ""
+                  ? ''
                   : <input
                       className="form-control fromto_input"
                       type="date"
                       ref="from"
                       value={moment(this.state.from).format(DAY_FORMAT)}
-                      onChange={e => this.handleFrom(e)}
+                      onChange={e => this.handleUpdateDate(e)}
                     />}
-                {!this.state.to ? "" : <span className="fromto">To </span>}
+                {!this.state.to ? '' : <span className="fromto">To </span>}
                 {!this.state.to
-                  ? ""
+                  ? ''
                   : <input
                       className="form-control fromto_input"
                       type="date"
                       ref="to"
                       value={
                         !this.state.to
-                          ? "Waiting"
+                          ? 'Waiting'
                           : moment(this.state.to).format(DAY_FORMAT)
                       }
-                      onChange={e => this.handleTo(e)}
+                      onChange={e => this.handleUpdateDate(e)}
                     />}
                 {!this.state.to && !this.state.from
-                  ? ""
+                  ? ''
                   : <button
                       className="btn btn-sm btn-danger"
                       onClick={() => this.handleFromTo()}
@@ -471,35 +492,62 @@ class PresentAbsentGrant extends Component {
           </div>
         </div>
         <div className="row mt-2">
-          <div className="col-6 offset-3">
+          <div className="col-5 colorTab">
             <Mapping data={data} />
           </div>
         </div>
         <div className="row mt-3">
           <div className="col-12">
-          <div className="tableCalanDar" style={{ overflowX: 'hidden', overflowY:'scroll', height: 400} }>
-            <Timeline
-              groups={groups}
-              items={items}
-              defaultTimeStart={moment("2017-07-01")}
-              defaultTimeEnd={moment("2017-07-02")}
-              visibleTimeStart={moment("2017-07")}
-              minZoom={2592000000}
-              fixedHeader="fixed"
-              maxZoom={2592000000}
-              sidebarContent="Name"
-              rightSidebarWidth={150}
-              rightSidebarContent={
-                <div>
-                  <span>Present</span>
-                  <span>(Absent)</span>
-                </div>
-              }
-            />
+            <div
+              className="tableCalanDar"
+              style={{
+                overflowX: 'hidden',
+                overflowY: 'scroll',
+                height: 400
+              }}
+            >
+              <Timeline
+                groups={groups}
+                items={items}
+                defaultTimeStart={moment().add(-1, 'month')}
+                defaultTimeEnd={moment()}
+                visibleTimeStart={moment().add(-1, 'month')}
+                minZoom={2592000000}
+                fixedHeader="fixed"
+                maxZoom={2592000000}
+                sidebarContent="Name"
+                rightSidebarWidth={150}
+                rightSidebarContent={
+                  <table>
+                    <tr>
+                      <td
+                        style={{
+                          height: '60px',
+                          width: '100',
+                          border: '1px solid #ddd',
+                          textAlign: 'center',
+                          backgroundColor: '#449d44'
+                        }}
+                      >
+                        Present
+                      </td>
+                      <td
+                        style={{
+                          height: '60px',
+                          width: '100',
+                          border: '1px solid #ddd',
+                          textAlign: 'center'
+                        }}
+                      >
+                        Absent
+                      </td>
+                    </tr>
+                  </table>
+                }
+              />
             </div>
           </div>
         </div>
-
       </div>
     );
   }

@@ -26,6 +26,8 @@ class TableData extends Component {
       cur_name: undefined,
       cur_position: undefined
     };
+    this.openModal = this.openModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
   }
 
   openModal() {
@@ -195,7 +197,7 @@ class TableData extends Component {
 
     return (
       <div className="col-lg-9 col-md-8 col-sm-6 col-12">
-        <table className="table table-hover">
+        <table className="table table-hover fonttable">
           <thead className="thead-inverse">
             <tr>
               <th>Role</th>
@@ -219,7 +221,9 @@ class TableData extends Component {
                   'Designer',
                   'Mobile Developer',
                   'HR Director',
-                  'Co-Founder'
+                  'Co-Founder',
+                  'Technical Lead',
+                  'Application Support'
                 ];
                 var color = '';
                 if (user.position === positionList[0]) {
@@ -229,19 +233,23 @@ class TableData extends Component {
                 } else if (user.position === positionList[2]) {
                   color = '#7360AC';
                 } else if (user.position === positionList[3]) {
-                  color = '#00A7BC';
+                  color = '#0052A6';
                 } else if (user.position === positionList[4]) {
-                  color = '#04A54A';
+                  color = '#00A7BC';
                 } else if (user.position === positionList[5]) {
-                  color = '#FFF200';
+                  color = '#04A54A';
                 } else if (user.position === positionList[6]) {
-                  color = '#FFB700';
+                  color = '#8FC630';
                 } else if (user.position === positionList[7]) {
-                  color = '#F98B20';
+                  color = '#FFF200';
                 } else if (user.position === positionList[8]) {
-                  color = '#F46A1C';
+                  color = '#FFB700';
                 } else if (user.position === positionList[9]) {
                   color = '#C9302C';
+                } else if (user.position === positionList[10]) {
+                  color = '#F46A1C';
+                } else if (user.position === positionList[11]) {
+                  color = 'gray';
                 }
                 let position;
                 if (currentPosition !== user.position) {
@@ -268,16 +276,16 @@ class TableData extends Component {
                     <td>
                       {item.name}
                     </td>
-                    <td>
-                      {item.total_hour}
+                    <td style={{ textAlign: 'right' }}>
+                      {time(item.total_hour)}
                     </td>
-                    <td>
+                    <td style={{ textAlign: 'center' }}>
                       {item.manday}
                     </td>
-                    <td>
+                    <td style={{ textAlign: 'right' }}>
                       {item.sum_billable}
                     </td>
-                    <td>
+                    <td style={{ textAlign: 'right' }}>
                       {item.sum_nonbillable}
                     </td>
                   </tr>

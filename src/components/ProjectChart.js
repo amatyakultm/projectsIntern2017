@@ -125,11 +125,11 @@ class ProjectChart extends Component {
         color: '#EE1F79'
       },
       {
-        id: 'F.DEV',
+        id: 'FRONT',
         color: '#9E65AB'
       },
       {
-        id: 'B.DEV',
+        id: 'BACK',
         color: '#7360AC'
       },
       {
@@ -145,7 +145,7 @@ class ProjectChart extends Component {
         color: '#FFF200'
       },
       {
-        id: 'M.DEV',
+        id: 'MOBILE',
         color: '#FFB700'
       },
       {
@@ -157,8 +157,12 @@ class ProjectChart extends Component {
         color: '#F46A1C'
       },
       {
-        id: 'C.Found',
+        id: 'CO-F',
         color: '#C9302C'
+      },
+      {
+        id: 'SUP',
+        color: 'gray'
       }
     ];
     const chartData = _.map(this.state.project, (item, index) => {
@@ -175,7 +179,9 @@ class ProjectChart extends Component {
         'Designer',
         'Mobile Developer',
         'HR Director',
-        'Co-Founder'
+        'Co-Founder',
+        'Technical Lead',
+        'Application Support'
       ];
       _.map(item[Object.keys(item)[0]], position => {
         listDataOption.push(position.total_hour);
@@ -190,19 +196,23 @@ class ProjectChart extends Component {
         } else if (label === positionList[2]) {
           color = '#7360AC';
         } else if (label === positionList[3]) {
-          color = '#00A7BC';
+          color = '#0052a6';
         } else if (label === positionList[4]) {
-          color = '#04A54A';
+          color = '#00a7bc';
         } else if (label === positionList[5]) {
-          color = '#FFF200';
+          color = '#04a54a';
         } else if (label === positionList[6]) {
-          color = '#FFB700';
+          color = '#8fc630';
         } else if (label === positionList[7]) {
-          color = '#F98B20';
+          color = '#fff200';
         } else if (label === positionList[8]) {
-          color = '#F46A1C';
+          color = '#FFB700';
         } else if (label === positionList[9]) {
           color = '#C9302C';
+        } else if (label === positionList[10]) {
+          color = '#F46A1C';
+        } else if (label === positionList[11]) {
+          color = 'gray';
         }
         colorList.push(color);
       });
@@ -308,7 +318,7 @@ class ProjectChart extends Component {
                     </button>}
               </div>
             }
-            <div className="pull-left">
+            <div style={{ width: '80%', marginTop: '5%' }}>
               <Mapping data={data} />
             </div>
           </div>

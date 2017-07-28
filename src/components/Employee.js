@@ -277,7 +277,7 @@ class Table extends Component {
       data = 'HR Director';
     }
     if (data === 'Tech') {
-      data = 'Technology';
+      data = 'Technical Lead';
     }
     if (data === 'Cofound') {
       data = 'Co-Founder';
@@ -285,9 +285,12 @@ class Table extends Component {
     if (data === 'Support') {
       data = 'Application Support';
     }
-    this.setState({
-      user: _.filter(userData, i => i.position === data)
-    });
+    if (data === 'All') {
+      data = 'All';
+    }
+    const user =
+      data === 'All' ? userData : _.filter(userData, i => i.position === data);
+    this.setState({ user });
   }
 
   render() {
@@ -295,6 +298,7 @@ class Table extends Component {
       ((time / 3600000) | 0) + 'h ' + ((time % 3600000 / 60000) | 0) + 'm';
     const createData = data => {
       return _.map(data, (user, index) => {
+        console.log(user);
         return (
           <tr className="tr_userdata" onClick={() => this.handleClickTr(user)}>
             <td>
@@ -302,15 +306,21 @@ class Table extends Component {
                 {user.is_lead
                   ? <img
                       src="/assets/img/appmanblack.png"
-                      style={{ width: '20px' }}
+                      style={{ width: '23px' }}
+                    />
+                  : ''}
+                {user.id === '2413883'
+                  ? <img
+                      src="/assets/img/appmangenie.png"
+                      style={{ width: '23px' }}
                     />
                   : ''}
               </div>{' '}
               {user.position}
             </td>
-            <td>
+            {/*<td>
               {user.id}
-            </td>
+            </td>*/}
             <td>
               {user.name}
             </td>
@@ -358,16 +368,16 @@ class Table extends Component {
               {_.map(this.state.userdata, (item, index) => {
                 return (
                   <tr key={index}>
-                    <td>
+                    <td style={{ width: '10%' }}>
                       {moment(item.start).format('DD MMM YYYY')}
                     </td>
-                    <td>
+                    <td style={{ width: '20%' }}>
                       {item.project}
                     </td>
-                    <td>
+                    <td style={{ width: '50%' }}>
                       {item.description}
                     </td>
-                    <td>
+                    <td style={{ width: '20%' }}>
                       {time(item.dur)}
                     </td>
                   </tr>
@@ -383,11 +393,7 @@ class Table extends Component {
       <div>
         <div className="row">
           <div className="col-md-12">
-            <div className="pull-left">
-              <FilterPosition
-                onChange={data => this.handleOnChangeFilter(data)}
-              />
-            </div>
+            <div className="pull-left" />
             <div className="pull-right">
               <Search onChange={query => this.handleSearch(query)} />
             </div>
@@ -395,9 +401,19 @@ class Table extends Component {
         </div>
         <div className="row mt-3">
           <div className="col-12">
-            <div className="pull-left" />
-            {
-              <div className="pull-right fromto-box">
+            <div className="pull-left">
+              <FilterPosition
+                onChange={data => this.handleOnChangeFilter(data)}
+              />
+            </div>
+            <form
+              onSubmit={event => {
+                console.log('--------------');
+                event.preventDefault();
+                console.log('eeeeeeeeeeeeeeeeeeeee');
+              }}
+            >
+              <div className="pull-right fromto-box eee">
                 {!this.state.from ? '' : <span className="fromto">From </span>}
                 {!this.state.from
                   ? ''
@@ -433,7 +449,7 @@ class Table extends Component {
                       Submit
                     </button>}
               </div>
-            }
+            </form>
           </div>
         </div>
         <div className="row mt-3">
@@ -455,7 +471,7 @@ class Table extends Component {
                               aria-hidden="true"
                             />}
                       </th>
-                      <th onClick={() => this.handleSort('id')}>
+                      {/*<th onClick={() => this.handleSort('id')}>
                         Id
                         {this.state.idAsc
                           ? <i
@@ -466,7 +482,7 @@ class Table extends Component {
                               className="fa fa-sort-asc pull-right sortt"
                               aria-hidden="true"
                             />}
-                      </th>
+                      </th>*/}
                       <th onClick={() => this.handleSort('name')}>
                         Name
                         {this.state.nameAsc
