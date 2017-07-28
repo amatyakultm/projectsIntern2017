@@ -21,7 +21,7 @@ import {
 } from 'reactstrap';
 import classnames from 'classnames';
 import '../styles/Style.css';
-const BASE_URL = 'http://52.77.234.30';
+const BASE_URL = 'http://54.254.251.53';
 const DAY_FORMAT = 'YYYY-MM-DD';
 class PresentAbsent extends Component {
   constructor(props) {
@@ -303,24 +303,6 @@ class PresentAbsent extends Component {
       this.setState({ [id]: value });
     }
   }
-
-  // handleFrom(e) {
-  //   const from = e.target.value;
-  //   if (!_.isEmpty(from)) {
-  //     this.setState({
-  //       from: from
-  //     });
-  //   }
-  // }
-
-  // handleTo(e) {
-  //   const to = e.target.value;
-  //   if (!_.isEmpty(to)) {
-  //     this.setState({
-  //       to: to
-  //     });
-  //   }
-  // }
 
   async handleSort(type) {
     let userData = this.state.user;

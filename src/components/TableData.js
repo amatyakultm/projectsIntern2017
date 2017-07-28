@@ -47,7 +47,7 @@ class TableData extends Component {
   getUserData(userid) {
     axios
       .get(
-        `http://52.77.234.30/projects/${this.props
+        `http://54.254.251.53/projects/${this.props
           .project_id}/user/${userid}?start=${this.props.start}&end=${this.props
           .end}`
       )

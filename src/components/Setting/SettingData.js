@@ -3,7 +3,7 @@ import axios from 'axios';
 import _ from 'lodash';
 import moment from 'moment';
 import '../../styles/Style.css';
-const BASE_URL = 'http://52.77.234.30';
+const BASE_URL = 'http://54.254.251.53';
 class SettingPosition extends Component {
   constructor(props) {
     super(props);

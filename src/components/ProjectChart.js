@@ -32,7 +32,7 @@ class ProjectChart extends Component {
 
   getUsers() {
     axios
-      .get(`http://52.77.234.30/api/sumprojectposition`)
+      .get(`http://54.254.251.53/api/sumprojectposition`)
       .then(response => {
         this.setState({
           projects: response.data.sumprojects,

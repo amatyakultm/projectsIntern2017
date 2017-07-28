@@ -14,7 +14,7 @@ import {
   ModalFooter
 } from 'react-modal-bootstrap';
 import '../styles/Style.css';
-const BASE_URL = 'http://52.77.234.30';
+const BASE_URL = 'http://54.254.251.53';
 const DAY_FORMAT = 'YYYY-MM-DD';
 class Table extends Component {
   constructor(props) {
@@ -36,6 +36,7 @@ class Table extends Component {
     this.hideModal = this.hideModal.bind(this);
     this.handleClickTr = this.handleClickTr.bind(this);
     this.handleOnChangeFilter = this.handleOnChangeFilter.bind(this);
+    //this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   openModal() {
@@ -51,6 +52,10 @@ class Table extends Component {
       userdata: undefined
     });
   }
+
+  // handleSubmit(event) {
+  //   event.preventDefault();
+  // }
 
   async handleSearch(query) {
     let result = [];
@@ -406,50 +411,46 @@ class Table extends Component {
                 onChange={data => this.handleOnChangeFilter(data)}
               />
             </div>
-            <form
-              onSubmit={event => {
-                console.log('--------------');
-                event.preventDefault();
-                console.log('eeeeeeeeeeeeeeeeeeeee');
-              }}
-            >
-              <div className="pull-right fromto-box eee">
-                {!this.state.from ? '' : <span className="fromto">From </span>}
-                {!this.state.from
-                  ? ''
-                  : <input
-                      className="form-control fromto_input"
-                      type="date"
-                      ref="from"
-                      id="from"
-                      value={moment(this.state.from).format(DAY_FORMAT)}
-                      onChange={e => this.handleUpdateDate(e)}
-                    />}
-                {!this.state.to ? '' : <span className="fromto">To </span>}
-                {!this.state.to
-                  ? ''
-                  : <input
-                      className="form-control fromto_input"
-                      type="date"
-                      ref="to"
-                      id="to"
-                      value={
-                        !this.state.to
-                          ? 'Waiting'
-                          : moment(this.state.to).format(DAY_FORMAT)
-                      }
-                      onChange={e => this.handleUpdateDate(e)}
-                    />}
-                {!this.state.to && !this.state.from
-                  ? ''
-                  : <button
-                      className="btn btn-sm btn-danger"
-                      onClick={() => this.handleFromTo()}
-                    >
-                      Submit
-                    </button>}
-              </div>
-            </form>
+            {/*<form onSubmit={() => this.handleFromTo()}>*/}
+            <div className="pull-right fromto-box eee">
+              {!this.state.from ? '' : <span className="fromto">From </span>}
+              {!this.state.from
+                ? ''
+                : <input
+                    className="form-control fromto_input"
+                    type="date"
+                    ref="from"
+                    id="from"
+                    max={moment().format(DAY_FORMAT)}
+                    value={moment(this.state.from).format(DAY_FORMAT)}
+                    onChange={e => this.handleUpdateDate(e)}
+                  />}
+              {!this.state.to ? '' : <span className="fromto">To </span>}
+              {!this.state.to
+                ? ''
+                : <input
+                    className="form-control fromto_input"
+                    type="date"
+                    ref="to"
+                    id="to"
+                    max={moment().format(DAY_FORMAT)}
+                    value={
+                      !this.state.to
+                        ? 'Waiting'
+                        : moment(this.state.to).format(DAY_FORMAT)
+                    }
+                    onChange={e => this.handleUpdateDate(e)}
+                  />}
+              {!this.state.to && !this.state.from
+                ? ''
+                : <button
+                    className="btn btn-sm btn-danger"
+                    onClick={() => this.handleFromTo()}
+                  >
+                    Submit
+                  </button>}
+            </div>
+            {/*</form>*/}
           </div>
         </div>
         <div className="row mt-3">
