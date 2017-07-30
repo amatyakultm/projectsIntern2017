@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import _ from 'lodash';
-import moment from 'moment';
-import Search from './Search';
-import Filter from './Filter';
-import Mapping from './Mapping';
-import Timeline from 'react-calendar-timeline/lib';
-import scrollBar from '../styles/ScrollBar.css';
-import { Link } from 'react-router';
+import React, { Component } from "react";
+import axios from "axios";
+import _ from "lodash";
+import moment from "moment";
+import Search from "./Search";
+import Filter from "./Filter";
+import Mapping from "./Mapping";
+import Timeline from "react-calendar-timeline/lib";
+import scrollBar from "../styles/ScrollBar.css";
+import { Link } from "react-router";
 import {
   TabContent,
   TabPane,
@@ -20,11 +20,11 @@ import {
   CardText,
   Row,
   Col
-} from 'reactstrap';
-import classnames from 'classnames';
-import '../styles/Style.css';
-const BASE_URL = 'http://54.254.251.53';
-const DAY_FORMAT = 'YYYY-MM-DD';
+} from "reactstrap";
+import classnames from "classnames";
+import "../styles/Style.css";
+const BASE_URL = "http://54.254.251.53";
+const DAY_FORMAT = "YYYY-MM-DD";
 class PresentAbsentGrant extends Component {
   constructor(props) {
     super(props);
@@ -40,7 +40,7 @@ class PresentAbsentGrant extends Component {
       inAsc: true,
       outAsc: true,
       totalAsc: true,
-      activeTab: '1'
+      activeTab: "1"
     };
   }
 
@@ -76,7 +76,7 @@ class PresentAbsentGrant extends Component {
     console.log(data);
     if (type.absent && type.normal && type.overwork && type.underwork) {
       await this.setState({
-        user: _.filter(data, i => i.status !== '')
+        user: _.filter(data, i => i.status !== "")
       });
     } else if (
       !type.absent &&
@@ -88,10 +88,10 @@ class PresentAbsentGrant extends Component {
         user: _.filter(
           data,
           i =>
-            i.status !== 'Absent' &&
-            i.status !== 'Normal' &&
-            i.status !== 'Overwork' &&
-            i.status !== 'Underwork'
+            i.status !== "Absent" &&
+            i.status !== "Normal" &&
+            i.status !== "Overwork" &&
+            i.status !== "Underwork"
         )
       });
     } else if (
@@ -104,15 +104,15 @@ class PresentAbsentGrant extends Component {
         user: _.filter(
           data,
           i =>
-            i.status === 'Absent' &&
-            i.status !== 'Normal' &&
-            i.status !== 'Overwork' &&
-            i.status !== 'Underwork'
+            i.status === "Absent" &&
+            i.status !== "Normal" &&
+            i.status !== "Overwork" &&
+            i.status !== "Underwork"
         )
       });
     } else if (!type.absent && type.normal && type.overwork && type.underwork) {
       await this.setState({
-        user: _.filter(data, i => i.status !== 'Absent')
+        user: _.filter(data, i => i.status !== "Absent")
       });
     } else if (
       !type.absent &&
@@ -124,14 +124,14 @@ class PresentAbsentGrant extends Component {
         user: _.filter(
           data,
           i =>
-            i.status !== 'Absent' &&
-            i.status !== 'Overwork' &&
-            i.status !== 'Underwork'
+            i.status !== "Absent" &&
+            i.status !== "Overwork" &&
+            i.status !== "Underwork"
         )
       });
     } else if (type.absent && !type.normal && type.overwork && type.underwork) {
       await this.setState({
-        user: _.filter(data, i => i.status !== 'Normal')
+        user: _.filter(data, i => i.status !== "Normal")
       });
     } else if (
       !type.absent &&
@@ -143,14 +143,14 @@ class PresentAbsentGrant extends Component {
         user: _.filter(
           data,
           i =>
-            i.status !== 'Absent' &&
-            i.status !== 'Normal' &&
-            i.status !== 'Underwork'
+            i.status !== "Absent" &&
+            i.status !== "Normal" &&
+            i.status !== "Underwork"
         )
       });
     } else if (type.absent && type.normal && !type.overwork && type.underwork) {
       await this.setState({
-        user: _.filter(data, i => i.status !== 'Overwork')
+        user: _.filter(data, i => i.status !== "Overwork")
       });
     } else if (
       !type.absent &&
@@ -162,14 +162,14 @@ class PresentAbsentGrant extends Component {
         user: _.filter(
           data,
           i =>
-            i.status !== 'Absent' &&
-            i.status !== 'Normal' &&
-            i.status !== 'Overwork'
+            i.status !== "Absent" &&
+            i.status !== "Normal" &&
+            i.status !== "Overwork"
         )
       });
     } else if (type.absent && type.normal && type.overwork && !type.underwork) {
       await this.setState({
-        user: _.filter(data, i => i.status !== 'Underwork')
+        user: _.filter(data, i => i.status !== "Underwork")
       });
     } else if (
       type.absent &&
@@ -180,7 +180,7 @@ class PresentAbsentGrant extends Component {
       await this.setState({
         user: _.filter(
           data,
-          i => i.status !== 'Overwork' && i.status !== 'Underwork'
+          i => i.status !== "Overwork" && i.status !== "Underwork"
         )
       });
     } else if (
@@ -192,7 +192,7 @@ class PresentAbsentGrant extends Component {
       await this.setState({
         user: _.filter(
           data,
-          i => i.status !== 'Absent' && i.status !== 'Normal'
+          i => i.status !== "Absent" && i.status !== "Normal"
         )
       });
     } else if (
@@ -204,7 +204,7 @@ class PresentAbsentGrant extends Component {
       await this.setState({
         user: _.filter(
           data,
-          i => i.status !== 'Normal' && i.status !== 'Underwork'
+          i => i.status !== "Normal" && i.status !== "Underwork"
         )
       });
     } else if (
@@ -216,7 +216,7 @@ class PresentAbsentGrant extends Component {
       await this.setState({
         user: _.filter(
           data,
-          i => i.status !== 'Absent' && i.status !== 'Overwork'
+          i => i.status !== "Absent" && i.status !== "Overwork"
         )
       });
     } else if (
@@ -228,7 +228,7 @@ class PresentAbsentGrant extends Component {
       await this.setState({
         user: _.filter(
           data,
-          i => i.status !== 'Normal' && i.status !== 'Overwork'
+          i => i.status !== "Normal" && i.status !== "Overwork"
         )
       });
     } else if (
@@ -240,7 +240,7 @@ class PresentAbsentGrant extends Component {
       await this.setState({
         user: _.filter(
           data,
-          i => i.status !== 'Absent' && i.status !== 'Underwork'
+          i => i.status !== "Absent" && i.status !== "Underwork"
         )
       });
     }
@@ -358,13 +358,13 @@ class PresentAbsentGrant extends Component {
     _.map(this.state.user, (item, index) => {
       const userCheck = _.find(groups, i => i.id === item.id);
       if (userCheck) {
-        if (item.status === 'Absent') {
+        if (item.status === "Absent") {
           userCheck.absent_count += 1;
         } else {
           userCheck.present_count += 1;
         }
       } else {
-        if (item.status === 'Absent') {
+        if (item.status === "Absent") {
           groups.push({
             id: item.id,
             title: item.name,
@@ -383,11 +383,11 @@ class PresentAbsentGrant extends Component {
       items.push({
         id: index,
         group: item.id,
-        title: ' ',
+        title: " ",
         className: `${item.status}`,
         start_time: moment(item.date),
-        end_time: moment(item.date).add(1, 'days'),
-        fixedHeader: 'sticky'
+        end_time: moment(item.date).add(1, "days"),
+        fixedHeader: "sticky"
       });
     });
     // const newGroups = _.map(groups, item => {
@@ -395,21 +395,21 @@ class PresentAbsentGrant extends Component {
     // });
     _.map(groups, item => {
       item.rightTitle = (
-        <div style={{ display: 'flex', flexDirection: 'row' }}>
+        <div style={{ display: "flex", flexDirection: "row" }}>
           <div
             style={{
-              width: '50%',
-              border: '1px solid #ddd',
-              textAlign: 'center'
+              width: "50%",
+              border: "1px solid #ddd",
+              textAlign: "center"
             }}
           >
             {item.present_count}
           </div>
           <div
             style={{
-              width: '50%',
-              border: '1px solid #ddd',
-              textAlign: 'center'
+              width: "50%",
+              border: "1px solid #ddd",
+              textAlign: "center"
             }}
           >
             {item.absent_count}
@@ -419,20 +419,20 @@ class PresentAbsentGrant extends Component {
     });
     const data = [
       {
-        id: 'Underwork',
-        color: '#ec971f'
+        id: "Underwork",
+        color: "#ec971f"
       },
       {
-        id: 'Overwork',
-        color: '#c9302c'
+        id: "Overwork",
+        color: "#c9302c"
       },
       {
-        id: 'Normal',
-        color: '#449d44'
+        id: "Normal",
+        color: "#449d44"
       },
       {
-        id: 'Absent',
-        color: '#787878'
+        id: "Absent",
+        color: "#787878"
       }
     ];
     return (
@@ -440,24 +440,24 @@ class PresentAbsentGrant extends Component {
         <div className="row">
           <div className="col-md-12">
             <div className="pull-left">
-              <Nav tabs>
+              <Nav tabs className="navtabs">
                 <NavItem>
                   <Link to="/presentabsent">
-                    <NavLink>Table</NavLink>
+                    <NavLink className="modeL">Table</NavLink>
                   </Link>
                 </NavItem>
                 <NavItem>
                   <Link to="/presentabsent/grant">
-                    <NavLink className="active">Grant</NavLink>
+                    <NavLink className="active modeR">Grant</NavLink>
                   </Link>
                 </NavItem>
               </Nav>
             </div>
             {
               <div className="pull-right fromto-box">
-                {!this.state.from ? '' : <span className="fromto">From </span>}
+                {!this.state.from ? "" : <span className="fromto">From </span>}
                 {!this.state.from
-                  ? ''
+                  ? ""
                   : <input
                       className="form-control fromto_input"
                       type="date"
@@ -467,9 +467,9 @@ class PresentAbsentGrant extends Component {
                       value={moment(this.state.from).format(DAY_FORMAT)}
                       onChange={e => this.handleUpdateDate(e)}
                     />}
-                {!this.state.to ? '' : <span className="fromto">To </span>}
+                {!this.state.to ? "" : <span className="fromto">To </span>}
                 {!this.state.to
-                  ? ''
+                  ? ""
                   : <input
                       className="form-control fromto_input"
                       type="date"
@@ -478,13 +478,13 @@ class PresentAbsentGrant extends Component {
                       max={moment().format(DAY_FORMAT)}
                       value={
                         !this.state.to
-                          ? 'Waiting'
+                          ? "Waiting"
                           : moment(this.state.to).format(DAY_FORMAT)
                       }
                       onChange={e => this.handleUpdateDate(e)}
                     />}
                 {!this.state.to && !this.state.from
-                  ? ''
+                  ? ""
                   : <button
                       className="btn btn-sm btn-danger"
                       onClick={() => this.handleFromTo()}
@@ -505,17 +505,17 @@ class PresentAbsentGrant extends Component {
             <div
               className="tableCalanDar"
               style={{
-                overflowX: 'hidden',
-                overflowY: 'scroll',
+                overflowX: "hidden",
+                overflowY: "scroll",
                 height: 400
               }}
             >
               <Timeline
                 groups={groups}
                 items={items}
-                defaultTimeStart={moment().add(-1, 'month')}
+                defaultTimeStart={moment().add(-1, "month")}
                 defaultTimeEnd={moment()}
-                visibleTimeStart={moment().add(-1, 'month')}
+                visibleTimeStart={moment().add(-1, "month")}
                 minZoom={2592000000}
                 fixedHeader="fixed"
                 maxZoom={2592000000}
@@ -526,21 +526,21 @@ class PresentAbsentGrant extends Component {
                     <tr>
                       <td
                         style={{
-                          height: '60px',
-                          width: '100',
-                          border: '1px solid #ddd',
-                          textAlign: 'center',
-                          backgroundColor: '#449d44'
+                          height: "60px",
+                          width: "100",
+                          border: "1px solid #ddd",
+                          textAlign: "center",
+                          backgroundColor: "#449d44"
                         }}
                       >
                         Present
                       </td>
                       <td
                         style={{
-                          height: '60px',
-                          width: '100',
-                          border: '1px solid #ddd',
-                          textAlign: 'center'
+                          height: "60px",
+                          width: "100",
+                          border: "1px solid #ddd",
+                          textAlign: "center"
                         }}
                       >
                         Absent
@@ -552,6 +552,29 @@ class PresentAbsentGrant extends Component {
             </div>
           </div>
         </div>
+        <style jsx>
+          {`
+            .modeL {
+              border-bottom-left-radius: 30px !important;
+              border-top-left-radius: 30px !important;
+              border-top-right-radius: 0px !important;
+              height: 40px;
+              background-color: #ffffff;
+            }
+
+            .modeR {
+              border-bottom-right-radius: 30px !important;
+              border-top-right-radius: 30px !important;
+              border-top-left-radius: 0px !important;
+              height: 40px;
+              background-color: #ffffff;
+            }
+
+            .navtabs {
+              border-bottom-style: none !important;
+            }
+          `}
+        </style>
       </div>
     );
   }

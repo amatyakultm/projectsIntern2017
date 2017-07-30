@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { Doughnut, defaults, Pie } from 'react-chartjs-2';
-import axios from 'axios';
-import _ from 'lodash';
-import ReactLoading from 'react-loading';
-import Style from '../styles/Style.css';
-import TableData from './TableData';
-import Color from './Mapping/color';
+import React, { Component } from "react";
+import { Doughnut, defaults, Pie } from "react-chartjs-2";
+import axios from "axios";
+import _ from "lodash";
+import ReactLoading from "react-loading";
+import Style from "../styles/Style.css";
+import TableData from "./TableData";
+import Color from "./Mapping/color";
 
 defaults.global.legend.display = false;
 class ProjectDetail extends Component {
@@ -65,7 +65,7 @@ class ProjectDetail extends Component {
           <div className="col-lg-3 col-md-4 col-sm-6 col-12">
             <div className="card-box">
               <h6 className="text-mute text-center">
-               {total} Mandays
+                {total.toFixed(2)} Mandays
               </h6>
               <Pie data={this.props.option} width={420} height={420} />
               <div className="col-md-12 text-center mt-3">
@@ -83,80 +83,80 @@ class ProjectDetail extends Component {
                     <div className="card_position_name pull-left">Position</div>
                     <div className="card_manday pull-right">Mandays</div>
                   </div>
-                  <div className="card-block" style={{ fontSize: '.85em' }}>
+                  <div className="card-block" style={{ fontSize: ".85em" }}>
                     {_.map(this.state.projectdetail.projectData, item => {
                       var positionList = [
-                        'Project Management Officer',
-                        'Frontend Developer',
-                        'Backend Developer',
-                        'Quality Assurance Engineer',
-                        'Business Analyst',
-                        'Designer',
-                        'Mobile Developer',
-                        'HR Director',
-                        'Co-Founder',
-                        'Technical Lead',
-                        'Application Support'
+                        "Project Management Officer",
+                        "Frontend Developer",
+                        "Backend Developer",
+                        "Quality Assurance Engineer",
+                        "Business Analyst",
+                        "Designer",
+                        "Mobile Developer",
+                        "HR Director",
+                        "Co-Founder",
+                        "Technical Lead",
+                        "Application Support"
                       ];
-                      var color = '';
+                      var color = "";
                       if (item.position === positionList[0]) {
-                        color = '#EE1F79';
+                        color = "#EE1F79";
                       } else if (item.position === positionList[1]) {
-                        color = '#9E65AB';
+                        color = "#9E65AB";
                       } else if (item.position === positionList[2]) {
-                        color = '#7360AC';
+                        color = "#7360AC";
                       } else if (item.position === positionList[3]) {
-                        color = '#0052A6';
+                        color = "#0052A6";
                       } else if (item.position === positionList[4]) {
-                        color = '#00A7BC';
+                        color = "#00A7BC";
                       } else if (item.position === positionList[5]) {
-                        color = '#04A54A';
+                        color = "#04A54A";
                       } else if (item.position === positionList[6]) {
-                        color = '#8FC630';
+                        color = "#8FC630";
                       } else if (item.position === positionList[7]) {
-                        color = '#FFF200';
+                        color = "#FFF200";
                       } else if (item.position === positionList[8]) {
-                        color = '#FFB700';
+                        color = "#FFB700";
                       } else if (item.position === positionList[9]) {
-                        color = '#C9302C';
+                        color = "#C9302C";
                       } else if (item.position === positionList[10]) {
-                        color = '#F46A1C';
+                        color = "#F46A1C";
                       } else if (item.position === positionList[11]) {
-                        color = 'gray';
+                        color = "gray";
                       }
-                      let position = '';
-                      if (item.position === 'Frontend Developer') {
-                        position = 'Front';
+                      let position = "";
+                      if (item.position === "Frontend Developer") {
+                        position = "Front";
                       }
-                      if (item.position === 'Quality Assurance Engineer') {
-                        position = 'QA';
+                      if (item.position === "Quality Assurance Engineer") {
+                        position = "QA";
                       }
-                      if (item.position === 'Backend Developer') {
-                        position = 'Back';
+                      if (item.position === "Backend Developer") {
+                        position = "Back";
                       }
-                      if (item.position === 'Project Management Officer') {
-                        position = 'PMO';
+                      if (item.position === "Project Management Officer") {
+                        position = "PMO";
                       }
-                      if (item.position === 'Business Analyst') {
-                        position = 'BA';
+                      if (item.position === "Business Analyst") {
+                        position = "BA";
                       }
-                      if (item.position === 'Designer') {
-                        position = 'Design';
+                      if (item.position === "Designer") {
+                        position = "Design";
                       }
-                      if (item.position === 'Mobile Developer') {
-                        position = 'Mobile';
+                      if (item.position === "Mobile Developer") {
+                        position = "Mobile";
                       }
-                      if (item.position === 'HR Director') {
-                        position = 'HR';
+                      if (item.position === "HR Director") {
+                        position = "HR";
                       }
-                      if (item.position === 'Technology') {
-                        position = 'Tech';
+                      if (item.position === "Technology") {
+                        position = "Tech";
                       }
-                      if (item.position === 'Co-Founder') {
-                        position = 'Co-Founder';
+                      if (item.position === "Co-Founder") {
+                        position = "Co-Founder";
                       }
-                      if (item.position === 'Application Support') {
-                        position = 'App-Support';
+                      if (item.position === "Application Support") {
+                        position = "App-Support";
                       }
                       return (
                         <div className="position-mandays">
@@ -206,9 +206,9 @@ class ProjectDetail extends Component {
               {/*<button className='btn btn-danger'><i className='zmdi zmdi-settings'></i> Setting</button>*/}
             </div>
             <h4>
-              <i className="zmdi zmdi-globe" /> Project Details{' '}
+              <i className="zmdi zmdi-globe" /> Project Details{" "}
               {!this.state.projectdetail
-                ? ''
+                ? ""
                 : `From ${this.state.projectdetail.from} To ${this.state
                     .projectdetail.to}`}
             </h4>

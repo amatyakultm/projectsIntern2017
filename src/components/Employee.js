@@ -457,7 +457,7 @@ class Table extends Component {
           <div className="col-md-12">
             {!this.state.user
               ? loadingData()
-              : <table className="table table-hover">
+              : <table className="table table-hover main">
                   <thead className="thead-inverse">
                     <tr>
                       <th onClick={() => this.handleSort('role')}>
@@ -559,6 +559,36 @@ class Table extends Component {
             {!this.state.userdatas ? loadingData() : createUserData()}
           </ModalBody>
         </Modal>
+        <style jsx>
+          {`
+            .main table {
+                width: 100%;
+            }
+
+            .main thead, .main tbody, .main tr, .main td, .main th { display: block; }
+
+            .main tr:after {
+                content: ' ';
+                display: block;
+                visibility: hidden;
+                clear: both;
+            }
+
+            .main thead th {
+                height: 50px;
+            }
+
+            .main tbody {
+                height: 500px;
+                overflow-y: auto;
+            }
+
+            .main tbody td, .main thead th {
+                width: 20%;
+                float: left;
+            }
+          `}
+        </style>
       </div>
     );
   }
