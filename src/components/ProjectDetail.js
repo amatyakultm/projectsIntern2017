@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Doughnut, defaults, Pie } from 'react-chartjs-2';
+import { ButtonToolbar, Button } from 'react-bootstrap';
 import axios from 'axios';
 import _ from 'lodash';
 import ReactLoading from 'react-loading';
@@ -200,6 +201,16 @@ class ProjectDetail extends Component {
 
     return (
       <div>
+        <ButtonToolbar>
+          <Button
+            className="backbt"
+            bsStyle="danger"
+            href="/projects"
+            style={{ marginBottom: '20px' }}
+          >
+            <i class="fa fa-arrow-circle-left" aria-hidden="true" />Back
+          </Button>
+        </ButtonToolbar>
         <div className="row">
           <div className="col-sm-12">
             <div className="btn-group pull-right">

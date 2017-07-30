@@ -440,15 +440,15 @@ class PresentAbsentGrant extends Component {
         <div className="row">
           <div className="col-md-12">
             <div className="pull-left">
-              <Nav tabs>
+              <Nav tabs className="navtabs">
                 <NavItem>
-                  <Link to="/presentabsent">
-                    <NavLink>Table</NavLink>
+                  <Link to="/present_absent/table">
+                    <NavLink className="modeL">Table</NavLink>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <Link to="/presentabsent/grant">
-                    <NavLink className="active">Grant</NavLink>
+                  <Link to="/present_absent/grant">
+                    <NavLink className="active modeR">Grant</NavLink>
                   </Link>
                 </NavItem>
               </Nav>
@@ -503,7 +503,9 @@ class PresentAbsentGrant extends Component {
               style={{
                 overflowX: 'hidden',
                 overflowY: 'scroll',
-                height: 400
+                minHeight: 400,
+                maxHeight: 450,
+                height: 'auto'
               }}
             >
               <Timeline

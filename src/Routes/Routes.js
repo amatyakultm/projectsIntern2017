@@ -16,8 +16,8 @@ const Routes = props =>
       <IndexRoute component={ProjectChart} />
       <Route path="projects" component={ProjectChart} />
       <Route path="project/:projectid" component={ProjectDetail} />
-      <Route path="presentabsent" component={PresentAbsent} />
-      <Route path="presentabsent/grant" component={PresentAbsentGrant} />
+      <Route path="present_absent/table" component={PresentAbsent} />
+      <Route path="present_absent/grant" component={PresentAbsentGrant} />
       <Route path="employee" component={Employee} />
       <Route path="setting/position" component={SettingPosition} />
       <Route path="setting/data" component={SettingData} />

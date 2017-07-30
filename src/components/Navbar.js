@@ -12,7 +12,7 @@ class Navbar extends Component {
     let classname = '';
     if (pathname === '/projects') {
       classname = 'nav-item active';
-    } else if (pathname === '/presentabsent') {
+    } else if (pathname === '/present_absent/table') {
       classname = 'nav-item active';
     } else if (pathname === '/employee') {
       classname = 'nav-item active';
@@ -56,13 +56,13 @@ class Navbar extends Component {
             </li>
             <li
               className={
-                this.props.path === '/presentabsent' ||
-                this.props.path === '/presentabsent/grant'
+                this.props.path === '/present_absent/table' ||
+                this.props.path === '/present_absent/grant'
                   ? 'nav-item active'
                   : 'nav-item'
               }
             >
-              <a className="nav-link" href="/presentabsent">
+              <a className="nav-link" href="/present_absent/table">
                 <i className="fa fa-briefcase" /> Present/Absent
               </a>
             </li>

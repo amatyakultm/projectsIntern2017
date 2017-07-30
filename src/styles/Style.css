@@ -46,8 +46,46 @@ ul.navbar-nav > li {
   margin-right: 30px;
 }
 
+.fixx {
+  overflow-y: auto;
+  height: 400px;
+}
+.fixed_headers {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.fixxed_headers > thead > tr {
+  display: block;
+  position: relative;
+}
+
+.fixxed_headers > tbody {
+  display: block;
+  overflow: auto;
+  width: 100%;
+  height: 400;
+}
+
 .app-content {
   margin-top: 100px;
+}
+
+.modeL {
+  border-bottom-left-radius: 30px !important;
+  border-top-left-radius: 30px !important;
+  border-top-right-radius: 0px !important;
+  height: 40px;
+  background-color: #ffffff;
+}
+
+.modeR {
+  border-bottom-right-radius: 30px !important;
+  border-top-right-radius: 30px !important;
+  border-top-left-radius: 0px !important;
+  height: 40px;
+  background-color: #ffffff;
 }
 
 .loading {
@@ -189,16 +227,25 @@ ul.navbar-nav > li {
   font-weight: bold;
 }
 
+.navtabs {
+  border-bottom-style: none !important;
+}
+
+.fixx {
+  position: fixed;
+}
+
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
-  color: #fff;
+  color: #f0f8ff;
   background-color: #d9534f;
   border-color: #c9302c #c9302c #c9302c;
 }
 
 a:not([href]):not([tabindex]):focus,
 a:not([href]):not([tabindex]):hover {
-  color: #fff;
+  border-color: transparent;
+  color: #808080;
   text-decoration: none;
 }
 
@@ -248,4 +295,8 @@ input[type="date"]::-webkit-clear-button {
 
 .sortt {
   margin-top: 7px;
+}
+
+.backbt:focus {
+  outline: 0 !important;
 }

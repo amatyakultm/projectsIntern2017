@@ -428,7 +428,7 @@ class PresentAbsent extends Component {
         return (
           <tr>
             <td>
-              {moment(user.date).format('DD MMM YYYY')}
+              {moment(user.date).format('ddd DD MMM YYYY')}
             </td>
             <td>
               {user.name}
@@ -498,17 +498,17 @@ class PresentAbsent extends Component {
     return (
       <div>
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-12">
             <div className="pull-left">
-              <Nav tabs>
+              <Nav tabs className="navtabs">
                 <NavItem>
-                  <Link to="/presentabsent">
-                    <NavLink className="active">Table</NavLink>
+                  <Link to="/present_absent/table">
+                    <NavLink className="active modeL">Table</NavLink>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <Link to="/presentabsent/grant">
-                    <NavLink>Grant</NavLink>
+                  <Link to="/present_absent/grant">
+                    <NavLink className="modeR">Grant</NavLink>
                   </Link>
                 </NavItem>
               </Nav>
@@ -518,7 +518,7 @@ class PresentAbsent extends Component {
             </div>
           </div>
         </div>
-        <div className="row mt-3">
+        <div className="row mb-3">
           <div className="col-12">
             <div className="pull-left">
               <Filter onFilter={type => this.handleFilter(type)} />
@@ -565,91 +565,94 @@ class PresentAbsent extends Component {
             }
           </div>
         </div>
-        <div className="row mt-3">
-          <div className="col-md-12">
-            {!this.state.user
-              ? loadingData()
-              : <table className="table">
-                  <thead className="thead-inverse">
-                    <tr>
-                      <th onClick={() => this.handleSort('date')}>
-                        Date{' '}
-                        {this.state.dateAsc
-                          ? <i
-                              className="fa fa-sort-desc pull-right"
-                              aria-hidden="true"
-                            />
-                          : <i
-                              className="fa fa-sort-asc pull-right sortt"
-                              aria-hidden="true"
-                            />}
-                      </th>
-                      <th onClick={() => this.handleSort('name')}>
-                        Name{' '}
-                        {this.state.nameAsc
-                          ? <i
-                              className="fa fa-sort-desc pull-right"
-                              aria-hidden="true"
-                            />
-                          : <i
-                              className="fa fa-sort-asc pull-right sortt"
-                              aria-hidden="true"
-                            />}
-                      </th>
-                      <th onClick={() => this.handleSort('status')}>
-                        Status{' '}
-                        {this.state.statusAsc
-                          ? <i
-                              className="fa fa-sort-desc pull-right"
-                              aria-hidden="true"
-                            />
-                          : <i
-                              className="fa fa-sort-asc pull-right sortt"
-                              aria-hidden="true"
-                            />}
-                      </th>
-                      <th onClick={() => this.handleSort('in')}>
-                        In{' '}
-                        {this.state.inAsc
-                          ? <i
-                              className="fa fa-sort-desc pull-right"
-                              aria-hidden="true"
-                            />
-                          : <i
-                              className="fa fa-sort-asc pull-right sortt"
-                              aria-hidden="true"
-                            />}
-                      </th>
-                      <th onClick={() => this.handleSort('out')}>
-                        Out{' '}
-                        {this.state.outAsc
-                          ? <i
-                              className="fa fa-sort-desc pull-right"
-                              aria-hidden="true"
-                            />
-                          : <i
-                              className="fa fa-sort-asc pull-right sortt"
-                              aria-hidden="true"
-                            />}
-                      </th>
-                      <th onClick={() => this.handleSort('total')}>
-                        Total Hours{' '}
-                        {this.state.totalAsc
-                          ? <i
-                              className="fa fa-sort-desc pull-right"
-                              aria-hidden="true"
-                            />
-                          : <i
-                              className="fa fa-sort-asc pull-right sortt"
-                              aria-hidden="true"
-                            />}
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {createData(this.state.user)}
-                  </tbody>
-                </table>}
+
+        <div>
+          <div className="row">
+            <div className="col-md-12">
+              {!this.state.user
+                ? loadingData()
+                : <table className="table">
+                    <thead className="thead-inverse">
+                      <tr>
+                        <th onClick={() => this.handleSort('date')}>
+                          Date{' '}
+                          {this.state.dateAsc
+                            ? <i
+                                className="fa fa-sort-desc pull-right"
+                                aria-hidden="true"
+                              />
+                            : <i
+                                className="fa fa-sort-asc pull-right sortt"
+                                aria-hidden="true"
+                              />}
+                        </th>
+                        <th onClick={() => this.handleSort('name')}>
+                          Name{' '}
+                          {this.state.nameAsc
+                            ? <i
+                                className="fa fa-sort-desc pull-right"
+                                aria-hidden="true"
+                              />
+                            : <i
+                                className="fa fa-sort-asc pull-right sortt"
+                                aria-hidden="true"
+                              />}
+                        </th>
+                        <th onClick={() => this.handleSort('status')}>
+                          Status{' '}
+                          {this.state.statusAsc
+                            ? <i
+                                className="fa fa-sort-desc pull-right"
+                                aria-hidden="true"
+                              />
+                            : <i
+                                className="fa fa-sort-asc pull-right sortt"
+                                aria-hidden="true"
+                              />}
+                        </th>
+                        <th onClick={() => this.handleSort('in')}>
+                          In{' '}
+                          {this.state.inAsc
+                            ? <i
+                                className="fa fa-sort-desc pull-right"
+                                aria-hidden="true"
+                              />
+                            : <i
+                                className="fa fa-sort-asc pull-right sortt"
+                                aria-hidden="true"
+                              />}
+                        </th>
+                        <th onClick={() => this.handleSort('out')}>
+                          Out{' '}
+                          {this.state.outAsc
+                            ? <i
+                                className="fa fa-sort-desc pull-right"
+                                aria-hidden="true"
+                              />
+                            : <i
+                                className="fa fa-sort-asc pull-right sortt"
+                                aria-hidden="true"
+                              />}
+                        </th>
+                        <th onClick={() => this.handleSort('total')}>
+                          Total Hours{' '}
+                          {this.state.totalAsc
+                            ? <i
+                                className="fa fa-sort-desc pull-right"
+                                aria-hidden="true"
+                              />
+                            : <i
+                                className="fa fa-sort-asc pull-right sortt"
+                                aria-hidden="true"
+                              />}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="fixx">
+                      {createData(this.state.user)}
+                    </tbody>
+                  </table>}
+            </div>
           </div>
         </div>
       </div>
