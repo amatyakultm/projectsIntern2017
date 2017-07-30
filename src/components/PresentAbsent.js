@@ -428,7 +428,7 @@ class PresentAbsent extends Component {
         return (
           <tr>
             <td>
-              {moment(user.date).format('DD MMM YYYY')}
+              {moment(user.date).format('ddd DD MMM YYYY')}
             </td>
             <td>
               {user.name}
@@ -652,6 +652,36 @@ class PresentAbsent extends Component {
                 </table>}
           </div>
         </div>
+        <style jsx>
+          {`
+            table {
+                width: 100%;
+            }
+
+            thead, tbody, tr, td, th { display: block; }
+
+            tr:after {
+                content: ' ';
+                display: block;
+                visibility: hidden;
+                clear: both;
+            }
+
+            thead th {
+                height: 50px;
+            }
+
+            tbody {
+                height: 500px;
+                overflow-y: auto;
+            }
+
+            tbody td, thead th {
+                width: 16.6%;
+                float: left;
+            }
+          `}
+        </style>
       </div>
     );
   }
