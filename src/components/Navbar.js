@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import Style from "../styles/Style.css";
-import { Link } from "react-router";
+import React, { Component } from 'react';
+import Style from '../styles/Style.css';
+import { Link } from 'react-router';
 class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -9,15 +9,15 @@ class Navbar extends Component {
 
   className() {
     const pathname = this.props.path;
-    let classname = "";
-    if (pathname === "/projects") {
-      classname = "nav-item active";
-    } else if (pathname === "/presentabsent") {
-      classname = "nav-item active";
-    } else if (pathname === "/employee") {
-      classname = "nav-item active";
+    let classname = '';
+    if (pathname === '/projects') {
+      classname = 'nav-item active';
+    } else if (pathname === '/presentabsent') {
+      classname = 'nav-item active';
+    } else if (pathname === '/employee') {
+      classname = 'nav-item active';
     } else {
-      classname = "nav-item";
+      classname = 'nav-item';
     }
 
     return classname;
@@ -47,28 +47,28 @@ class Navbar extends Component {
           <ul className="navbar-nav mr-auto mt-2 mt-md-0 pull-left">
             <li
               className={
-                this.props.path === "/projects" ? "nav-item active" : "nav-item"
+                this.props.path === '/projects' ? 'nav-item active' : 'nav-item'
               }
             >
               <a className="nav-link" href="/projects">
-                <i className="zmdi zmdi-globe" /> Projects
+                <i className="fa fa-pie-chart" /> Projects
               </a>
             </li>
             <li
               className={
-                this.props.path === "/presentabsent" ||
-                this.props.path === "/presentabsent/grant"
-                  ? "nav-item active"
-                  : "nav-item"
+                this.props.path === '/presentabsent' ||
+                this.props.path === '/presentabsent/grant'
+                  ? 'nav-item active'
+                  : 'nav-item'
               }
             >
               <a className="nav-link" href="/presentabsent">
-                <i className="zmdi zmdi-male-female" /> Present/Absent
+                <i className="fa fa-briefcase" /> Present/Absent
               </a>
             </li>
             <li
               className={
-                this.props.path === "/employee" ? "nav-item active" : "nav-item"
+                this.props.path === '/employee' ? 'nav-item active' : 'nav-item'
               }
             >
               <a className="nav-link" href="/employee">
@@ -79,17 +79,23 @@ class Navbar extends Component {
           <ul className="navbar-nav pull-right">
             <li
               className={
-                this.props.path === "/projects" ? "nav-item active" : "nav-item"
+                this.props.path === '/projects' ? 'nav-item active' : 'nav-item'
               }
             >
-               <div className="dropdown">
-                <a className="nav-link" id="dropdownMenuButton"
+              <div className="dropdown">
+                <a
+                  className="nav-link"
+                  id="dropdownMenuButton"
                   data-toggle="dropdown"
                   aria-haspopup="true"
-                  aria-expanded="false">
-                <i className="fa fa-cog" aria-hidden="true"></i> Setting
-              </a>
-                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  aria-expanded="false"
+                >
+                  <i className="fa fa-cog" aria-hidden="true" /> Setting
+                </a>
+                <div
+                  className="dropdown-menu"
+                  aria-labelledby="dropdownMenuButton"
+                >
                   <label for="checkbox-1" className="checkbox-custom-label">
                     <a href="/setting/position">Update Position</a>
                   </label>
@@ -102,22 +108,22 @@ class Navbar extends Component {
           </ul>
         </div>
         <style jsx>
-              {`
-                .dropdown-menu {
-                    right: 0;
-                    left: inherit;
-                }
-                .dropdown-menu a{
-                  text-decoration: none;
-                  color: #2e4053;
-                }
-                .dropdown-menu a:hover{
-                  color: #dc3833;
-                }
-                a.nav-link{
-                  cursor:pointer;
-                }
-            `}
+          {`
+            .dropdown-menu {
+              right: 0;
+              left: inherit;
+            }
+            .dropdown-menu a {
+              text-decoration: none;
+              color: #2e4053;
+            }
+            .dropdown-menu a:hover {
+              color: #dc3833;
+            }
+            a.nav-link {
+              cursor: pointer;
+            }
+          `}
         </style>
       </nav>
     );

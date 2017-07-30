@@ -68,7 +68,7 @@ ul.navbar-nav > li {
   background-color: #ffffff;
   box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
   cursor: pointer;
-  height: 380px;
+  height: 350px;
 }
 
 .card-box2 {
@@ -166,8 +166,16 @@ ul.navbar-nav > li {
   }
 }
 
-.position-mandays{
-  display: table-row;
+.position-mandays {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.colorTab {
+  /*display: flex;
+  justify-content: space-between;*/
+  width: 100%;
+  margin: 0 auto;
 }
 
 .position-mandays > p {
@@ -210,14 +218,34 @@ a:not([href]):not([tabindex]) {
   border: 1px solid #eb9316 !important;
 }
 .Overwork {
-  background-color: #31b0d5 !important;
-  border: 1px solid #2aabd2 !important;
+  background-color: #c9302c !important;
+  border: 1px solid #c12e2a !important;
 }
 .Normal {
   background-color: #449d44 !important;
   border: 1px solid #419641 !important;
 }
 .Absent {
-  background-color: #c9302c !important;
-  border: 1px solid #c12e2a !important;
+  background-color: #787878 !important;
+  border: 1px solid #717171 !important;
+}
+
+input[type="date"]::-webkit-clear-button {
+  -webkit-appearance: none;
+  display: none;
+}
+
+.fonttable {
+  font-size: 14px !important;
+}
+.fontcard {
+  font-size: 14px !important;
+}
+
+.card-footer {
+  height: 50px;
+}
+
+.sortt {
+  margin-top: 7px;
 }

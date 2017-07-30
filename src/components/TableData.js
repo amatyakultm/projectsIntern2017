@@ -1,82 +1,101 @@
 import React, { Component } from 'react';
-import { Doughnut,defaults, Pie } from 'react-chartjs-2'
-import axios from 'axios'
-import _ from 'lodash'
-import ReactLoading from 'react-loading'
-import moment from 'moment'
-import Color from './Mapping/color'
-import Style from '../styles/Style.css'
-import { Modal, ModalHeader, ModalTitle, ModalClose, ModalBody, ModalFooter } from 'react-modal-bootstrap';
+import { Doughnut, defaults, Pie } from 'react-chartjs-2';
+import axios from 'axios';
+import _ from 'lodash';
+import ReactLoading from 'react-loading';
+import moment from 'moment';
+import Color from './Mapping/color';
+import Style from '../styles/Style.css';
+import {
+  Modal,
+  ModalHeader,
+  ModalTitle,
+  ModalClose,
+  ModalBody,
+  ModalFooter
+} from 'react-modal-bootstrap';
 
-defaults.global.legend.display = false
+defaults.global.legend.display = false;
 class TableData extends Component {
-
   constructor(props) {
-    super(props)
-    console.log(this.props)
+    super(props);
+    console.log(this.props);
     this.state = {
       cur_user: undefined,
       isOpen: false,
       cur_name: undefined,
       cur_position: undefined
-    }
+    };
+    this.openModal = this.openModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
   }
 
-  openModal = () => {
+  openModal() {
     this.setState({
       isOpen: true
     });
-  };
+  }
 
-  hideModal = () => {
+  hideModal() {
     this.setState({
       isOpen: false,
       userdatas: undefined,
-      userdata: undefined,
+      userdata: undefined
     });
-  };
+  }
 
-  getUserData(userid){
-    axios.get(`http://52.77.234.30/projects/${this.props.project_id}/user/${userid}?start=${this.props.start}&end=${this.props.end}`)
+  getUserData(userid) {
+    axios
+      .get(
+        `http://54.254.251.53/projects/${this.props
+          .project_id}/user/${userid}?start=${this.props.start}&end=${this.props
+          .end}`
+      )
       .then(response => {
         this.setState({
           userdatas: response.data.userdata,
           userdata: response.data.userdata
-        })
+        });
         console.log(this.state.userdata);
       })
       .catch(err => {
         this.setState({
           failed: true
-        })
-      })
+        });
+      });
   }
 
-  handleClickTr = (userid, name, position) => {
-    console.log('userid: ',userid)
+  handleClickTr(userid, name, position) {
+    console.log('userid: ', userid);
     this.setState({
       isOpen: true,
       cur_user: userid,
       cur_name: name,
       cur_position: position
-    })
-    this.getUserData(userid)
+    });
+    this.getUserData(userid);
   }
 
-  handleSearchUserData(e){
-    const query = e.target.value.toLowerCase()
-    let result = []
+  handleSearchUserData(e) {
+    const query = e.target.value.toLowerCase();
+    let result = [];
     _.map(this.state.userdatas, item => {
-      if (_.includes(item.description.toLowerCase(), query.toLowerCase()) || _.includes(item.date.toLowerCase(), query.toLowerCase())){
-        result.push(item)
+      if (
+        _.includes(item.description.toLowerCase(), query.toLowerCase()) ||
+        _.includes(item.date.toLowerCase(), query.toLowerCase())
+      ) {
+        result.push(item);
       }
-    })
+    });
     this.setState({
       userdata: result
-    })
+    });
   }
 
   render() {
+    const time = time =>
+      ((time / 3600000) | 0) + 'h ' + ((time % 3600000 / 60000) | 0) + 'm';
+
     // const createData = _.map(this.props.users, (user, index) => {
     //   let array = []
     //   _.each(user.user, (i, index2) => {
@@ -131,16 +150,21 @@ class TableData extends Component {
     // })
     const loadingData = () => {
       return (
-        <div className='col align-self-center loading'>
-          <img src="./assets/img/loading.svg" alt="" width="50"/>
+        <div className="col align-self-center loading">
+          <img src="./assets/img/loading.svg" alt="" width="50" />
         </div>
-      )
-    }
+      );
+    };
 
     const createUserData = () => {
       return (
         <div>
-          <input type="text" className="form-control" placeholder="Search" onChange={(e) => this.handleSearchUserData(e)}/>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Search"
+            onChange={e => this.handleSearchUserData(e)}
+          />
           <table className="table">
             <thead className="thead-inverse">
               <tr>
@@ -150,26 +174,30 @@ class TableData extends Component {
               </tr>
             </thead>
             <tbody>
-              {
-                _.map(this.state.userdata, (item, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>{moment(item.date).format('DD MMM YYYY')}</td>
-                      <td>{item.description}</td>
-                      <td>{item.total_hour}</td>
-                    </tr>
-                  )
-                })
-              }
+              {_.map(this.state.userdata, (item, index) => {
+                return (
+                  <tr key={index}>
+                    <td>
+                      {moment(item.date).format('DD MMM YYYY')}
+                    </td>
+                    <td>
+                      {item.description}
+                    </td>
+                    <td>
+                      {item.total_hour}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
-      )
-    }
+      );
+    };
 
     return (
       <div className="col-lg-9 col-md-8 col-sm-6 col-12">
-        <table className="table table-hover">
+        <table className="table table-hover fonttable">
           <thead className="thead-inverse">
             <tr>
               <th>Role</th>
@@ -181,57 +209,94 @@ class TableData extends Component {
             </tr>
           </thead>
           <tbody>
-            {_.map(this.props.users, (user, index)=>{
-              let currentPosition = undefined
+            {_.map(this.props.users, (user, index) => {
+              let currentPosition = undefined;
               return _.map(user.user, item => {
-                var positionList = ['Project Management Officer', 'Frontend Developer', 'Backend Developer', 'Quality Assurance Engineer', 'Business Analyst', 'Designer', 'Mobile Developer', 'HR Director', 'Co-Founder']
-                var color = ''
+                var positionList = [
+                  'Project Management Officer',
+                  'Frontend Developer',
+                  'Backend Developer',
+                  'Quality Assurance Engineer',
+                  'Business Analyst',
+                  'Designer',
+                  'Mobile Developer',
+                  'HR Director',
+                  'Co-Founder',
+                  'Technical Lead',
+                  'Application Support'
+                ];
+                var color = '';
                 if (user.position === positionList[0]) {
-                  color = '#EE1F79'
+                  color = '#EE1F79';
                 } else if (user.position === positionList[1]) {
-                  color = '#9E65AB'
+                  color = '#9E65AB';
                 } else if (user.position === positionList[2]) {
-                  color = '#7360AC'
+                  color = '#7360AC';
                 } else if (user.position === positionList[3]) {
-                  color = '#00A7BC'
+                  color = '#0052A6';
                 } else if (user.position === positionList[4]) {
-                  color = '#04A54A'
+                  color = '#00A7BC';
                 } else if (user.position === positionList[5]) {
-                  color = '#FFF200'
+                  color = '#04A54A';
                 } else if (user.position === positionList[6]) {
-                  color = '#FFB700'
+                  color = '#8FC630';
                 } else if (user.position === positionList[7]) {
-                  color = '#F98B20'
+                  color = '#FFF200';
                 } else if (user.position === positionList[8]) {
-                  color = '#F46A1C'
+                  color = '#FFB700';
                 } else if (user.position === positionList[9]) {
-                  color = '#C9302C'
+                  color = '#C9302C';
+                } else if (user.position === positionList[10]) {
+                  color = '#F46A1C';
+                } else if (user.position === positionList[11]) {
+                  color = 'gray';
                 }
-                let position
+                let position;
                 if (currentPosition !== user.position) {
-                  currentPosition = user.position
-                  position = user.position
+                  currentPosition = user.position;
+                  position = user.position;
                 } else {
-                  position = ''
+                  position = '';
                 }
-                return (
-                  <tr className="tr_userdata" onClick={() => this.handleClickTr(item.id, item.name, user.position)}>
-                    <td>{!position ? '' : <span><Color color={color}/>{position}</span>}</td>
-                    <td>{item.name}</td>
-                    <td>{parseInt(item.total_hour/1000/60/60)}</td>
-                    <td>{item.manday}</td>
-                    <td>{parseInt(item.sum_billable/1000/60/60)}</td>
-                    <td>{parseInt(item.sum_nonbillable/1000/60/60)}</td>
-                  </tr>
 
-                )
-              })
+                return (
+                  <tr
+                    className="tr_userdata"
+                    onClick={() =>
+                      this.handleClickTr(item.id, item.name, user.position)}
+                  >
+                    <td>
+                      {!position
+                        ? ''
+                        : <span>
+                            <Color color={color} />
+                            {position}
+                          </span>}
+                    </td>
+                    <td>
+                      {item.name}
+                    </td>
+                    <td style={{ textAlign: 'right' }}>
+                      {time(item.total_hour)}
+                    </td>
+                    <td style={{ textAlign: 'center' }}>
+                      {item.manday}
+                    </td>
+                    <td style={{ textAlign: 'right' }}>
+                      {item.sum_billable}
+                    </td>
+                    <td style={{ textAlign: 'right' }}>
+                      {item.sum_nonbillable}
+                    </td>
+                  </tr>
+                );
+              });
             })}
           </tbody>
         </table>
         <Modal isOpen={this.state.isOpen} onRequestHide={this.hideModal}>
           <ModalHeader>
-            <ModalClose onClick={this.hideModal}/>
+            <ModalClose onClick={this.hideModal} />
             <ModalTitle>
               {this.state.cur_name} : {this.state.cur_position}
             </ModalTitle>

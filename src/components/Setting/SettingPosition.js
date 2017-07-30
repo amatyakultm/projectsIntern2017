@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import axios from "axios";
-import _ from "lodash";
-import moment from "moment";
-import "../../styles/Style.css";
-const BASE_URL = "http://localhost:7000";
+import React, { Component } from 'react';
+import axios from 'axios';
+import _ from 'lodash';
+import moment from 'moment';
+import '../../styles/Style.css';
+const BASE_URL = 'http://54.254.251.53';
 class SettingPosition extends Component {
   constructor(props) {
     super(props);
@@ -29,7 +29,6 @@ class SettingPosition extends Component {
     }
   }
 
-
   render() {
     const loadingData = () => {
       return (
@@ -42,22 +41,28 @@ class SettingPosition extends Component {
     const createData = _.map(this.state.users, user => {
       return (
         <tr>
-          <td>{user.name}</td>
+          <td>
+            {user.name}
+          </td>
           <td>
             <select className="form-control">
-              {
-                _.map(this.state.positions, position => {
-                  return (<option selected={user.position_id === position.id ? true : false}>{position.name}</option>)
-                })
-              }
+              {_.map(this.state.positions, position => {
+                return (
+                  <option
+                    selected={user.position_id === position.id ? true : false}
+                  >
+                    {position.name}
+                  </option>
+                );
+              })}
             </select>
           </td>
           <td>
-              <button className="btn btn-success">Save</button>
+            <button className="btn btn-success">Save</button>
           </td>
         </tr>
-      )
-    })
+      );
+    });
 
     return (
       <div>
@@ -69,7 +74,7 @@ class SettingPosition extends Component {
                 <tr>
                   <th>Name</th>
                   <th>Position</th>
-                  <th></th>
+                  <th />
                 </tr>
               </thead>
               <tbody>

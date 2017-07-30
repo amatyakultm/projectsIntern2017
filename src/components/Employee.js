@@ -1,9 +1,10 @@
-import React, { Component } from "react";
-import axios from "axios";
-import _ from "lodash";
-import moment from "moment";
-import Search from "./Search";
-import Filter from "./Filter";
+import React, { Component } from 'react';
+import axios from 'axios';
+import _ from 'lodash';
+import moment from 'moment';
+import Search from './Search';
+import Filter from './Filter';
+import FilterPosition from './FilterPosition';
 import {
   Modal,
   ModalHeader,
@@ -11,10 +12,10 @@ import {
   ModalClose,
   ModalBody,
   ModalFooter
-} from "react-modal-bootstrap";
-import "../styles/Style.css";
-const BASE_URL = "http://52.77.234.30";
-const DAY_FORMAT = "YYYY-MM-DD";
+} from 'react-modal-bootstrap';
+import '../styles/Style.css';
+const BASE_URL = 'http://54.254.251.53';
+const DAY_FORMAT = 'YYYY-MM-DD';
 class Table extends Component {
   constructor(props) {
     super(props);
@@ -31,21 +32,30 @@ class Table extends Component {
       mandayAsc: true,
       isOpen: false
     };
+    this.openModal = this.openModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
+    this.handleClickTr = this.handleClickTr.bind(this);
+    this.handleOnChangeFilter = this.handleOnChangeFilter.bind(this);
+    //this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  openModal = () => {
+  openModal() {
     this.setState({
       isOpen: true
     });
-  };
+  }
 
-  hideModal = () => {
+  hideModal() {
     this.setState({
       isOpen: false,
       userdatas: undefined,
       userdata: undefined
     });
-  };
+  }
+
+  // handleSubmit(event) {
+  //   event.preventDefault();
+  // }
 
   async handleSearch(query) {
     let result = [];
@@ -79,8 +89,11 @@ class Table extends Component {
   async handleFromTo() {
     console.log(this.refs.from.value);
     console.log(this.refs.to.value);
-    const from = this.refs.from.value;
-    const to = this.refs.to.value;
+    let from = this.refs.from.value;
+    let to = this.refs.to.value;
+    if (to < from) {
+      from = to;
+    }
     this.setState({
       users: null,
       user: null
@@ -100,28 +113,21 @@ class Table extends Component {
     }
   }
 
-  handleFrom(e) {
-    const from = e.target.value;
-    this.setState({
-      from: from
-    });
+  handleUpdateDate(event) {
+    const { id, value } = event.target;
+    if (!_.isEmpty(value)) {
+      this.setState({ [id]: value });
+    }
   }
 
-  handleTo(e) {
-    const to = e.target.value;
-    this.setState({
-      to: to
-    });
-  }
-
-  handleClickTr = userData => {
-    console.log("userdata: ", userData);
+  handleClickTr(userData) {
+    console.log('userdata: ', userData);
     this.setState({
       isOpen: true,
       userdatas: userData.data,
       userdata: userData.data
     });
-  };
+  }
 
   handleSearchUserData(e) {
     const query = e.target.value.toLowerCase();
@@ -144,14 +150,14 @@ class Table extends Component {
   async handleSort(type) {
     let userData = this.state.user;
     switch (type) {
-      case "role": {
+      case 'role': {
         if (this.state.roleAsc) {
-          userData = await _.orderBy(userData, "position", "desc");
+          userData = await _.orderBy(userData, 'position', 'desc');
           this.setState({
             roleAsc: false
           });
         } else {
-          userData = await _.orderBy(userData, "position", "asc");
+          userData = await _.orderBy(userData, 'position', 'asc');
           this.setState({
             roleAsc: true
           });
@@ -161,14 +167,14 @@ class Table extends Component {
         });
         break;
       }
-      case "id": {
+      case 'id': {
         if (this.state.idAsc) {
-          userData = await _.orderBy(userData, "id", "desc");
+          userData = await _.orderBy(userData, 'id', 'desc');
           this.setState({
             idAsc: false
           });
         } else {
-          userData = await _.orderBy(userData, "id", "asc");
+          userData = await _.orderBy(userData, 'id', 'asc');
           this.setState({
             idAsc: true
           });
@@ -178,14 +184,14 @@ class Table extends Component {
         });
         break;
       }
-      case "name": {
+      case 'name': {
         if (this.state.nameAsc) {
-          userData = await _.orderBy(userData, "name", "desc");
+          userData = await _.orderBy(userData, 'name', 'desc');
           this.setState({
             nameAsc: false
           });
         } else {
-          userData = await _.orderBy(userData, "name", "asc");
+          userData = await _.orderBy(userData, 'name', 'asc');
           this.setState({
             nameAsc: true
           });
@@ -195,14 +201,14 @@ class Table extends Component {
         });
         break;
       }
-      case "total": {
+      case 'total': {
         if (this.state.totalAsc) {
-          userData = await _.orderBy(userData, "total", "desc");
+          userData = await _.orderBy(userData, 'total', 'desc');
           this.setState({
             totalAsc: false
           });
         } else {
-          userData = await _.orderBy(userData, "total", "asc");
+          userData = await _.orderBy(userData, 'total', 'asc');
           this.setState({
             totalAsc: true
           });
@@ -212,14 +218,14 @@ class Table extends Component {
         });
         break;
       }
-      case "billable": {
+      case 'billable': {
         if (this.state.billableAsc) {
-          userData = await _.orderBy(userData, "nonebillable", "desc");
+          userData = await _.orderBy(userData, 'nonebillable', 'desc');
           this.setState({
             billableAsc: false
           });
         } else {
-          userData = await _.orderBy(userData, "nonebillable", "asc");
+          userData = await _.orderBy(userData, 'nonebillable', 'asc');
           this.setState({
             billableAsc: true
           });
@@ -229,14 +235,14 @@ class Table extends Component {
         });
         break;
       }
-      case "manday": {
+      case 'manday': {
         if (this.state.mandayAsc) {
-          userData = await _.orderBy(userData, "manday", "desc");
+          userData = await _.orderBy(userData, 'manday', 'desc');
           this.setState({
             mandayAsc: false
           });
         } else {
-          userData = await _.orderBy(userData, "manday", "asc");
+          userData = await _.orderBy(userData, 'manday', 'asc');
           this.setState({
             mandayAsc: true
           });
@@ -249,19 +255,77 @@ class Table extends Component {
     }
   }
 
+  handleOnChangeFilter(data) {
+    const userData = this.state.users;
+    if (data === 'Frontend') {
+      data = 'Frontend Developer';
+    }
+    if (data === 'QA') {
+      data = 'Quality Assurance Engineer';
+    }
+    if (data === 'Backend') {
+      data = 'Backend Developer';
+    }
+    if (data === 'Project') {
+      data = 'Project Management Officer';
+    }
+    if (data === 'BA') {
+      data = 'Business Analyst';
+    }
+    if (data === 'Design') {
+      data = 'Designer';
+    }
+    if (data === 'Mobile') {
+      data = 'Mobile Developer';
+    }
+    if (data === 'HR') {
+      data = 'HR Director';
+    }
+    if (data === 'Tech') {
+      data = 'Technical Lead';
+    }
+    if (data === 'Cofound') {
+      data = 'Co-Founder';
+    }
+    if (data === 'Support') {
+      data = 'Application Support';
+    }
+    if (data === 'All') {
+      data = 'All';
+    }
+    const user =
+      data === 'All' ? userData : _.filter(userData, i => i.position === data);
+    this.setState({ user });
+  }
+
   render() {
     const time = time =>
-      ((time / 3600000) | 0) + "h " + ((time % 3600000 / 60000) | 0) + "m";
+      ((time / 3600000) | 0) + 'h ' + ((time % 3600000 / 60000) | 0) + 'm';
     const createData = data => {
       return _.map(data, (user, index) => {
+        console.log(user);
         return (
           <tr className="tr_userdata" onClick={() => this.handleClickTr(user)}>
             <td>
-              <div style={{width:'25px',height:'25px', float:'left'}}>{user.is_lead ? <i className="fa fa-diamond" aria-hidden="true"></i> : ''}</div>{user.position}
+              <div style={{ width: '25px', height: '25px', float: 'left' }}>
+                {user.is_lead
+                  ? <img
+                      src="/assets/img/appmanblack.png"
+                      style={{ width: '23px' }}
+                    />
+                  : ''}
+                {user.id === '2413883'
+                  ? <img
+                      src="/assets/img/appmangenie.png"
+                      style={{ width: '23px' }}
+                    />
+                  : ''}
+              </div>{' '}
+              {user.position}
             </td>
-            <td>
+            {/*<td>
               {user.id}
-            </td>
+            </td>*/}
             <td>
               {user.name}
             </td>
@@ -309,16 +373,16 @@ class Table extends Component {
               {_.map(this.state.userdata, (item, index) => {
                 return (
                   <tr key={index}>
-                    <td>
-                      {moment(item.start).format("DD MMM YYYY")}
+                    <td style={{ width: '10%' }}>
+                      {moment(item.start).format('DD MMM YYYY')}
                     </td>
-                    <td>
+                    <td style={{ width: '20%' }}>
                       {item.project}
                     </td>
-                    <td>
+                    <td style={{ width: '50%' }}>
                       {item.description}
                     </td>
-                    <td>
+                    <td style={{ width: '20%' }}>
                       {time(item.dur)}
                     </td>
                   </tr>
@@ -342,43 +406,51 @@ class Table extends Component {
         </div>
         <div className="row mt-3">
           <div className="col-12">
-            <div className="pull-left" />
-            {
-              <div className="pull-right fromto-box">
-                {!this.state.from ? "" : <span className="fromto">From </span>}
-                {!this.state.from
-                  ? ""
-                  : <input
-                      className="form-control fromto_input"
-                      type="date"
-                      ref="from"
-                      value={moment(this.state.from).format(DAY_FORMAT)}
-                      onChange={e => this.handleFrom(e)}
-                    />}
-                {!this.state.to ? "" : <span className="fromto">To </span>}
-                {!this.state.to
-                  ? ""
-                  : <input
-                      className="form-control fromto_input"
-                      type="date"
-                      ref="to"
-                      value={
-                        !this.state.to
-                          ? "Waiting"
-                          : moment(this.state.to).format(DAY_FORMAT)
-                      }
-                      onChange={e => this.handleTo(e)}
-                    />}
-                {!this.state.to && !this.state.from
-                  ? ""
-                  : <button
-                      className="btn btn-sm btn-danger"
-                      onClick={() => this.handleFromTo()}
-                    >
-                      Submit
-                    </button>}
-              </div>
-            }
+            <div className="pull-left">
+              <FilterPosition
+                onChange={data => this.handleOnChangeFilter(data)}
+              />
+            </div>
+            {/*<form onSubmit={() => this.handleFromTo()}>*/}
+            <div className="pull-right fromto-box eee">
+              {!this.state.from ? '' : <span className="fromto">From </span>}
+              {!this.state.from
+                ? ''
+                : <input
+                    className="form-control fromto_input"
+                    type="date"
+                    ref="from"
+                    id="from"
+                    max={moment().format(DAY_FORMAT)}
+                    value={moment(this.state.from).format(DAY_FORMAT)}
+                    onChange={e => this.handleUpdateDate(e)}
+                  />}
+              {!this.state.to ? '' : <span className="fromto">To </span>}
+              {!this.state.to
+                ? ''
+                : <input
+                    className="form-control fromto_input"
+                    type="date"
+                    ref="to"
+                    id="to"
+                    max={moment().format(DAY_FORMAT)}
+                    value={
+                      !this.state.to
+                        ? 'Waiting'
+                        : moment(this.state.to).format(DAY_FORMAT)
+                    }
+                    onChange={e => this.handleUpdateDate(e)}
+                  />}
+              {!this.state.to && !this.state.from
+                ? ''
+                : <button
+                    className="btn btn-sm btn-danger"
+                    onClick={() => this.handleFromTo()}
+                  >
+                    Submit
+                  </button>}
+            </div>
+            {/*</form>*/}
           </div>
         </div>
         <div className="row mt-3">
@@ -388,7 +460,7 @@ class Table extends Component {
               : <table className="table table-hover">
                   <thead className="thead-inverse">
                     <tr>
-                      <th onClick={() => this.handleSort("role")}>
+                      <th onClick={() => this.handleSort('role')}>
                         Role
                         {this.state.roleAsc
                           ? <i
@@ -396,11 +468,11 @@ class Table extends Component {
                               aria-hidden="true"
                             />
                           : <i
-                              className="fa fa-sort-asc pull-right"
+                              className="fa fa-sort-asc pull-right sortt"
                               aria-hidden="true"
                             />}
                       </th>
-                      <th onClick={() => this.handleSort("id")}>
+                      {/*<th onClick={() => this.handleSort('id')}>
                         Id
                         {this.state.idAsc
                           ? <i
@@ -408,11 +480,11 @@ class Table extends Component {
                               aria-hidden="true"
                             />
                           : <i
-                              className="fa fa-sort-asc pull-right"
+                              className="fa fa-sort-asc pull-right sortt"
                               aria-hidden="true"
                             />}
-                      </th>
-                      <th onClick={() => this.handleSort("name")}>
+                      </th>*/}
+                      <th onClick={() => this.handleSort('name')}>
                         Name
                         {this.state.nameAsc
                           ? <i
@@ -420,11 +492,11 @@ class Table extends Component {
                               aria-hidden="true"
                             />
                           : <i
-                              className="fa fa-sort-asc pull-right"
+                              className="fa fa-sort-asc pull-right sortt"
                               aria-hidden="true"
                             />}
                       </th>
-                      <th onClick={() => this.handleSort("total")}>
+                      <th onClick={() => this.handleSort('total')}>
                         Total hrs
                         {this.state.totalAsc
                           ? <i
@@ -432,11 +504,11 @@ class Table extends Component {
                               aria-hidden="true"
                             />
                           : <i
-                              className="fa fa-sort-asc pull-right"
+                              className="fa fa-sort-asc pull-right sortt"
                               aria-hidden="true"
                             />}
                       </th>
-                      <th onClick={() => this.handleSort("billable")}>
+                      <th onClick={() => this.handleSort('billable')}>
                         Non-billable
                         {this.state.billableAsc
                           ? <i
@@ -444,11 +516,11 @@ class Table extends Component {
                               aria-hidden="true"
                             />
                           : <i
-                              className="fa fa-sort-asc pull-right"
+                              className="fa fa-sort-asc pull-right sortt"
                               aria-hidden="true"
                             />}
                       </th>
-                      <th onClick={() => this.handleSort("manday")}>
+                      <th onClick={() => this.handleSort('manday')}>
                         Man-day(s)
                         {this.state.mandayAsc
                           ? <i
@@ -456,7 +528,7 @@ class Table extends Component {
                               aria-hidden="true"
                             />
                           : <i
-                              className="fa fa-sort-asc pull-right"
+                              className="fa fa-sort-asc pull-right sortt"
                               aria-hidden="true"
                             />}
                       </th>
@@ -477,9 +549,9 @@ class Table extends Component {
             <ModalClose onClick={this.hideModal} />
             <ModalTitle>
               {!this.state.userdatas
-                ? "Waiting"
+                ? 'Waiting'
                 : this.state.userdatas[0].user +
-                  " : " +
+                  ' : ' +
                   this.state.userdatas[0].position}
             </ModalTitle>
           </ModalHeader>
