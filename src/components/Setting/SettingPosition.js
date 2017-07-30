@@ -2,6 +2,20 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import _ from 'lodash';
 import moment from 'moment';
+import { Link } from 'react-router';
+import {
+  TabContent,
+  TabPane,
+  Nav,
+  NavItem,
+  NavLink,
+  Card,
+  Button,
+  CardTitle,
+  CardText,
+  Row,
+  Col
+} from 'reactstrap';
 import '../../styles/Style.css';
 const BASE_URL = 'http://54.254.251.53';
 class SettingPosition extends Component {
@@ -29,36 +43,65 @@ class SettingPosition extends Component {
     }
   }
 
+  async handleChangePosition(userId, e){
+    const val = e.target.value
+    if(_.isEmpty(this.state.newPosition)){
+      await this.setState({
+        newPosition: [{
+          user_id: userId,
+          position: val
+        }]
+      })
+    }else{
+      const isExistsUser = await _.find(this.state.newPosition, item => item.user_id === userId)
+      if(isExistsUser){
+        isExistsUser.position = val
+      }else{
+        const data = await [...this.state.newPosition,{user_id: userId, position: val}]
+        await this.setState({
+          newPosition: data
+        })
+      }
+    }
+  }
+
+  saveData = async () => {
+    const { data } = await axios.post(`${BASE_URL}/updatePosition`, {
+      data: this.state.newPosition
+    })
+    if(data){
+      alert('Save Done!')
+    }
+  }
+
   render() {
     const loadingData = () => {
       return (
         <div className="col align-self-center loading">
-          <img src="./assets/img/loading.svg" alt="" width="50" />
+          <img src="/assets/img/loading.svg" alt="" width="50" />
         </div>
       );
     };
 
     const createData = _.map(this.state.users, user => {
+      const userId = user.id
       return (
         <tr>
           <td>
             {user.name}
           </td>
           <td>
-            <select className="form-control">
+            <select className="form-control" onChange={(e) => this.handleChangePosition(userId, e)}>
               {_.map(this.state.positions, position => {
                 return (
                   <option
                     selected={user.position_id === position.id ? true : false}
-                  >
+                  value={position.id}>
                     {position.name}
                   </option>
                 );
               })}
             </select>
-          </td>
-          <td>
-            <button className="btn btn-success">Save</button>
           </td>
         </tr>
       );
@@ -68,19 +111,45 @@ class SettingPosition extends Component {
       <div>
         <div className="row">
           <div className="col-md-12">
-            <h3>Setting Position</h3>
-            <table className="table">
+            <div className="pull-left">
+              <Nav tabs>
+                <NavItem>
+                  <Link to="/setting/position">
+                    <NavLink className="active">Update Position</NavLink>
+                  </Link>
+                </NavItem>
+                <NavItem>
+                  <Link to="/setting/addposition">
+                    <NavLink>Add Position</NavLink>
+                  </Link>
+                </NavItem>
+              </Nav>
+            </div>
+            <div className="pull-right">
+
+            </div>
+          </div>
+        </div>
+        <div className="row mt-3">
+          <div className="col-md-12">
+             <table className="table">
               <thead className="thead-inverse">
                 <tr>
                   <th>Name</th>
                   <th>Position</th>
-                  <th />
                 </tr>
               </thead>
               <tbody>
                 {!this.state.users ? loadingData() : createData}
               </tbody>
             </table>
+            <div className="col-md-12 text-center">
+            {
+              this.state.newPosition ?
+              <button className="btn btn-success" onClick={this.saveData}>Save</button>
+              : ''
+            }
+            </div>
           </div>
         </div>
       </div>

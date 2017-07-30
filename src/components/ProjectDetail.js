@@ -60,16 +60,12 @@ class ProjectDetail extends Component {
         0
       );
 
-      this.setState({
-        total_sum_manday:total
-      })
-      console.log('total =========+>', total);
       return (
         <div className="row mt-5">
           <div className="col-lg-3 col-md-4 col-sm-6 col-12">
             <div className="card-box">
               <h6 className="text-mute text-center">
-                {this.state.total_sum_manday} Mandays
+               {total} Mandays
               </h6>
               <Pie data={this.props.option} width={420} height={420} />
               <div className="col-md-12 text-center mt-3">

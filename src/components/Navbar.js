@@ -47,7 +47,7 @@ class Navbar extends Component {
           <ul className="navbar-nav mr-auto mt-2 mt-md-0 pull-left">
             <li
               className={
-                this.props.path === '/projects' ? 'nav-item active' : 'nav-item'
+                this.props.path === '/projects' || this.props.path === '/' ? 'nav-item active' : 'nav-item'
               }
             >
               <a className="nav-link" href="/projects">
