@@ -23,7 +23,7 @@ import {
 } from "reactstrap";
 import classnames from "classnames";
 import "../styles/Style.css";
-const BASE_URL = "http://52.77.234.30";
+const BASE_URL = "http://ac66e466.ngrok.io";
 const DAY_FORMAT = "YYYY-MM-DD";
 class PresentAbsentGrant extends Component {
   constructor(props) {
@@ -491,7 +491,7 @@ class PresentAbsentGrant extends Component {
         </div>
         <div className="row mt-3">
           <div className="col-12" >
-            <div className="tableCalanDar" style={{ overflowX: 'hidden', overflowY:'scroll', height: 440} }>
+            <div className="tableCalanDar" style={{ overflowX: 'hidden', overflowY:'scroll', height: 400,border:'solid 1px 	#A9A9A9' } }>
 
             <Timeline
             fixedHeader="fixed"
@@ -503,14 +503,14 @@ class PresentAbsentGrant extends Component {
              //visibleTimeEnd={moment("2017-07-31")}
               //minZoom={2592000000}
               maxZoom={2592000000}
-              sidebarContent="Name"
+              sidebarContent={<div style={{paddingTop:'15px',textAlign:'center'}}>Name</div>}
               
               rightSidebarWidth={150}
               rightSidebarContent={
-                <table>
+                <table >
                   <tr>
-                  <td  style={{height:'60px',width:'100', border: '1px solid #ddd',textAlign:'center'}}>Present</td>
-                  <td style={{height:'60px',width:'100', border: '1px solid #ddd',textAlign:'center'}}>Absent</td>
+                  <td   style={{backgroundColor:'#449d44',height:'60px',width:'75px', border: '1px solid #ddd',textAlign:'center'}}>Present</td>
+                  <td style={{height:'60px',width:'83px', border: '1px solid #ddd',textAlign:'center',position:'absolute',backgroundColor:'#c9302c',paddingTop:'10'}}>Absent</td>
                   </tr>
                 </table>
               }
