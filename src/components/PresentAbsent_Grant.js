@@ -23,7 +23,7 @@ import {
 } from "reactstrap";
 import classnames from "classnames";
 import "../styles/Style.css";
-const BASE_URL = "http://54.254.251.53";
+const BASE_URL = "http://54.169.208.148";
 const DAY_FORMAT = "YYYY-MM-DD";
 class PresentAbsentGrant extends Component {
   constructor(props) {

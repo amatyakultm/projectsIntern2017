@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { Doughnut, defaults, Pie } from 'react-chartjs-2';
-import axios from 'axios';
-import _ from 'lodash';
-import ReactLoading from 'react-loading';
-import moment from 'moment';
-import Color from './Mapping/color';
-import Style from '../styles/Style.css';
+import React, { Component } from "react";
+import { Doughnut, defaults, Pie } from "react-chartjs-2";
+import axios from "axios";
+import _ from "lodash";
+import ReactLoading from "react-loading";
+import moment from "moment";
+import Color from "./Mapping/color";
+import Style from "../styles/Style.css";
 import {
   Modal,
   ModalHeader,
@@ -13,7 +13,7 @@ import {
   ModalClose,
   ModalBody,
   ModalFooter
-} from 'react-modal-bootstrap';
+} from "react-modal-bootstrap";
 
 defaults.global.legend.display = false;
 class TableData extends Component {
@@ -47,7 +47,7 @@ class TableData extends Component {
   getUserData(userid) {
     axios
       .get(
-        `http://54.254.251.53/projects/${this.props
+        `http://54.169.208.148/projects/${this.props
           .project_id}/user/${userid}?start=${this.props.start}&end=${this.props
           .end}`
       )
@@ -66,7 +66,7 @@ class TableData extends Component {
   }
 
   handleClickTr(userid, name, position) {
-    console.log('userid: ', userid);
+    console.log("userid: ", userid);
     this.setState({
       isOpen: true,
       cur_user: userid,
@@ -94,7 +94,7 @@ class TableData extends Component {
 
   render() {
     const time = time =>
-      ((time / 3600000) | 0) + 'h ' + ((time % 3600000 / 60000) | 0) + 'm';
+      ((time / 3600000) | 0) + "h " + ((time % 3600000 / 60000) | 0) + "m";
 
     // const createData = _.map(this.props.users, (user, index) => {
     //   let array = []
@@ -178,7 +178,7 @@ class TableData extends Component {
                 return (
                   <tr key={index}>
                     <td>
-                      {moment(item.date).format('DD MMM YYYY')}
+                      {moment(item.date).format("DD MMM YYYY")}
                     </td>
                     <td>
                       {item.description}
@@ -213,50 +213,50 @@ class TableData extends Component {
               let currentPosition = undefined;
               return _.map(user.user, item => {
                 var positionList = [
-                  'Project Management Officer',
-                  'Frontend Developer',
-                  'Backend Developer',
-                  'Quality Assurance Engineer',
-                  'Business Analyst',
-                  'Designer',
-                  'Mobile Developer',
-                  'HR Director',
-                  'Co-Founder',
-                  'Technical Lead',
-                  'Application Support'
+                  "Project Management Officer",
+                  "Frontend Developer",
+                  "Backend Developer",
+                  "Quality Assurance Engineer",
+                  "Business Analyst",
+                  "Designer",
+                  "Mobile Developer",
+                  "HR Director",
+                  "Co-Founder",
+                  "Technical Lead",
+                  "Application Support"
                 ];
-                var color = '';
+                var color = "";
                 if (user.position === positionList[0]) {
-                  color = '#EE1F79';
+                  color = "#EE1F79";
                 } else if (user.position === positionList[1]) {
-                  color = '#9E65AB';
+                  color = "#9E65AB";
                 } else if (user.position === positionList[2]) {
-                  color = '#7360AC';
+                  color = "#7360AC";
                 } else if (user.position === positionList[3]) {
-                  color = '#0052A6';
+                  color = "#0052A6";
                 } else if (user.position === positionList[4]) {
-                  color = '#00A7BC';
+                  color = "#00A7BC";
                 } else if (user.position === positionList[5]) {
-                  color = '#04A54A';
+                  color = "#04A54A";
                 } else if (user.position === positionList[6]) {
-                  color = '#8FC630';
+                  color = "#8FC630";
                 } else if (user.position === positionList[7]) {
-                  color = '#FFF200';
+                  color = "#FFF200";
                 } else if (user.position === positionList[8]) {
-                  color = '#FFB700';
+                  color = "#FFB700";
                 } else if (user.position === positionList[9]) {
-                  color = '#C9302C';
+                  color = "#C9302C";
                 } else if (user.position === positionList[10]) {
-                  color = '#F46A1C';
+                  color = "#F46A1C";
                 } else if (user.position === positionList[11]) {
-                  color = 'gray';
+                  color = "gray";
                 }
                 let position;
                 if (currentPosition !== user.position) {
                   currentPosition = user.position;
                   position = user.position;
                 } else {
-                  position = '';
+                  position = "";
                 }
 
                 return (
@@ -267,7 +267,7 @@ class TableData extends Component {
                   >
                     <td>
                       {!position
-                        ? ''
+                        ? ""
                         : <span>
                             <Color color={color} />
                             {position}
@@ -276,16 +276,16 @@ class TableData extends Component {
                     <td>
                       {item.name}
                     </td>
-                    <td style={{ textAlign: 'right' }}>
+                    <td style={{ textAlign: "right" }}>
                       {time(item.total_hour)}
                     </td>
-                    <td style={{ textAlign: 'center' }}>
+                    <td style={{ textAlign: "center" }}>
                       {item.manday}
                     </td>
-                    <td style={{ textAlign: 'right' }}>
+                    <td style={{ textAlign: "right" }}>
                       {item.sum_billable}
                     </td>
-                    <td style={{ textAlign: 'right' }}>
+                    <td style={{ textAlign: "right" }}>
                       {item.sum_nonbillable}
                     </td>
                   </tr>

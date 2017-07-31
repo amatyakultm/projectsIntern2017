@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import { Doughnut, defaults, Pie } from 'react-chartjs-2';
-import axios from 'axios';
-import _ from 'lodash';
-import ReactLoading from 'react-loading';
-import '../styles/Style.css';
-import { Link } from 'react-router';
-import DayPickerInput from 'react-day-picker/DayPickerInput';
-import moment from 'moment';
-import ProjectDetail from './ProjectDetail';
-import 'react-day-picker/lib/style.css';
-import Mapping from './Mapping';
-import Filter from './Filter';
+import React, { Component } from "react";
+import { Doughnut, defaults, Pie } from "react-chartjs-2";
+import axios from "axios";
+import _ from "lodash";
+import ReactLoading from "react-loading";
+import "../styles/Style.css";
+import { Link } from "react-router";
+import DayPickerInput from "react-day-picker/DayPickerInput";
+import moment from "moment";
+import ProjectDetail from "./ProjectDetail";
+import "react-day-picker/lib/style.css";
+import Mapping from "./Mapping";
+import Filter from "./Filter";
 
-const DAY_FORMAT = 'YYYY-MM-DD';
+const DAY_FORMAT = "YYYY-MM-DD";
 defaults.global.legend.display = false;
 
 class ProjectChart extends Component {
@@ -32,7 +32,7 @@ class ProjectChart extends Component {
 
   getUsers() {
     axios
-      .get(`http://54.254.251.53/api/sumprojectposition`)
+      .get(`http://54.169.208.148/api/sumprojectposition`)
       .then(response => {
         this.setState({
           projects: response.data.sumprojects,
@@ -66,7 +66,9 @@ class ProjectChart extends Component {
       project: null
     });
     axios
-      .get(`http://54.254.251.53/api/sumprojectposition?start=${from}&end=${to}`)
+      .get(
+        `http://54.169.208.148/api/sumprojectposition?start=${from}&end=${to}`
+      )
       .then(response => {
         this.setState({
           projects: response.data.sumprojects,
@@ -121,48 +123,48 @@ class ProjectChart extends Component {
   render() {
     const data = [
       {
-        id: 'PMO',
-        color: '#EE1F79'
+        id: "PMO",
+        color: "#EE1F79"
       },
       {
-        id: 'FRONT',
-        color: '#9E65AB'
+        id: "FRONT",
+        color: "#9E65AB"
       },
       {
-        id: 'BACK',
-        color: '#7360AC'
+        id: "BACK",
+        color: "#7360AC"
       },
       {
-        id: 'QA',
-        color: '#00A7BC'
+        id: "QA",
+        color: "#00A7BC"
       },
       {
-        id: 'BA',
-        color: '#04A54A'
+        id: "BA",
+        color: "#04A54A"
       },
       {
-        id: 'DSN',
-        color: '#FFF200'
+        id: "DSN",
+        color: "#FFF200"
       },
       {
-        id: 'MOBILE',
-        color: '#FFB700'
+        id: "MOBILE",
+        color: "#FFB700"
       },
       {
-        id: 'HR',
-        color: '#F98B20'
+        id: "HR",
+        color: "#F98B20"
       },
       {
-        id: 'TECH',
-        color: '#F46A1C'
+        id: "TECH",
+        color: "#F46A1C"
       },
       {
-        id: 'CO-F',
-        color: '#C9302C'
+        id: "CO-F",
+        color: "#C9302C"
       },
       {
-        id: 'SUP',
-        color: 'gray'
+        id: "SUP",
+        color: "gray"
       }
     ];
     const chartData = _.map(this.state.project, (item, index) => {
@@ -171,48 +173,48 @@ class ProjectChart extends Component {
       var colorList = [];
 
       var positionList = [
-        'Project Management Officer',
-        'Frontend Developer',
-        'Backend Developer',
-        'Quality Assurance Engineer',
-        'Business Analyst',
-        'Designer',
-        'Mobile Developer',
-        'HR Director',
-        'Co-Founder',
-        'Technical Lead',
-        'Application Support'
+        "Project Management Officer",
+        "Frontend Developer",
+        "Backend Developer",
+        "Quality Assurance Engineer",
+        "Business Analyst",
+        "Designer",
+        "Mobile Developer",
+        "HR Director",
+        "Co-Founder",
+        "Technical Lead",
+        "Application Support"
       ];
       _.map(item[Object.keys(item)[0]], position => {
         listDataOption.push(position.total_hour);
         listLabelOption.push(position.position);
       });
       _.each(listLabelOption, label => {
-        var color = '';
+        var color = "";
         if (label === positionList[0]) {
-          color = '#EE1F79';
+          color = "#EE1F79";
         } else if (label === positionList[1]) {
-          color = '#9E65AB';
+          color = "#9E65AB";
         } else if (label === positionList[2]) {
-          color = '#7360AC';
+          color = "#7360AC";
         } else if (label === positionList[3]) {
-          color = '#0052a6';
+          color = "#0052a6";
         } else if (label === positionList[4]) {
-          color = '#00a7bc';
+          color = "#00a7bc";
         } else if (label === positionList[5]) {
-          color = '#04a54a';
+          color = "#04a54a";
         } else if (label === positionList[6]) {
-          color = '#8fc630';
+          color = "#8fc630";
         } else if (label === positionList[7]) {
-          color = '#fff200';
+          color = "#fff200";
         } else if (label === positionList[8]) {
-          color = '#FFB700';
+          color = "#FFB700";
         } else if (label === positionList[9]) {
-          color = '#C9302C';
+          color = "#C9302C";
         } else if (label === positionList[10]) {
-          color = '#F46A1C';
+          color = "#F46A1C";
         } else if (label === positionList[11]) {
-          color = 'gray';
+          color = "gray";
         }
         colorList.push(color);
       });
@@ -282,9 +284,9 @@ class ProjectChart extends Component {
           <div className="col-12">
             {
               <div className="pull-right fromto-box">
-                {!this.state.from ? '' : <span className="fromto">From </span>}
+                {!this.state.from ? "" : <span className="fromto">From </span>}
                 {!this.state.from
-                  ? ''
+                  ? ""
                   : <input
                       className="form-control fromto_input"
                       type="date"
@@ -293,9 +295,9 @@ class ProjectChart extends Component {
                       value={moment(this.state.from).format(DAY_FORMAT)}
                       onChange={e => this.handleUpdateDate(e)}
                     />}
-                {!this.state.to ? '' : <span className="fromto">To </span>}
+                {!this.state.to ? "" : <span className="fromto">To </span>}
                 {!this.state.to
-                  ? ''
+                  ? ""
                   : <input
                       className="form-control fromto_input"
                       type="date"
@@ -303,13 +305,13 @@ class ProjectChart extends Component {
                       id="to"
                       value={
                         !this.state.to
-                          ? 'Waiting'
+                          ? "Waiting"
                           : moment(this.state.to).format(DAY_FORMAT)
                       }
                       onChange={e => this.handleUpdateDate(e)}
                     />}
                 {!this.state.to && !this.state.from
-                  ? ''
+                  ? ""
                   : <button
                       className="btn btn-sm btn-danger"
                       onClick={() => this.handleFromTo()}
@@ -318,7 +320,7 @@ class ProjectChart extends Component {
                     </button>}
               </div>
             }
-            <div style={{ width: '80%', marginTop: '5%' }}>
+            <div style={{ width: "80%", marginTop: "5%" }}>
               <Mapping data={data} />
             </div>
           </div>
@@ -328,7 +330,7 @@ class ProjectChart extends Component {
           {
             <div className="col-md-6 offset-md-3">
               {!this.state.projects
-                ? ''
+                ? ""
                 : <input
                     type="text"
                     className="form-control"

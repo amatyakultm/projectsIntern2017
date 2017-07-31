@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import _ from 'lodash';
-import moment from 'moment';
-import '../../styles/Style.css';
-const BASE_URL = 'http://54.254.251.53';
+import React, { Component } from "react";
+import axios from "axios";
+import _ from "lodash";
+import moment from "moment";
+import "../../styles/Style.css";
+const BASE_URL = "http://54.169.208.148";
 class SettingPosition extends Component {
   constructor(props) {
     super(props);
@@ -20,15 +20,14 @@ class SettingPosition extends Component {
     await this.setState({
       loading: true
     });
-    const start = moment().subtract(day, 'days').format('YYYY-MM-DD');
-    const end = moment().format('YYYY-MM-DD');
+    const start = moment().subtract(day, "days").format("YYYY-MM-DD");
+    const end = moment().format("YYYY-MM-DD");
     const { data } = await axios.get(
       `${BASE_URL}/getEntry?start=${start}&end=${end}`
     );
-    console.log(data);
     await this.setState({
       loading: false,
-      msg: 'Done!'
+      msg: "Done!"
     });
   }
 

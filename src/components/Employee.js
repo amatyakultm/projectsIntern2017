@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import _ from 'lodash';
-import moment from 'moment';
-import Search from './Search';
-import Filter from './Filter';
-import FilterPosition from './FilterPosition';
+import React, { Component } from "react";
+import axios from "axios";
+import _ from "lodash";
+import moment from "moment";
+import Search from "./Search";
+import Filter from "./Filter";
+import FilterPosition from "./FilterPosition";
 import {
   Modal,
   ModalHeader,
@@ -12,10 +12,10 @@ import {
   ModalClose,
   ModalBody,
   ModalFooter
-} from 'react-modal-bootstrap';
-import '../styles/Style.css';
-const BASE_URL = 'http://54.254.251.53';
-const DAY_FORMAT = 'YYYY-MM-DD';
+} from "react-modal-bootstrap";
+import "../styles/Style.css";
+const BASE_URL = "http://54.169.208.148";
+const DAY_FORMAT = "YYYY-MM-DD";
 class Table extends Component {
   constructor(props) {
     super(props);
@@ -121,7 +121,7 @@ class Table extends Component {
   }
 
   handleClickTr(userData) {
-    console.log('userdata: ', userData);
+    console.log("userdata: ", userData);
     this.setState({
       isOpen: true,
       userdatas: userData.data,
@@ -150,14 +150,14 @@ class Table extends Component {
   async handleSort(type) {
     let userData = this.state.user;
     switch (type) {
-      case 'role': {
+      case "role": {
         if (this.state.roleAsc) {
-          userData = await _.orderBy(userData, 'position', 'desc');
+          userData = await _.orderBy(userData, "position", "desc");
           this.setState({
             roleAsc: false
           });
         } else {
-          userData = await _.orderBy(userData, 'position', 'asc');
+          userData = await _.orderBy(userData, "position", "asc");
           this.setState({
             roleAsc: true
           });
@@ -167,14 +167,14 @@ class Table extends Component {
         });
         break;
       }
-      case 'id': {
+      case "id": {
         if (this.state.idAsc) {
-          userData = await _.orderBy(userData, 'id', 'desc');
+          userData = await _.orderBy(userData, "id", "desc");
           this.setState({
             idAsc: false
           });
         } else {
-          userData = await _.orderBy(userData, 'id', 'asc');
+          userData = await _.orderBy(userData, "id", "asc");
           this.setState({
             idAsc: true
           });
@@ -184,14 +184,14 @@ class Table extends Component {
         });
         break;
       }
-      case 'name': {
+      case "name": {
         if (this.state.nameAsc) {
-          userData = await _.orderBy(userData, 'name', 'desc');
+          userData = await _.orderBy(userData, "name", "desc");
           this.setState({
             nameAsc: false
           });
         } else {
-          userData = await _.orderBy(userData, 'name', 'asc');
+          userData = await _.orderBy(userData, "name", "asc");
           this.setState({
             nameAsc: true
           });
@@ -201,14 +201,14 @@ class Table extends Component {
         });
         break;
       }
-      case 'total': {
+      case "total": {
         if (this.state.totalAsc) {
-          userData = await _.orderBy(userData, 'total', 'desc');
+          userData = await _.orderBy(userData, "total", "desc");
           this.setState({
             totalAsc: false
           });
         } else {
-          userData = await _.orderBy(userData, 'total', 'asc');
+          userData = await _.orderBy(userData, "total", "asc");
           this.setState({
             totalAsc: true
           });
@@ -218,14 +218,14 @@ class Table extends Component {
         });
         break;
       }
-      case 'billable': {
+      case "billable": {
         if (this.state.billableAsc) {
-          userData = await _.orderBy(userData, 'nonebillable', 'desc');
+          userData = await _.orderBy(userData, "nonebillable", "desc");
           this.setState({
             billableAsc: false
           });
         } else {
-          userData = await _.orderBy(userData, 'nonebillable', 'asc');
+          userData = await _.orderBy(userData, "nonebillable", "asc");
           this.setState({
             billableAsc: true
           });
@@ -235,14 +235,14 @@ class Table extends Component {
         });
         break;
       }
-      case 'manday': {
+      case "manday": {
         if (this.state.mandayAsc) {
-          userData = await _.orderBy(userData, 'manday', 'desc');
+          userData = await _.orderBy(userData, "manday", "desc");
           this.setState({
             mandayAsc: false
           });
         } else {
-          userData = await _.orderBy(userData, 'manday', 'asc');
+          userData = await _.orderBy(userData, "manday", "asc");
           this.setState({
             mandayAsc: true
           });
@@ -257,70 +257,70 @@ class Table extends Component {
 
   handleOnChangeFilter(data) {
     const userData = this.state.users;
-    if (data === 'Frontend') {
-      data = 'Frontend Developer';
+    if (data === "Frontend") {
+      data = "Frontend Developer";
     }
-    if (data === 'QA') {
-      data = 'Quality Assurance Engineer';
+    if (data === "QA") {
+      data = "Quality Assurance Engineer";
     }
-    if (data === 'Backend') {
-      data = 'Backend Developer';
+    if (data === "Backend") {
+      data = "Backend Developer";
     }
-    if (data === 'Project') {
-      data = 'Project Management Officer';
+    if (data === "Project") {
+      data = "Project Management Officer";
     }
-    if (data === 'BA') {
-      data = 'Business Analyst';
+    if (data === "BA") {
+      data = "Business Analyst";
     }
-    if (data === 'Design') {
-      data = 'Designer';
+    if (data === "Design") {
+      data = "Designer";
     }
-    if (data === 'Mobile') {
-      data = 'Mobile Developer';
+    if (data === "Mobile") {
+      data = "Mobile Developer";
     }
-    if (data === 'HR') {
-      data = 'HR Director';
+    if (data === "HR") {
+      data = "HR Director";
     }
-    if (data === 'Tech') {
-      data = 'Technical Lead';
+    if (data === "Tech") {
+      data = "Technical Lead";
     }
-    if (data === 'Cofound') {
-      data = 'Co-Founder';
+    if (data === "Cofound") {
+      data = "Co-Founder";
     }
-    if (data === 'Support') {
-      data = 'Application Support';
+    if (data === "Support") {
+      data = "Application Support";
     }
-    if (data === 'All') {
-      data = 'All';
+    if (data === "All") {
+      data = "All";
     }
     const user =
-      data === 'All' ? userData : _.filter(userData, i => i.position === data);
+      data === "All" ? userData : _.filter(userData, i => i.position === data);
     this.setState({ user });
   }
 
   render() {
     const time = time =>
-      ((time / 3600000) | 0) + 'h ' + ((time % 3600000 / 60000) | 0) + 'm';
+      ((time / 3600000) | 0) + "h " + ((time % 3600000 / 60000) | 0) + "m";
     const createData = data => {
       return _.map(data, (user, index) => {
         console.log(user);
         return (
           <tr className="tr_userdata" onClick={() => this.handleClickTr(user)}>
             <td>
-              <div style={{ width: '25px', height: '25px', float: 'left' }}>
+              <div style={{ width: "25px", height: "25px", float: "left" }}>
                 {user.is_lead
                   ? <img
                       src="/assets/img/appmanblack.png"
-                      style={{ width: '23px' }}
+                      style={{ width: "23px" }}
                     />
-                  : ''}
-                {user.id === '2413883'
+                  : ""}
+                {user.id === "2413883"
                   ? <img
                       src="/assets/img/appmangenie.png"
-                      style={{ width: '23px' }}
+                      style={{ width: "23px" }}
                     />
-                  : ''}
-              </div>{' '}
+                  : ""}
+              </div>{" "}
               {user.position}
             </td>
             {/*<td>
@@ -373,16 +373,16 @@ class Table extends Component {
               {_.map(this.state.userdata, (item, index) => {
                 return (
                   <tr key={index}>
-                    <td style={{ width: '10%' }}>
-                      {moment(item.start).format('DD MMM YYYY')}
+                    <td style={{ width: "10%" }}>
+                      {moment(item.start).format("DD MMM YYYY")}
                     </td>
-                    <td style={{ width: '20%' }}>
+                    <td style={{ width: "20%" }}>
                       {item.project}
                     </td>
-                    <td style={{ width: '50%' }}>
+                    <td style={{ width: "50%" }}>
                       {item.description}
                     </td>
-                    <td style={{ width: '20%' }}>
+                    <td style={{ width: "20%" }}>
                       {time(item.dur)}
                     </td>
                   </tr>
@@ -413,9 +413,9 @@ class Table extends Component {
             </div>
             {/*<form onSubmit={() => this.handleFromTo()}>*/}
             <div className="pull-right fromto-box eee">
-              {!this.state.from ? '' : <span className="fromto">From </span>}
+              {!this.state.from ? "" : <span className="fromto">From </span>}
               {!this.state.from
-                ? ''
+                ? ""
                 : <input
                     className="form-control fromto_input"
                     type="date"
@@ -425,9 +425,9 @@ class Table extends Component {
                     value={moment(this.state.from).format(DAY_FORMAT)}
                     onChange={e => this.handleUpdateDate(e)}
                   />}
-              {!this.state.to ? '' : <span className="fromto">To </span>}
+              {!this.state.to ? "" : <span className="fromto">To </span>}
               {!this.state.to
-                ? ''
+                ? ""
                 : <input
                     className="form-control fromto_input"
                     type="date"
@@ -436,13 +436,13 @@ class Table extends Component {
                     max={moment().format(DAY_FORMAT)}
                     value={
                       !this.state.to
-                        ? 'Waiting'
+                        ? "Waiting"
                         : moment(this.state.to).format(DAY_FORMAT)
                     }
                     onChange={e => this.handleUpdateDate(e)}
                   />}
               {!this.state.to && !this.state.from
-                ? ''
+                ? ""
                 : <button
                     className="btn btn-sm btn-danger"
                     onClick={() => this.handleFromTo()}
@@ -460,7 +460,7 @@ class Table extends Component {
               : <table className="table table-hover main">
                   <thead className="thead-inverse">
                     <tr>
-                      <th onClick={() => this.handleSort('role')}>
+                      <th onClick={() => this.handleSort("role")}>
                         Role
                         {this.state.roleAsc
                           ? <i
@@ -484,7 +484,7 @@ class Table extends Component {
                               aria-hidden="true"
                             />}
                       </th>*/}
-                      <th onClick={() => this.handleSort('name')}>
+                      <th onClick={() => this.handleSort("name")}>
                         Name
                         {this.state.nameAsc
                           ? <i
@@ -496,7 +496,7 @@ class Table extends Component {
                               aria-hidden="true"
                             />}
                       </th>
-                      <th onClick={() => this.handleSort('total')}>
+                      <th onClick={() => this.handleSort("total")}>
                         Total hrs
                         {this.state.totalAsc
                           ? <i
@@ -508,7 +508,7 @@ class Table extends Component {
                               aria-hidden="true"
                             />}
                       </th>
-                      <th onClick={() => this.handleSort('billable')}>
+                      <th onClick={() => this.handleSort("billable")}>
                         Non-billable
                         {this.state.billableAsc
                           ? <i
@@ -520,7 +520,7 @@ class Table extends Component {
                               aria-hidden="true"
                             />}
                       </th>
-                      <th onClick={() => this.handleSort('manday')}>
+                      <th onClick={() => this.handleSort("manday")}>
                         Man-day(s)
                         {this.state.mandayAsc
                           ? <i
@@ -549,9 +549,9 @@ class Table extends Component {
             <ModalClose onClick={this.hideModal} />
             <ModalTitle>
               {!this.state.userdatas
-                ? 'Waiting'
+                ? "Waiting"
                 : this.state.userdatas[0].user +
-                  ' : ' +
+                  " : " +
                   this.state.userdatas[0].position}
             </ModalTitle>
           </ModalHeader>
@@ -562,30 +562,37 @@ class Table extends Component {
         <style jsx>
           {`
             .main table {
-                width: 100%;
+              width: 100%;
             }
 
-            .main thead, .main tbody, .main tr, .main td, .main th { display: block; }
+            .main thead,
+            .main tbody,
+            .main tr,
+            .main td,
+            .main th {
+              display: block;
+            }
 
             .main tr:after {
-                content: ' ';
-                display: block;
-                visibility: hidden;
-                clear: both;
+              content: ' ';
+              display: block;
+              visibility: hidden;
+              clear: both;
             }
 
             .main thead th {
-                height: 50px;
+              height: 50px;
             }
 
             .main tbody {
-                height: 500px;
-                overflow-y: auto;
+              height: 500px;
+              overflow-y: auto;
             }
 
-            .main tbody td, .main thead th {
-                width: 20%;
-                float: left;
+            .main tbody td,
+            .main thead th {
+              width: 20%;
+              float: left;
             }
           `}
         </style>
