@@ -57,6 +57,12 @@ class SettingPosition extends Component {
             <h3>Update Data</h3>
             <button
               className="btn btn-danger"
+              onClick={() => this.updateData(0)}
+            >
+              Today
+            </button>
+            <button
+              className="btn btn-danger"
               onClick={() => this.updateData(7)}
             >
               Last 7 Days

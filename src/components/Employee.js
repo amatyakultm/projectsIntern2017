@@ -306,7 +306,7 @@ class Table extends Component {
         console.log(user);
         return (
           <tr className="tr_userdata" onClick={() => this.handleClickTr(user)}>
-            <td>
+            <td style={{ width: "30%" }}>
               <div style={{ width: "25px", height: "25px", float: "left" }}>
                 {user.is_lead
                   ? <img
@@ -326,16 +326,16 @@ class Table extends Component {
             {/*<td>
               {user.id}
             </td>*/}
-            <td>
+            <td style={{ width: "30%" }}>
               {user.name}
             </td>
-            <td className="text-right">
+            <td className="text-right" style={{ width: "13.33%" }}>
               {time(user.total)}
             </td>
-            <td className="text-right">
+            <td className="text-right" style={{ width: "13.33%" }}>
               {time(user.nonebillable)}
             </td>
-            <td className="text-center">
+            <td className="text-center" style={{ width: "13.33%" }}>
               {user.manday}
             </td>
           </tr>
@@ -457,10 +457,13 @@ class Table extends Component {
           <div className="col-md-12">
             {!this.state.user
               ? loadingData()
-              : <table className="table table-hover main">
+              : <table className="table table-striped table-hover main">
                   <thead className="thead-inverse">
                     <tr>
-                      <th onClick={() => this.handleSort("role")}>
+                      <th
+                        onClick={() => this.handleSort("role")}
+                        style={{ width: "30%" }}
+                      >
                         Role
                         {this.state.roleAsc
                           ? <i
@@ -484,7 +487,10 @@ class Table extends Component {
                               aria-hidden="true"
                             />}
                       </th>*/}
-                      <th onClick={() => this.handleSort("name")}>
+                      <th
+                        onClick={() => this.handleSort("name")}
+                        style={{ width: "30%" }}
+                      >
                         Name
                         {this.state.nameAsc
                           ? <i
@@ -496,7 +502,10 @@ class Table extends Component {
                               aria-hidden="true"
                             />}
                       </th>
-                      <th onClick={() => this.handleSort("total")}>
+                      <th
+                        onClick={() => this.handleSort("total")}
+                        style={{ width: "13.33%" }}
+                      >
                         Total hrs
                         {this.state.totalAsc
                           ? <i
@@ -508,7 +517,10 @@ class Table extends Component {
                               aria-hidden="true"
                             />}
                       </th>
-                      <th onClick={() => this.handleSort("billable")}>
+                      <th
+                        onClick={() => this.handleSort("billable")}
+                        style={{ width: "13.33%" }}
+                      >
                         Non-billable
                         {this.state.billableAsc
                           ? <i
@@ -520,7 +532,10 @@ class Table extends Component {
                               aria-hidden="true"
                             />}
                       </th>
-                      <th onClick={() => this.handleSort("manday")}>
+                      <th
+                        onClick={() => this.handleSort("manday")}
+                        style={{ width: "13.33%" }}
+                      >
                         Man-day(s)
                         {this.state.mandayAsc
                           ? <i
